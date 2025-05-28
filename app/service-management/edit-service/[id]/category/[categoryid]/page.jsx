@@ -205,14 +205,6 @@ export default function CategoryEditPage() {
                   // onChange={(e) => setSearchQuery(e.target.value)}
                 />
               </div>
-              <div className="flex items-center gap-2">
-                  <Link href={"/service-management/add-service"}>
-                    <Button variant={"outline"} className="flex items-center gap-2">
-                      <Plus className="mr-2 h-4 w-4" />
-                      Add Service
-                    </Button>
-                  </Link>
-              </div>
             </div>
                   <div className="space-y-2">
                      

@@ -113,14 +113,6 @@ export default function ServiceEditPage() {
             <div className="w-full md:w-1/2">
               <div className="flex items-center justify-between mb-4">
                 <h2 className="text-lg font-medium">Category list</h2>
-                <Button
-                variant={"outline"}
-                  className="flex items-center gap-2"
-                  onClick={() => router.push("/service-management/categorey/new")}
-                >
-                  <Plus className="h-4 w-4" />
-                  Add category
-                </Button>
               </div>
 
               <div className="space-y-6">

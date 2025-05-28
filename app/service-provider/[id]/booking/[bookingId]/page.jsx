@@ -5,8 +5,8 @@ export default function ServiceProviderBookingDetailsPage({
   params,
 }) {
   return (
-    // <ServiceProviderLayout activeTab="booking" providerId={params.id}>
+    <ServiceProviderLayout activeTab="booking" providerId={params.id}>
       <BookingDetailsContent bookingId={params.bookingId} />
-    // </ServiceProviderLayout>
+    </ServiceProviderLayout>
   )
 }

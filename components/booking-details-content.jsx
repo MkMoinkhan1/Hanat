@@ -10,11 +10,10 @@ import { useState } from "react";
 export default function BookingDetailsContent({ bookingId }) {
     const router = useRouter()
     const params = useParams()
-    console.log(bookingId)
       const [showRescheduleDialog, setShowRescheduleDialog] = useState(false)
 
   const handleViewInvoice = () => {
-    router.push(`/service-provider/undefined/booking/${bookingId}/invoice/IDS-8263849`)
+    router.push(`/service-provider/${params.id}/booking/${bookingId}/invoice/IDS-8263849`)
   }
 
   return (
