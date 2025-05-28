@@ -1,6 +1,6 @@
 "use client"
 
-import React from "react"
+import React, { Suspense } from "react"
 
 import { useState, useEffect } from "react"
 import { useParams, usePathname, useRouter } from "next/navigation"
@@ -111,6 +111,7 @@ export default function CategoryEditPage() {
   }
 
   return (
+    <Suspense fallback={<div>Loading...</div>}>
     <div className="flex h-screen bg-white">
 
       <div className="flex-1 flex flex-col overflow-hidden">
@@ -268,5 +269,6 @@ export default function CategoryEditPage() {
         </div>
       </div>
     </div>
+    </Suspense>
   )
 }
