@@ -2,10 +2,10 @@ import React from "react";
 import { CardContent } from "@/components/ui/card";
 import { Star } from "lucide-react";
 
-const DashboardDetails = ({ stats }) => {
+const DashboardDetails = ({ stats,value }) => {
   return (
     <div
-      className={`grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-${stats.length} py-6 border-y-2 border-dashed border-spacing-14 mb-6`}
+      className={`grid grid-cols-1 gap-2 md:grid-cols-2 ${value==="dashboard"?"lg:grid-cols-5":`lg:grid-cols-${stats.length}`} py-6 border-y-2 border-dashed border-spacing-14 mb-6`}
     >
       {stats.map((stat, index) => (
         <div
