@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { Line } from "react-chartjs-2";
-import HomeIcon from "@/public/icon.png";
+import HomeIcon from "@/public/images/Dashboard-Main-Icon.png";
 import UserPieChart from "@/components/user-pie-chart";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import {
@@ -442,16 +442,14 @@ const newUsersValue = categorizeUsers(timeframe).newUsers.map((user) => ({
     status: user.isActive ? "Active" : "Inactive",
   }));
 
-  // Log new users value for debugging
-  console.log("New Users Value:", newUsersValue);
   return (
-    <div className="p-6">
+    <div className="2xl:p-6 p-4">
       {activeSection === "dashboard" && (
         <div className="space-y-6">
           <div className="flex gap-4">
-            <Image src={HomeIcon} width={48} height={48} alt="Home Icon" />
+            <Image src={HomeIcon} className="2xl:h-12 h-8 w-8 2xl:w-12" alt="Home Icon" />
             <div>
-              <h1 className="text-lg font-semibold">Dashboard</h1>
+              <h1 className="2xl:text-lg text-sm font-semibold">Dashboard</h1>
               <p className="text-xs text-muted-foreground">
                 Lorem ipsum management
               </p>
@@ -522,7 +520,7 @@ const newUsersValue = categorizeUsers(timeframe).newUsers.map((user) => ({
             {/* Service Providers */}
             <Card className="overflow-hidden">
               <CardHeader className="flex flex-row items-center justify-between pb-2 pt-4 px-4">
-                <CardTitle className="text-sm font-medium">
+                <CardTitle className="2xl:text-sm text-xs font-medium">
                   Service Provider
                 </CardTitle>
                 <Button
@@ -548,7 +546,7 @@ const newUsersValue = categorizeUsers(timeframe).newUsers.map((user) => ({
                           </span>
                         )}
                       </div>
-                      <span className="text-sm">{provider.name}</span>
+                      <span className="2xl:text-sm text-xs">{provider.name}</span>
                     </div>
                   ))}
                 </div>
@@ -559,20 +557,20 @@ const newUsersValue = categorizeUsers(timeframe).newUsers.map((user) => ({
           {/* Bottom Section */}
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
             {/* Doughnut Chart */}
-             <div className="bg-white rounded-lg border h-[400px] border-gray-200 p-6 w-[400px]">
+             <div className="bg-white rounded-lg border h-[400px] border-gray-200 p-6 2xl:w-[400px] w-[300px]">
         <div className="flex items-center justify-between mb-6">
           <div>
-            <h3 className="text-sm text-gray-500 mb-1">New Users</h3>
+            <h3 className="2xl:text-sm text-xs text-gray-500 mb-1">New Users</h3>
             <div className="flex items-center gap-2">
               <span className="text-3xl font-semibold">{analyticsData.totalUsers}</span>
-              <span className={`text-sm font-medium ${analyticsData.change >= 0 ? "text-green-500" : "text-red-500"}`}>
+              <span className={`2xl:text-sm text-xs font-medium ${analyticsData.change >= 0 ? "text-green-500" : "text-red-500"}`}>
                 {analyticsData.change >= 0 ? "+" : ""}
                 {analyticsData.change} vs last {getTimeframeLabel(timeframe)}
               </span>
             </div>
           </div>
           <Select value={timeframe} onValueChange={(value) => setTimeframe(value)}>
-            <SelectTrigger className="!w-[30%] border-gray-300">
+            <SelectTrigger className="2xl:!w-[30%] !w-[40%] border-gray-300">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -592,7 +590,7 @@ const newUsersValue = categorizeUsers(timeframe).newUsers.map((user) => ({
             {analyticsData.chartData.map((item, index) => (
               <div key={index} className="flex items-center gap-2">
                 <div className="w-3 h-3 rounded-full" style={{ backgroundColor: item.color }} />
-                <span className="text-sm text-gray-600">{item.name}</span>
+                <span className="2xl:text-sm text-xs text-gray-600">{item.name}</span>
               </div>
             ))}
           </div>
@@ -602,7 +600,7 @@ const newUsersValue = categorizeUsers(timeframe).newUsers.map((user) => ({
             {/* New Users List */}
             <Card className="lg:col-span-2 overflow-hidden">
               <CardHeader className="flex flex-row items-center justify-between pb-2 pt-4 px-4">
-                <CardTitle className="text-sm font-medium">New Users</CardTitle>
+                <CardTitle className="2xl:text-sm text-xs font-medium">New Users</CardTitle>
                 <Button
                   variant="ghost"
                   size="sm"
@@ -628,7 +626,7 @@ const newUsersValue = categorizeUsers(timeframe).newUsers.map((user) => ({
                         </Avatar>
                         <div>
                           <div className="flex items-center gap-2">
-                            <span className="font-medium text-sm">
+                            <span className="font-medium 2xl:text-sm text-xs">
                               {user.name}
                             </span>
                             <Badge
@@ -683,7 +681,7 @@ const newUsersValue = categorizeUsers(timeframe).newUsers.map((user) => ({
         <div className="p-6">
           <div className="mb-6">
             <h1 className="text-2xl font-semibold">User</h1>
-            <p className="text-sm text-muted-foreground">
+            <p className="2xl:text-sm text-xs text-muted-foreground">
               Lorem ipsum management
             </p>
           </div>

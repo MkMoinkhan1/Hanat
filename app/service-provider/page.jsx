@@ -8,6 +8,8 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { DataTable } from "@/components/data-table"
 import { useRouter } from "next/navigation"
+import serviceIcon from "@/public/images/Service-Provider-Icon.png"
+import Image from "next/image"
 
 export default function ServiceProviderPage() {
   const router = useRouter()
@@ -183,11 +185,17 @@ export default function ServiceProviderPage() {
 
   return (
     <div className="flex flex-col">
-      <div className="p-6">
-        <div className="mb-6">
-          <h1 className="text-2xl font-bold">Service Provider</h1>
-          <p className="text-muted-foreground">Lorem ipsum management</p>
-        </div>
+      <div className="2xl:p-6 p-4 space-y-6">
+               <div className="flex gap-4">
+                           <Image src={serviceIcon} className="2xl:h-12 h-10 w-10 2xl:w-12 border border-r-2 rounded-full p-2" alt="Service Icon" />
+                           <div>
+                             <h1 className="2xl:text-lg text-sm font-semibold">Service Provider</h1>
+                             <p className="text-xs text-muted-foreground">
+                               Lorem ipsum management
+                             </p>
+                           </div>
+                         </div>
+       
         <DataTable
           data={serviceProviders}
           columns={columns}

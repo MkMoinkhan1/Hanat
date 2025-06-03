@@ -8,6 +8,8 @@ import { Button } from "@/components/ui/button"
 import { FileText, Eye, Trash2, MoreVertical, Trash, MoreHorizontal } from "lucide-react"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { DataTable } from "@/components/data-table"
+import feedbackIcon from "@/public/images/Feedback-Icon.png"
+import Image from "next/image"
 
 // Sample feedback data
 const feedbackData = [
@@ -160,17 +162,19 @@ export default function FeedbackFormsPage() {
   }
 
   return (
-    <div className="flex h-screen">
+    <div className="flex h-screen 2xl:p-6 p-4">
       <div className="flex-1 overflow-auto">
         <div className="flex flex-col h-full">
           <header className="border-b p-6">
-            <div className="flex items-center gap-3 mb-4">
-              <FileText className="h-6 w-6" />
-              <div>
-                <h1 className="text-xl font-semibold">Feedback Forms</h1>
-                <p className="text-sm text-muted-foreground">Manage and track your Raised issues</p>
-              </div>
-            </div>
+              <div className="flex gap-4">
+                           <Image src={feedbackIcon} className="2xl:h-12 h-10 w-10 2xl:w-12 border border-r-2 rounded-full p-2" alt="Service Icon" />
+                           <div>
+                             <h1 className="2xl:text-lg text-sm font-semibold">Feedback Forms</h1>
+                             <p className="text-xs text-muted-foreground">
+                               Lorem ipsum management
+                             </p>
+                           </div>
+                         </div>
           </header>
           <main className="flex-1">
         <DataTable

@@ -61,18 +61,18 @@ export function DataTable({
     <div className="space-y-4">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="relative w-full max-w-sm">
-          <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+          <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground 2xl:text-sm text-xs"  />
           <Input
             type="search"
             placeholder={`Search by ${searchField}...`}
-            className="pl-8"
+            className="pl-8 2xl:text-sm !text-xs"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
         </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 2xl:text-sm text-xs">
             <Select value={statusFilter} onValueChange={setStatusFilter}>
-              <SelectTrigger className="w-[120px]">
+              <SelectTrigger className="w-[120px] 2xl:text-sm text-xs">
                 <SelectValue placeholder="All Status" />
               </SelectTrigger>
               <SelectContent>
@@ -81,21 +81,22 @@ export function DataTable({
                 <SelectItem value="Inactive">Inactive</SelectItem>
               </SelectContent>
             </Select>
-            <Button variant="outline" size="icon">
+            <Button variant="outline" className="text-xs 2xl:text-sm" >
               <Filter className="h-4 w-4" />
+              Filter
             </Button>
           </div>
       </div>
 
       {/* Table */}
-      <div className="rounded-md border">
+      <div className="rounded-md border text-xs lg:text-sm">
         <table className="w-full">
           <thead>
             <tr className="border-b bg-muted/50">
               {columns.map((column, index) => (
                 <th
                   key={index}
-                  className="h-12 px-4 text-left align-middle font-medium text-muted-foreground"
+                  className="h-12 px-4 text-left align-middle 2xl:text-sm text-xs  font-medium text-muted-foreground"
                   style={column.width ? { width: column.width } : {}}
                 >
                   {column.header}
@@ -108,7 +109,7 @@ export function DataTable({
               paginatedData.map((row, rowIndex) => (
                 <tr key={rowIndex} className="border-b">
                   {columns.map((column, colIndex) => (
-                    <td key={colIndex} className="p-4 align-middle">
+                    <td key={colIndex} className="2xl:p-4 p-2 align-middle 2xl:text-sm text-xs">
                       {column.cell ? column.cell(row) : row[column.accessorKey]}
                     </td>
                   ))}
@@ -116,7 +117,7 @@ export function DataTable({
               ))
             ) : (
               <tr>
-                <td colSpan={columns.length} className="p-4 text-center">
+                <td colSpan={columns.length} className="p-4 text-center 2xl:text-sm text-xs">
                   {searchQuery ? "No results found" : "No data available"}
                 </td>
               </tr>
@@ -125,11 +126,7 @@ export function DataTable({
         </table>
 
         {filteredData.length > 0 && (
-          <div className="flex items-center justify-between border-t px-4 py-2">
-            <div className="text-sm text-muted-foreground">
-              Showing {paginatedData.length > 0 ? (currentPage - 1) * itemsPerPage + 1 : 0} to{" "}
-              {Math.min(currentPage * itemsPerPage, filteredData.length)} of {filteredData.length} entries
-            </div>
+          <div className="flex items-center justify-center border-t px-4 py-2">
             <div className="flex items-center gap-2">
               <Button
                 variant="outline"
@@ -139,7 +136,7 @@ export function DataTable({
               >
                 <ChevronLeft className="h-4 w-4" />
               </Button>
-              <span className="text-sm">
+              <span className="2xl:text-sm text-xs">
                 Page {currentPage} of {totalPages}
               </span>
               <Button

@@ -50,7 +50,7 @@ export default function UserPieChart({ data, centerValue }) {
   }
 
   return (
-    <div className="relative w-60 h-60">
+    <div className="relative w-48 h-48">
       <Doughnut data={chartData} options={options} />
 
       {/* Center Value */}

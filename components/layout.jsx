@@ -3,16 +3,18 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import homeLogo from "@/public/images/mainlogo.png"
+import hamburgerIcon from "@/public/images/Compact-button.png"
+import dashboardIcon from "@/public/images/Dashboard-Icon.png"
+import usersIcon from "@/public/images/Users-Icon.png"
+import serviceProviderIcon from "@/public/images/Service-Provider-Icon.png"
+import serviceManagementIcon from "@/public/images/Service-Management-Icon.png"
+import bookingManagementIcon from "@/public/images/Booking_management-Icon.png"
+import feedbackIcon from "@/public/images/Feedback-Icon.png"
+import ticketIcon from "@/public/images/Ticket-Icon.png"
+import settingIcon from "@/public/images/Setting-Icon.png"
 import {
-  LayoutDashboard,
-  Users,
-  Truck,
-  Settings,
-  FileText,
-  Calendar,
-  Ticket,
-  ChevronLeft,
-  ChevronRight,
+ ChevronRight,
 } from "lucide-react";
 import {
   Tooltip,
@@ -23,6 +25,7 @@ import {
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 const Layout = ({ children }) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -32,32 +35,32 @@ const Layout = ({ children }) => {
     {
       title: "Dashboard",
       href: "/dashboard",
-      icon: <LayoutDashboard className="h-5 w-5" />,
+      icon: dashboardIcon,
     },
     {
       title: "Users",
       href: "/users",
-      icon: <Users className="h-5 w-5" />,
+      icon: usersIcon,
     },
     {
       title: "Service Provider",
       href: "/service-provider",
-      icon: <Truck className="h-5 w-5" />,
+      icon: serviceProviderIcon,
     },
     {
       title: "Service Management",
       href: "/service-management",
-      icon: <Settings className="h-5 w-5" />,
+      icon: serviceManagementIcon,
     },
     {
       title: "Booking Management",
       href: "/booking-management",
-      icon: <Calendar className="h-5 w-5" />,
+      icon: bookingManagementIcon,
     },
     {
       title: "Feedback Forms",
       href: "/feedback-forms",
-      icon: <FileText className="h-5 w-5" />,
+      icon: feedbackIcon,
     },
   ];
 
@@ -65,12 +68,12 @@ const Layout = ({ children }) => {
     {
       title: "Tickets",
       href: "/tickets",
-      icon: <Ticket className="h-5 w-5" />,
+      icon: ticketIcon,
     },
     {
       title: "Settings",
       href: "/settings",
-      icon: <Settings className="h-5 w-5" />,
+      icon: settingIcon,
     },
   ];
 
@@ -105,7 +108,13 @@ const Layout = ({ children }) => {
               ""
             ) : (
               <>
-                <span className="text-lg">Hanat</span>
+                <span className="text-lg">
+                  <Image 
+                  src={homeLogo}
+                  alt="Home Logo"
+                  className="2xl:h-10 h-8 w-full"
+                  />
+                </span>
               </>
             )}
           </Link>
@@ -117,9 +126,9 @@ const Layout = ({ children }) => {
               className="h-9 w-9"
             >
               {isCollapsed ? (
-                <ChevronRight className="h-5 w-5" />
+                <Image src={hamburgerIcon} alt="Hamburger icon" className="h-6 w-6" />
               ) : (
-                <ChevronLeft className="h-5 w-5" />
+                <Image src={hamburgerIcon} alt="Hamburger icon" className="h-6 w-6" />
               )}
             </Button>
           </div>
@@ -148,7 +157,7 @@ const Layout = ({ children }) => {
                           key={item.href}
                           href={item.href}
                           className={cn(
-                            "relative flex items-center gap-3 rounded-md px-3 py-2.5 text-sm font-medium hover:bg-accent hover:text-accent-foreground",
+                            "relative flex items-center gap-3 rounded-md px-3 py-2.5 2xl:text-sm text-xs font-medium hover:bg-accent hover:text-accent-foreground",
                             isActive
                               ? "bg-accent text-accent-foreground"
                               : "transparent",
@@ -158,7 +167,11 @@ const Layout = ({ children }) => {
                           <div
                             className={cn(isCollapsed ? "h-6 w-6" : "h-5 w-5")}
                           >
-                            {item.icon}
+                            <Image
+                            src={item.icon}
+                            alt={`${item.title} icon`}
+                            className="h-full w-full" 
+                            />
                           </div>
                           {!isCollapsed && <span>{item.title}</span>}
                           {isActive && !isCollapsed && (
@@ -200,7 +213,7 @@ const Layout = ({ children }) => {
                           key={item.href}
                           href={item.href}
                           className={cn(
-                            "relative flex items-center gap-3 rounded-md px-3 py-2.5 text-sm font-medium hover:bg-accent hover:text-accent-foreground",
+                            "relative flex items-center gap-3 rounded-md px-3 py-2.5 2xl:text-sm text-xs  font-medium hover:bg-accent hover:text-accent-foreground",
                             isActive
                               ? "bg-accent text-accent-foreground"
                               : "transparent",
@@ -210,7 +223,11 @@ const Layout = ({ children }) => {
                           <div
                             className={cn(isCollapsed ? "h-6 w-6" : "h-5 w-5")}
                           >
-                            {item.icon}
+                             <Image
+                            src={item.icon}
+                            alt={`${item.title} icon`}
+                            className="h-full w-full" 
+                            />
                           </div>
                           {!isCollapsed && <span>{item.title}</span>}
                           {isActive && (
@@ -242,7 +259,7 @@ const Layout = ({ children }) => {
             </div>
             {!isCollapsed && (
               <div className="flex flex-col">
-                <span className="text-sm font-medium">Slim Shady</span>
+                <span className="2xl:text-sm text-xs font-medium">Slim Shady</span>
                 <span className="text-xs text-muted-foreground">
                   shady@handit.com
                 </span>
@@ -254,7 +271,7 @@ const Layout = ({ children }) => {
 
       {/* Main Content */}
       <div className="flex flex-1 flex-col overflow-hidden">
-        <main className="flex-1 overflow-auto p-6">{children}</main>
+        <main className="flex-1 overflow-auto ">{children}</main>
       </div>
     </div>
   );

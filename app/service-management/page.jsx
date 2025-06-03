@@ -20,6 +20,9 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import Link from "next/link"
 import { useRouter } from "next/router"
+import serviceManagementIcon from "@/public/images/Service-Management-Icon.png"
+import editIcon from "@/public/images/Edit-icon.png"
+import Image from "next/image"
 
 // Sample service data
 const services = [
@@ -72,44 +75,47 @@ export default function ServiceManagementPage() {
     <div className="flex h-screen">
       <div className="flex-1">
         <div className="flex flex-col h-full">
-          <header className="border-b p-6">
-            <div className="flex items-center gap-3 mb-4">
-              <BarChart3 className="h-6 w-6" />
-              <div>
-                <h1 className="text-xl font-semibold">Service Management</h1>
-                <p className="text-sm text-muted-foreground">Lorem ipsum management</p>
-              </div>
-            </div>
+          <header className="border-b 2xl:p-6 p-4 space-y-6">
+                     <div className="flex gap-4">
+                           <Image src={serviceManagementIcon} className="2xl:h-12 h-10 w-10 2xl:w-12 border border-r-2 rounded-full p-2" alt="Service Icon" />
+                           <div>
+                             <h1 className="2xl:text-lg text-sm font-semibold">Service Management</h1>
+                             <p className="text-xs text-muted-foreground">
+                               Lorem ipsum management
+                             </p>
+                           </div>
+                         </div>
+       
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
               <div className="relative w-full max-w-sm">
                 <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
                 <Input
                   placeholder="Search..."
-                  className="pl-10 w-[19rem]"
+                  className="pl-10 w-[19rem] 2xl:text-sm text-xs"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                 />
               </div>
               <div className="flex items-center gap-2">
-                <Select value={statusFilter} onValueChange={setStatusFilter}>
+                <Select value={statusFilter} onValueChange={setStatusFilter} >
                   <SelectTrigger className="w-[160px]">
                     <SelectValue placeholder="All Status" />
                   </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all">All Status</SelectItem>
-                    <SelectItem value="Internet">Internet</SelectItem>
-                    <SelectItem value="Electrician">Electrician</SelectItem>
-                    <SelectItem value="Cleaning">Cleaning</SelectItem>
+                  <SelectContent >
+                    <SelectItem value="all"  className="2xl:text-sm text-xs">All Status</SelectItem>
+                    <SelectItem value="Internet"  className="2xl:text-sm text-xs">Internet</SelectItem>
+                    <SelectItem value="Electrician"  className="2xl:text-sm text-xs">Electrician</SelectItem>
+                    <SelectItem value="Cleaning"  className="2xl:text-sm text-xs">Cleaning</SelectItem>
                   </SelectContent>
                 </Select>
-                <Button variant="outline" >
-                  <Filter className="h-4 w-4" />
+                <Button variant="outline" className="2l:text-sm text-xs " >
+                  <Filter className="2xl:h-4 2xl:w-4 w-2 h-2 " />
                     Filter
                 </Button>
 
                   <Link href={"/service-management/add-service"}>
-                    <Button>
-                      <Plus className="mr-2 h-4 w-4" />
+                    <Button className="2xl:text-sm text-xs" >
+                      <Plus className="mr-2 2xl:h-4 2xl:w-4 w-2 h-2 " />
                       Add Service
                     </Button>
                   </Link>
@@ -122,25 +128,27 @@ export default function ServiceManagementPage() {
                 <Card key={service.id} className="overflow-hidden">
                   <CardContent className="p-0">
                     <div className="flex items-center">
-                      <div className="h-[100px] w-[100px] flex-shrink-0 bg-gray-100 m-auto ml-3 rounded-lg">
-                        <img
+                      <div className="h-[100px] w-[100px] flex-shrink-0  rounded-lg">
+                        <Image
                           src={service.image || "/placeholder.svg"}
                           alt={service.title}
-                          className="h-full w-full object-cover rounded-lg"
+                          width={100}
+                          height={100}
+                          className="h-full w-full object-cover rounded-lg p-3"
                         />
                       </div>
                       <div className="flex-1 p-4 items-center">
                         <div className="flex items-center justify-between">
-                          <h3 className="text-lg font-semibold">{service.title}</h3>
+                          <h3 className="2xl:text-lg text-sm font-semibold">{service.title}</h3>
                         </div>
-                        <p className="mt-1 text-sm text-muted-foreground">{service.description}</p>
-                        <Badge variant="outline" className="mt-2 rounded-sm bg-[#F4F4F4]">
+                        <p className="mt-1 2xl:text-sm text-xs text-muted-foreground">{service.description}</p>
+                        <Badge variant="outline" className="mt-2 rounded-sm bg-[#F4F4F4] text-muted-foreground 2xl:text-sm text-xs">
                           {service.category}
                         </Badge>
                       </div>
                            <Link  href={`/service-management/edit-service/${service.id}`}>
-                          <Button variant="secondary" size="sm">
-                            <PenSquare className="mr-2 h-4 w-4" />
+                          <Button size="sm" className="text-xs 2xl:text-sm ">
+                            <Image src={editIcon} width={15} height={15} alt="edit icon" className="2xl:w-4 2xl:h-4 h-3 w-3" />
                             Edit
                           </Button>
                             </Link>

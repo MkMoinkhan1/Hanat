@@ -11,6 +11,8 @@ import { DataTable } from "@/components/data-table"
 import { EditUserDrawer } from "@/components/edit-user-dialog"
 import { toast } from "@/components/ui/use-toast"
 import { Toaster } from "@/components/ui/toaster"
+import UserIcon from "@/public/images/Users-Icon.png"
+import Image from "next/image"
 
 export default function UsersPage() {
   const [selectedUser, setSelectedUser] = useState(null)
@@ -212,11 +214,16 @@ export default function UsersPage() {
 
   return (
     <div className="flex flex-col">
-      <div className="p-6">
-        <div className="mb-6">
-          <h1 className="text-2xl font-bold">User</h1>
-          <p className="text-muted-foreground">Lorem ipsum management</p>
-        </div>
+      <div className="2xl:p-6 p-4 mb-4 space-y-6">
+           <div className="flex gap-4">
+                    <Image src={UserIcon} className="2xl:h-12 h-10 w-10 2xl:w-12 border border-r-2 rounded-full p-2" alt="User Icon" />
+                    <div>
+                      <h1 className="2xl:text-lg text-sm font-semibold">Users</h1>
+                      <p className="text-xs text-muted-foreground">
+                        Lorem ipsum management
+                      </p>
+                    </div>
+                  </div>
 
         <DataTable
           data={users}

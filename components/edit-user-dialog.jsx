@@ -80,13 +80,10 @@ export function EditUserDrawer({ user, isOpen, onClose, onSave }) {
 
   return (
     <Sheet open={isOpen} onOpenChange={onClose}>
-      <SheetContent className="w-[320px] sm:w-[380px] overflow-y-auto">
+      <SheetContent className="w-[320px] sm:w-[380px] overflow-y-auto" data="user">
         <SheetHeader className="pb-4 space-y-1">
           <div className="flex items-center justify-between">
             <SheetTitle className="text-base">Edit User</SheetTitle>
-            <Button variant="ghost" size="icon" onClick={onClose} className="h-6 w-6 rounded-full">
-              <X className="h-3 w-3" />
-            </Button>
           </div>
           <p className="text-xs text-muted-foreground">Manage your user details.</p>
         </SheetHeader>
