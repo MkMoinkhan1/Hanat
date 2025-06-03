@@ -162,10 +162,10 @@ export default function FeedbackFormsPage() {
   }
 
   return (
-    <div className="flex h-screen 2xl:p-6 p-4">
-      <div className="flex-1 overflow-auto">
+    <div className="flex h-screen ">
+      <div className="flex-1 overflow-auto 2xl:p-6 p-4">
         <div className="flex flex-col h-full">
-          <header className="border-b p-6">
+          <header className=" p-6">
               <div className="flex gap-4">
                            <Image src={feedbackIcon} className="2xl:h-12 h-10 w-10 2xl:w-12 border border-r-2 rounded-full p-2" alt="Service Icon" />
                            <div>

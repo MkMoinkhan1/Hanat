@@ -116,26 +116,26 @@ export default function FeedbackDetailPage({ params }) {
           </Button>
           <div>
             <h1 className="text-lg font-semibold">Feedback Forms</h1>
-            <p className="text-sm text-muted-foreground">Manage and track your Raised issues</p>
+            <p className="2xl:text-sm text-xs text-muted-foreground">Manage and track your Raised issues</p>
           </div>
         </header>
         <main className="p-6">
-          <Card className="max-w-4xl mx-auto">
+          <Card className="max-w-4xl mx-auto py-6">
             <CardContent className="p-6">
               <div className="grid grid-cols-2 gap-8">
                 <div>
                   <div className="mb-6">
-                    <h3 className="text-sm font-medium text-muted-foreground mb-1">Form ID</h3>
+                    <h3 className="2xl:text-sm text-xs font-medium text-muted-foreground mb-1">Form ID</h3>
                     <p className="text-lg font-semibold">{feedback.formId}</p>
                   </div>
 
                   <div className="mb-6">
-                    <h3 className="text-sm font-medium text-muted-foreground mb-1">Issue</h3>
+                    <h3 className="2xl:text-sm text-xs font-medium text-muted-foreground mb-1">Issue</h3>
                     <p className="font-medium">{feedback.issue}</p>
                   </div>
 
                   <div className="mb-6">
-                    <h3 className="text-sm font-medium text-muted-foreground mb-1">Avg. Rating</h3>
+                    <h3 className="2xl:text-sm text-xs font-medium text-muted-foreground mb-1">Avg. Rating</h3>
                     <div className="flex text-amber-400">
                       {Array.from({ length: 5 }).map((_, i) => (
                         <svg
@@ -158,14 +158,14 @@ export default function FeedbackDetailPage({ params }) {
                   </div>
 
                   <div className="mb-6">
-                    <h3 className="text-sm font-medium text-muted-foreground mb-1">Date</h3>
+                    <h3 className="2xl:text-sm text-xs font-medium text-muted-foreground mb-1">Date</h3>
                     <p>{feedback.date}</p>
                   </div>
                 </div>
 
                 <div>
                   <div className="mb-6">
-                    <h3 className="text-sm font-medium text-muted-foreground mb-1">Customer Name</h3>
+                    <h3 className="2xl:text-sm text-xs font-medium text-muted-foreground mb-1">Customer Name</h3>
                     <div className="flex items-center gap-2">
                       <Avatar className="h-8 w-8">
                         <AvatarImage
@@ -179,7 +179,7 @@ export default function FeedbackDetailPage({ params }) {
                   </div>
 
                   <div className="mb-6">
-                    <h3 className="text-sm font-medium text-muted-foreground mb-1">Booking Details</h3>
+                    <h3 className="2xl:text-sm text-xs font-medium text-muted-foreground mb-1">Booking Details</h3>
                     <p className="font-medium">{feedback.bookingId}</p>
                   </div>
                 </div>
@@ -188,8 +188,8 @@ export default function FeedbackDetailPage({ params }) {
               <Separator className="my-6" />
 
               <div>
-                <h3 className="text-sm font-medium text-muted-foreground mb-2">Description</h3>
-                <p className="text-sm leading-relaxed">{feedback.description}</p>
+                <h3 className="2xl:text-sm text-xs font-medium text-muted-foreground mb-2">Description</h3>
+                <p className="2xl:text-sm text-xs leading-relaxed">{feedback.description}</p>
               </div>
 
               <div className="mt-8 flex justify-end gap-2">
