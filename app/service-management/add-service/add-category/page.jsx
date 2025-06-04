@@ -120,8 +120,8 @@ export default function CategoryEditPage() {
             <ChevronLeft className="h-4 w-4" />
           </Button>
           <div>
-            <h1 className="text-lg font-semibold">Service Management</h1>
-            <p className="text-sm text-muted-foreground">Lorem ipsum management</p>
+            <h1 className="text-sm font-semibold">Service Management</h1>
+            <p className="2xl:text-sm text-xs text-muted-foreground">Lorem ipsum management</p>
           </div>
         </div>
 
@@ -131,13 +131,13 @@ export default function CategoryEditPage() {
             <TabsList className="h-auto bg-transparent p-0">
               <TabsTrigger
                 value="edit-category"
-                className="rounded-none border-b-2 border-transparent px-8 py-3 text-sm font-medium text-gray-500 hover:text-gray-700 data-[state=active]:border-black data-[state=active]:text-black data-[state=active]:shadow-none"
+                className="!rounded-none border-b-2 border-transparent px-8 py-3 2xl:text-sm text-xs font-medium text-gray-500 hover:text-gray-700 data-[state=active]:border-black data-[state=active]:text-black data-[state=active]:shadow-none data-[state=active]:bg-gray-100"
               >
                Add Category
               </TabsTrigger>
               <TabsTrigger
                 value="sub-category"
-                className="rounded-none border-b-2 border-transparent px-8 py-3 text-sm font-medium text-gray-500 hover:text-gray-700 data-[state=active]:border-black data-[state=active]:text-black data-[state=active]:shadow-none"
+                className="!rounded-none border-b-2 border-transparent px-8 py-3 2xl:text-sm text-xs font-medium text-gray-500 hover:text-gray-700 data-[state=active]:border-black data-[state=active]:text-black data-[state=active]:shadow-none data-[state=active]:bg-gray-100"
               >
                 Sub-Category
               </TabsTrigger>
@@ -151,7 +151,7 @@ export default function CategoryEditPage() {
             {activeTab === "edit-category" ? (
               <div className="space-y-6 max-w-xl">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium mb-1">
+                  <label htmlFor="name" className="block 2xl:text-sm text-xs font-medium mb-1">
                     Category Name
                   </label>
                   <Input
@@ -160,12 +160,12 @@ export default function CategoryEditPage() {
                     placeholder="Enter Category name"
                     value={category.name}
                     onChange={handleInputChange}
-                    className="h-10"
+                    className="h-10 2xl:text-sm !text-xs"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="description" className="block text-sm font-medium mb-1">
+                  <label htmlFor="description" className="block 2xl:text-sm text-xs font-medium mb-1">
                     Description
                   </label>
                   <Textarea
@@ -174,20 +174,14 @@ export default function CategoryEditPage() {
                     placeholder="Enter Description"
                     value={category.description}
                     onChange={handleInputChange}
-                    className="min-h-[200px]"
+                    className="min-h-[200px] 2xl:text-sm !text-xs"
                   />
                 </div>
-
-                <Button variant="outline" className="flex items-center gap-2">
-                  <Plus className="h-4 w-4" />
-                  Add Custom Field
-                </Button>
-
                 <div className="flex justify-end gap-4 pt-4">
-                  <Button variant="outline" onClick={() => router.back()}>
+                  <Button variant="outline" className="2xl:text-sm text-xs" onClick={() => router.back()}>
                     Cancel
                   </Button>
-                  <Button className="bg-gray-900 hover:bg-gray-800" onClick={handleSave}>
+                  <Button className="bg-gray-900 hover:bg-gray-800 2xl:text-sm text-xs" onClick={handleSave}>
                     Save Changes
                   </Button>
                 </div>
@@ -199,15 +193,15 @@ export default function CategoryEditPage() {
                 <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
                 <Input
                   placeholder="Search..."
-                  className="pl-10 w-[19rem]"
+                  className="pl-10 w-[19rem] 2xl:text-sm !text-xs"
                   // value={searchQuery}
                   // onChange={(e) => setSearchQuery(e.target.value)}
                 />
               </div>
               <div className="flex items-center gap-2">
                   <Link href={"/service-management/add-service/add-category/add-sub-category?tab=sub-category"}>
-                    <Button variant={"outline"} className="flex items-center gap-2">
-                      <Plus className="mr-2 h-4 w-4" />
+                    <Button variant={"outline"} className="flex items-center gap-2 2xl:text-sm text-xs">
+                      <Plus className="2xl:mr-2 mr-1 h-4 w-4" />
                       Add Service
                     </Button>
                   </Link>
@@ -216,19 +210,19 @@ export default function CategoryEditPage() {
                   <div className="space-y-2">
                      
                 <div>
-                  <h3 className="text-sm font-medium mb-2">Sub-Categories</h3>
+                  <h3 className="2xl:text-sm text-xs font-medium mb-2">Sub-Categories</h3>
                     {subcategories.length === 0 ? (
-                      <p className="text-sm text-gray-500">No sub-categories added yet.</p>
+                      <p className="2xl:text-sm text-xs text-gray-500">No sub-categories added yet.</p>
                     ) : (
                       subcategories.map((subcat, index) => (
                         <div key={index} className="border border-gray-200 rounded-lg p-8 border-r[16px] mb-3 ">
                   <div className="flex justify-between ">
                     <div>
-                      <h3 className="font-medium">{subcat.subcategory}</h3>
-                      <p className="text-sm text-gray-500 mt-1">Lorem ipsum management</p>
+                      <h3 className="text-sm ">{subcat.subcategory}</h3>
+                      <p className="2xl:text-sm text-xs text-gray-500 mt-1">Lorem ipsum management</p>
                     </div>
                     <div>
-                      <p className="text-sm text-gray-500 mb-1">Avg Rating</p>
+                      <p className="2xl:text-sm text-xs text-gray-500 mb-1">Avg Rating</p>
                       <div className="flex">
                         {[...Array(5)].map((_, i) => (
                           <Star

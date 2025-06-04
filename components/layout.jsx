@@ -182,9 +182,13 @@ const Layout = ({ children }) => {
                           )}
                         </Link></span>
                       </TooltipTrigger>
-                      <TooltipContent>
-                        <p>{item.title}</p>
-                      </TooltipContent>
+                           {
+                        isCollapsed && (
+                         <TooltipContent side="right">
+                            <p>{item.title}</p>
+                          </TooltipContent>
+                        ) 
+                      }
                     </Tooltip>
                   </TooltipProvider>
                 );
@@ -230,14 +234,21 @@ const Layout = ({ children }) => {
                             />
                           </div>
                           {!isCollapsed && <span>{item.title}</span>}
+                             {isActive && !isCollapsed && (
+                            <ChevronRight className="ml-auto h-4 w-4" />
+                          )}
                           {isActive && (
                             <span className="absolute left-0 h-6 w-1 rounded-r bg-black" />
                           )}
                         </Link>
                       </TooltipTrigger>
-                      <TooltipContent>
-                        <p>{item.title}</p>
-                      </TooltipContent>
+                      {
+                        isCollapsed && (
+                         <TooltipContent side="right">
+                            <p>{item.title}</p>
+                          </TooltipContent>
+                        ) 
+                      }
                     </Tooltip>
                   </TooltipProvider>
                 );

@@ -138,12 +138,6 @@ export default function UsersPage() {
   // Define columns for the data table
   const columns = [
     {
-      header: "",
-      accessorKey: "checkbox",
-      width: "40px",
-      cell: () => <Checkbox />,
-    },
-    {
       header: "Full name",
       accessorKey: "name",
       cell: (row) => (
@@ -195,18 +189,6 @@ export default function UsersPage() {
           <Button variant="ghost" size="icon">
             <Trash className="h-4 w-4" />
           </Button>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon">
-                <MoreHorizontal className="h-4 w-4" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuItem onClick={() => handleEditUser(row)}>Edit User</DropdownMenuItem>
-              <DropdownMenuItem>Suspend User</DropdownMenuItem>
-              <DropdownMenuItem className="text-red-600">Delete User</DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
         </div>
       ),
     },

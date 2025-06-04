@@ -58,8 +58,8 @@ export default function ServiceEditPage() {
             <ChevronLeft className="h-4 w-4" />
           </Button>
           <div>
-            <h1 className="text-lg font-semibold">Service Management</h1>
-            <p className="text-sm text-muted-foreground">Lorem ipsum management</p>
+            <h1 className="text-sm font-semibold">Service Management</h1>
+            <p className="2xl:text-sm text-xs text-muted-foreground">Lorem ipsum management</p>
           </div>
         </div>
 
@@ -74,22 +74,22 @@ export default function ServiceEditPage() {
                   alt={service.name}
                   className="h-16 w-16 object-cover rounded-md"
                 />
-                <Button variant="outline" size="sm" className="h-9 flex items-center gap-2">
-                  <Upload className="h-4 w-4" />
+                <Button variant="outline"  className="h-9 flex items-center gap-2 2xl:text-sm text-xs" onClick={() => alert("Upload new image")}>
+                  <Upload className="2xl:h-4 2xl:w-4 !w-2 !h-2" />
                   Upload New
                 </Button>
               </div>
 
               <div className="space-y-4">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium mb-1">
+                  <label htmlFor="name" className="block 2xl:text-sm text-xs font-medium mb-1">
                     Service Name
                   </label>
-                  <Input id="name" name="name" value={service.name} onChange={handleInputChange} className="h-10" />
+                  <Input id="name" name="name" value={service.name} onChange={handleInputChange} className="h-10 2xl:text-sm !text-xs" />
                 </div>
 
                 <div>
-                  <label htmlFor="description" className="block text-sm font-medium mb-1">
+                  <label htmlFor="description" className="block 2xl:text-sm text-xs font-medium mb-1">
                     Description
                   </label>
                   <Textarea
@@ -98,15 +98,15 @@ export default function ServiceEditPage() {
                     placeholder="Enter Description"
                     value={service.description}
                     onChange={handleInputChange}
-                    className="min-h-[200px]"
+                    className="min-h-[200px] 2xl:text-sm !text-xs"
                   />
                 </div>
               </div>
               <div className="flex gap-2">
-                <Button className="mt-6" onClick={() => router.push(`/service-management`)}>
+                <Button className="mt-6 2xl:text-sm text-xs" onClick={() => router.push(`/service-management`)}>
                 Save
               </Button>
-              <Button className="mt-6" variant={"outline"} onClick={() => router.back()}>
+              <Button className="mt-6 2xl:text-sm text-xs" variant={"outline"} onClick={() => router.back()}>
                 Cancel
               </Button>
               </div>
@@ -115,13 +115,13 @@ export default function ServiceEditPage() {
             {/* Right Column - Category List */}
             <div className="w-full md:w-1/2">
               <div className="flex items-center justify-between mb-4">
-                <h2 className="text-lg font-medium">Category list</h2>
+                <h2 className="text-sm font-medium">Category list</h2>
                 <Button
                 variant={"outline"}
-                  className="flex items-center gap-2"
+                  className="flex items-center gap-2 2xl:text-sm text-xs"
                   onClick={() => router.push("/service-management/add-service/add-category")}
                 >
-                  <Plus className="h-4 w-4" />
+                  <Plus className="2xl:h-4 2xl:w-4 w-2 h-2" />
                   Add category
                 </Button>
               </div>
@@ -130,21 +130,21 @@ export default function ServiceEditPage() {
                 {categories.map((category) => (
                   <div key={category.id} className="border rounded-lg p-6">
                     <div className="flex items-center justify-between mb-1">
-                      <h3 className="font-medium">{category.name}</h3>
+                      <h3 className="text-sm font-medium">{category.name}</h3>
                     </div>
-                    <p className="text-sm text-gray-500 mb-2">{category.description}</p>
+                    <p className="2xl:text-sm text-xs text-gray-500 mb-2">{category.description}</p>
                     <div className="flex flex-wrap gap-2">
                       {category.subcategories.map((subcat, index) => (
                         <Badge
                           key={index}
                           variant="outline"
-                          className="bg-blue-50 text-blue-600 hover:bg-blue-100 border-blue-100"
+                          className="bg-blue-50 text-blue-400 hover:bg-blue-100 border-blue-100"
                         >
                           {subcat}
                         </Badge>
                       ))}
                       {category.subcategories.length > 3 && (
-                        <Badge variant="outline" className="bg-blue-50 text-blue-600 hover:bg-blue-100 border-blue-100">
+                        <Badge variant="outline" className="bg-blue-50 text-blue-400 2xl:text-sm text-xs hover:bg-blue-100 border-blue-100">
                           +{category.subcategories.length - 3}
                         </Badge>
                       )}

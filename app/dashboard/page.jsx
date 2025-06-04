@@ -3,8 +3,16 @@
 import { useMemo, useState } from "react";
 import { Line } from "react-chartjs-2";
 import HomeIcon from "@/public/images/Dashboard-Main-Icon.png";
+import EditIcon from "@/public/images/Edit-icon.png";
 import UserPieChart from "@/components/user-pie-chart";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import NewUserList from "@/components/new-user-list";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -16,7 +24,13 @@ import {
   ArcElement,
 } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
-import { ChevronDown, CircleCheck, Edit2, MoreVertical, Trash2 } from "lucide-react";
+import {
+  ChevronDown,
+  CircleCheck,
+  Edit2,
+  MoreVertical,
+  Trash2,
+} from "lucide-react";
 
 import { Switch } from "@/components/ui/switch";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -177,76 +191,93 @@ const usersData = [
     role: "Customer",
     location: "Jacksonville, FL",
   },
-]
+];
 export default function Dashboard() {
-  const [activeSection, setActiveSection] = useState("dashboard");
   const router = useRouter();
-  const [timeframe, setTimeframe] = useState("weekly")
+  const [timeframe, setTimeframe] = useState("weekly");
 
   // Function to determine if user is new or old based on creation date and timeframe
   const categorizeUsers = (timeframe) => {
-    const now = new Date("2024-01-20T18:00:00Z") // Current date for calculation
-    let cutoffDate
+    const now = new Date("2024-01-20T18:00:00Z"); // Current date for calculation
+    let cutoffDate;
 
     // Define cutoff dates for each timeframe
     switch (timeframe) {
       case "weekly":
-        cutoffDate = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000) // 7 days ago
-        break
+        cutoffDate = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000); // 7 days ago
+        break;
       case "monthly":
-        cutoffDate = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000) // 30 days ago
-        break
+        cutoffDate = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000); // 30 days ago
+        break;
       case "yearly":
-        cutoffDate = new Date(now.getTime() - 365 * 24 * 60 * 60 * 1000) // 365 days ago
-        break
+        cutoffDate = new Date(now.getTime() - 365 * 24 * 60 * 60 * 1000); // 365 days ago
+        break;
       default:
-        cutoffDate = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000)
+        cutoffDate = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
     }
 
-    const newUsers = usersData.filter((user) => new Date(user.createdAt) > cutoffDate)
-    const oldUsers = usersData.filter((user) => new Date(user.createdAt) <= cutoffDate)
+    const newUsers = usersData.filter(
+      (user) => new Date(user.createdAt) > cutoffDate
+    );
+    const oldUsers = usersData.filter(
+      (user) => new Date(user.createdAt) <= cutoffDate
+    );
 
-    return { newUsers, oldUsers }
-  }
+    return { newUsers, oldUsers };
+  };
 
   // Calculate analytics data based on actual user data
   const analyticsData = useMemo(() => {
-    const { newUsers, oldUsers } = categorizeUsers(timeframe)
-    const totalUsers = newUsers.length + oldUsers.length
+    const { newUsers, oldUsers } = categorizeUsers(timeframe);
+    const totalUsers = newUsers.length + oldUsers.length;
 
     // Calculate previous period for growth comparison
     const getPreviousPeriodGrowth = () => {
-      const now = new Date("2024-01-20T18:00:00Z")
-      let previousCutoffStart
-      let previousCutoffEnd
+      const now = new Date("2024-01-20T18:00:00Z");
+      let previousCutoffStart;
+      let previousCutoffEnd;
 
       switch (timeframe) {
         case "weekly":
-          previousCutoffStart = new Date(now.getTime() - 14 * 24 * 60 * 60 * 1000) // 14 days ago
-          previousCutoffEnd = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000) // 7 days ago
-          break
+          previousCutoffStart = new Date(
+            now.getTime() - 14 * 24 * 60 * 60 * 1000
+          ); // 14 days ago
+          previousCutoffEnd = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000); // 7 days ago
+          break;
         case "monthly":
-          previousCutoffStart = new Date(now.getTime() - 60 * 24 * 60 * 60 * 1000) // 60 days ago
-          previousCutoffEnd = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000) // 30 days ago
-          break
+          previousCutoffStart = new Date(
+            now.getTime() - 60 * 24 * 60 * 60 * 1000
+          ); // 60 days ago
+          previousCutoffEnd = new Date(
+            now.getTime() - 30 * 24 * 60 * 60 * 1000
+          ); // 30 days ago
+          break;
         case "yearly":
-          previousCutoffStart = new Date(now.getTime() - 730 * 24 * 60 * 60 * 1000) // 730 days ago
-          previousCutoffEnd = new Date(now.getTime() - 365 * 24 * 60 * 60 * 1000) // 365 days ago
-          break
+          previousCutoffStart = new Date(
+            now.getTime() - 730 * 24 * 60 * 60 * 1000
+          ); // 730 days ago
+          previousCutoffEnd = new Date(
+            now.getTime() - 365 * 24 * 60 * 60 * 1000
+          ); // 365 days ago
+          break;
         default:
-          previousCutoffStart = new Date(now.getTime() - 14 * 24 * 60 * 60 * 1000)
-          previousCutoffEnd = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000)
+          previousCutoffStart = new Date(
+            now.getTime() - 14 * 24 * 60 * 60 * 1000
+          );
+          previousCutoffEnd = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
       }
 
       const previousPeriodUsers = usersData.filter((user) => {
-        const createdDate = new Date(user.createdAt)
-        return createdDate > previousCutoffStart && createdDate <= previousCutoffEnd
-      })
+        const createdDate = new Date(user.createdAt);
+        return (
+          createdDate > previousCutoffStart && createdDate <= previousCutoffEnd
+        );
+      });
 
-      return newUsers.length - previousPeriodUsers.length
-    }
+      return newUsers.length - previousPeriodUsers.length;
+    };
 
-    const change = getPreviousPeriodGrowth()
+    const change = getPreviousPeriodGrowth();
 
     return {
       totalUsers,
@@ -267,8 +298,8 @@ export default function Dashboard() {
           percentage: totalUsers > 0 ? (oldUsers.length / totalUsers) * 100 : 0,
         },
       ],
-    }
-  }, [timeframe])
+    };
+  }, [timeframe]);
   // Line chart data
   const lineChartData = {
     labels: [
@@ -360,7 +391,6 @@ export default function Dashboard() {
 
   // Doughnut chart data
 
-
   // Service providers data
   const serviceProviders = [
     { name: "Acme Co.", color: "#1E40AF" },
@@ -371,21 +401,7 @@ export default function Dashboard() {
     { name: "Lama Ltd", color: "#000000" },
   ];
 
-  // New users data
-  // const newUsers = [
-  //   {
-  //     id: 1,
-  //     name: "Arlene McCoy",
-  //     avatar: "/placeholder.svg?height=40&width=40",
-  //     status: "Active",
-  //   },
-  //   {
-  //     id: 2,
-  //     name: "Eleanor Pena",
-  //     avatar: "/placeholder.svg?height=40&width=40",
-  //     status: "Active",
-  //   },
-  // ];
+
   const stats = [
     {
       label: "Total Bookings",
@@ -426,16 +442,16 @@ export default function Dashboard() {
   const getTimeframeLabel = (timeframe) => {
     switch (timeframe) {
       case "weekly":
-        return "week"
+        return "week";
       case "monthly":
-        return "month"
+        return "month";
       case "yearly":
-        return "year"
+        return "year";
       default:
-        return "week"
+        return "week";
     }
-  }
-const newUsersValue = categorizeUsers(timeframe).newUsers.map((user) => ({
+  };
+  const newUsersValue = categorizeUsers(timeframe).newUsers.map((user) => ({
     id: user.id,
     name: user.name,
     avatar: user.avatar,
@@ -444,10 +460,13 @@ const newUsersValue = categorizeUsers(timeframe).newUsers.map((user) => ({
 
   return (
     <div className="2xl:p-6 p-4">
-      {activeSection === "dashboard" && (
         <div className="space-y-6">
           <div className="flex gap-4">
-            <Image src={HomeIcon} className="2xl:h-12 h-8 w-8 2xl:w-12" alt="Home Icon" />
+            <Image
+              src={HomeIcon}
+              className="2xl:h-12 h-8 w-8 2xl:w-12"
+              alt="Home Icon"
+            />
             <div>
               <h1 className="2xl:text-lg text-sm font-semibold">Dashboard</h1>
               <p className="text-xs text-muted-foreground">
@@ -455,7 +474,7 @@ const newUsersValue = categorizeUsers(timeframe).newUsers.map((user) => ({
               </p>
             </div>
           </div>
-          <DashboardDetails stats={stats} value={"dashboard"}/>
+          <DashboardDetails stats={stats} value={"dashboard"} />
           {/* Charts Section */}
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
             {/* Line Chart */}
@@ -546,7 +565,9 @@ const newUsersValue = categorizeUsers(timeframe).newUsers.map((user) => ({
                           </span>
                         )}
                       </div>
-                      <span className="2xl:text-sm text-xs">{provider.name}</span>
+                      <span className="2xl:text-sm text-xs">
+                        {provider.name}
+                      </span>
                     </div>
                   ))}
                 </div>
@@ -557,159 +578,73 @@ const newUsersValue = categorizeUsers(timeframe).newUsers.map((user) => ({
           {/* Bottom Section */}
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
             {/* Doughnut Chart */}
-             <div className="bg-white rounded-lg border h-[400px] border-gray-200 p-6 2xl:w-[400px] w-[300px]">
-        <div className="flex items-center justify-between mb-6">
-          <div>
-            <h3 className="2xl:text-sm text-xs text-gray-500 mb-1">New Users</h3>
-            <div className="flex items-center gap-2">
-              <span className="text-3xl font-semibold">{analyticsData.totalUsers}</span>
-              <span className={`2xl:text-sm text-xs font-medium ${analyticsData.change >= 0 ? "text-green-500" : "text-red-500"}`}>
-                {analyticsData.change >= 0 ? "+" : ""}
-                {analyticsData.change} vs last {getTimeframeLabel(timeframe)}
-              </span>
-            </div>
-          </div>
-          <Select value={timeframe} onValueChange={(value) => setTimeframe(value)}>
-            <SelectTrigger className="2xl:!w-[30%] !w-[40%] border-gray-300">
-              <SelectValue />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="weekly">Weekly</SelectItem>
-              <SelectItem value="monthly">Monthly</SelectItem>
-              <SelectItem value="yearly">Yearly</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
-
-        {/* Pie Chart */}
-        <div className="flex flex-col items-center">
-          <UserPieChart data={analyticsData.chartData} centerValue={analyticsData.totalUsers} key={timeframe} />
-
-          {/* Legend */}
-          <div className="flex items-center gap-6 mt-4">
-            {analyticsData.chartData.map((item, index) => (
-              <div key={index} className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded-full" style={{ backgroundColor: item.color }} />
-                <span className="2xl:text-sm text-xs text-gray-600">{item.name}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-            {/* New Users List */}
-            <Card className="lg:col-span-2 overflow-hidden">
-              <CardHeader className="flex flex-row items-center justify-between pb-2 pt-4 px-4">
-                <CardTitle className="2xl:text-sm text-xs font-medium">New Users</CardTitle>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="text-xs text-blue-600 h-7 px-2"
-                  onClick={() => router.push("/users")}
-                >
-                  View All
-                </Button>
-              </CardHeader>
-              <CardContent className="px-4 pb-4">
-                <div className="space-y-4">
-                  {newUsersValue.map((user) => (
-                    <div
-                      key={user.id}
-                      className="flex items-center justify-between"
+            <div className="bg-white rounded-lg border h-[400px] border-gray-200 p-6 2xl:w-[400px] w-[300px]">
+              <div className="flex items-center justify-between mb-6">
+                <div>
+                  <h3 className="2xl:text-sm text-xs text-gray-500 mb-1">
+                    New Users
+                  </h3>
+                  <div className="flex items-center gap-2">
+                    <span className="text-3xl font-semibold">
+                      {analyticsData.totalUsers}
+                    </span>
+                    <span
+                      className={`2xl:text-sm text-xs font-medium ${
+                        analyticsData.change >= 0
+                          ? "text-green-500"
+                          : "text-red-500"
+                      }`}
                     >
-                      <div className="flex items-center gap-3 w-[45%]">
-                        <Avatar>
-                          <img
-                            src={user.avatar || "/placeholder.svg"}
-                            alt={user.name}
-                          />
-                        </Avatar>
-                        <div>
-                          <div className="flex items-center gap-2">
-                            <span className="font-medium 2xl:text-sm text-xs">
-                              {user.name}
-                            </span>
-                            <Badge
-                              variant="outline"
-                              className="bg-blue-50 text-blue-600 hover:bg-blue-50 text-xs font-normal"
-                            >
-                              New
-                            </Badge>
-                          </div>
-                        </div>
-                      </div>
-                        <Badge
-                          variant="outline"
-                          className="rounded-lg text-xs font-normal"
-                        >
-                              <CircleCheck color="white" className="fill-[#1FC16B] mr-1"/>
-                          Active
-                        </Badge>
-                        <div className="flex gap-2">
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            className="h-7 w-7"
-                          >
-                            <Edit2 className="h-4 w-4" />
-                          </Button>
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            className="h-7 w-7"
-                          >
-                            <Trash2 className="h-4 w-4" />
-                          </Button>
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            className="h-7 w-7"
-                          >
-                            <MoreVertical className="h-4 w-4" />
-                          </Button>
-                        </div>
-                      </div>
+                      {analyticsData.change >= 0 ? "+" : ""}
+                      {analyticsData.change} vs last{" "}
+                      {getTimeframeLabel(timeframe)}
+                    </span>
+                  </div>
+                </div>
+                <Select
+                  value={timeframe}
+                  onValueChange={(value) => setTimeframe(value)}
+                >
+                  <SelectTrigger className="2xl:!w-[30%] !w-[40%] border-gray-300">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="weekly">Weekly</SelectItem>
+                    <SelectItem value="monthly">Monthly</SelectItem>
+                    <SelectItem value="yearly">Yearly</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              {/* Pie Chart */}
+              <div className="flex flex-col items-center">
+                <UserPieChart
+                  data={analyticsData.chartData}
+                  centerValue={analyticsData.totalUsers}
+                  key={timeframe}
+                />
+
+                {/* Legend */}
+                <div className="flex items-center gap-6 mt-4">
+                  {analyticsData.chartData.map((item, index) => (
+                    <div key={index} className="flex items-center gap-2">
+                      <div
+                        className="w-3 h-3 rounded-full"
+                        style={{ backgroundColor: item.color }}
+                      />
+                      <span className="2xl:text-sm text-xs text-gray-600">
+                        {item.name}
+                      </span>
+                    </div>
                   ))}
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
+
+            {/* New Users List */}
+            <NewUserList newUserData={newUsersValue}/>
           </div>
         </div>
-      )}
-
-      {activeSection === "users" && (
-        <div className="p-6">
-          <div className="mb-6">
-            <h1 className="text-2xl font-semibold">User</h1>
-            <p className="2xl:text-sm text-xs text-muted-foreground">
-              Lorem ipsum management
-            </p>
-          </div>
-          <UsersTable />
-        </div>
-      )}
-
-      {activeSection === "service-provider" && (
-        <div>
-          <h1 className="text-2xl font-semibold">Service Provider</h1>
-          <p className="text-muted-foreground">Manage your service providers</p>
-
-          {/* Service Provider content would go here */}
-          <div className="mt-6">
-            <Card>
-              <CardContent className="p-6">
-                <h2 className="text-xl font-medium mb-4">
-                  Service Provider Management
-                </h2>
-                <p>
-                  This is the service provider section content. You can manage
-                  all your service providers from here.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

@@ -98,12 +98,6 @@ export default function ServiceProviderPage() {
 
   const columns = [
     {
-      header: "",
-      accessorKey: "checkbox",
-      width: "40px",
-      cell: () => <Checkbox />,
-    },
-    {
       header: "Service Provider",
       accessorKey: "name",
     },
@@ -166,18 +160,6 @@ export default function ServiceProviderPage() {
           <Button variant="ghost" size="icon">
             <Trash className="h-4 w-4" />
           </Button>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon">
-                <MoreHorizontal className="h-4 w-4" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuItem onClick={() => handleEditUser(row)}>Edit User</DropdownMenuItem>
-              <DropdownMenuItem>Suspend User</DropdownMenuItem>
-              <DropdownMenuItem className="text-red-600">Delete User</DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
         </div>
       ),
     },

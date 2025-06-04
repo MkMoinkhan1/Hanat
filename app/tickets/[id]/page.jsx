@@ -273,18 +273,9 @@ export default function TicketDetailPage({ params }) {
             </div>
             <div className="mt-1 font-medium">{ticketData.bookingId}</div>
             </div>
-            <Button
-              variant="outline"
-              size="sm"
-              className="mt-2 h-7 w-20 2xl:text-sm text-xs justify-start gap-1.5 px-2 text-muted-foreground"
-            >
-              <Eye className="h-2 w-4 text-muted-foreground" />
-              View
-            </Button>
            </div>
-            <Separator className="my-4" />
 
-            <div className="2xl:text-sm text-xs font-medium text-muted-foreground">By</div>
+            <div className="2xl:text-sm text-xs font-medium text-muted-foreground mt-4">By</div>
            <div className="flex items-center justify-between">
              <div className="mt-2 flex items-center gap-2">
               <Avatar className="h-6 w-6">
@@ -300,19 +291,8 @@ export default function TicketDetailPage({ params }) {
                 {ticketData.assignedTo.name}
               </span>
             </div>
-            <Button
-              variant="outline"
-              size="sm"
-              className="mt-2 h-7 w-20 2xl:text-sm text-xs justify-start gap-1.5 px-2 text-muted-foreground"
-            >
-              <Eye className="h-2 w-4 text-muted-foreground" />
-              View
-            </Button>
            </div>
-
-            <Separator className="my-4" />
-
-            <div className="2xl:text-sm text-xs font-medium text-muted-foreground">
+            <div className="2xl:text-sm text-xs font-medium text-muted-foreground mt-4">
               Service Provider
             </div>
             <div className="flex items-center justify-between">
@@ -326,14 +306,6 @@ export default function TicketDetailPage({ params }) {
                 {ticketData.serviceProvider.name}
               </span>
             </div>
-              <Button
-              variant="outline"
-              size="sm"
-              className="mt-2 h-7 w-20 2xl:text-sm text-xs justify-start gap-1.5 px-2 text-muted-foreground"
-            >
-              <Eye className="h-2 w-4 text-muted-foreground" />
-              View
-            </Button>
             </div>
           </div>
         </div>

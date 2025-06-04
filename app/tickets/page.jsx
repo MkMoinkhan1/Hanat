@@ -82,7 +82,7 @@ export default function TicketsPage() {
     <div className="flex h-screen">
       <div className="flex-1 overflow-auto">
         <div className="flex flex-col h-full">
-          <header className="border-b p-6 space-y-6">
+          <header className=" p-6 space-y-6">
                <div className="flex gap-4">
                                       <Image src={TicketIcon} className="2xl:h-12 h-10 w-10 2xl:w-12 border border-r-2 rounded-full p-2" alt="Service Icon" />
                                       <div>
@@ -192,20 +192,7 @@ export default function TicketsPage() {
                             <span className="2xl:text-sm text-xs text-gray-900">{ticket.date}</span>
                           </div>
 
-                          {/* Service Provider */}
-                          {/* <div className="flex items-center gap-2">
-                            <div className="text-sm font-medium text-gray-500 mb-1">Service Provider</div>
-                            <div className="flex">
-                              <Avatar className="h-5 w-5">
-                                <AvatarFallback
-                                  className={`${ticket.serviceProvider.color} text-white text-xs font-medium`}
-                                >
-                                  {ticket.serviceProvider.initials}
-                                </AvatarFallback>
-                              </Avatar>
-                              <span className="text-sm text-gray-900">{ticket.serviceProvider.name}</span>
-                            </div>
-                          </div> */}
+                          {/* Service Provider */}  
                            <div className="flex items-center gap-1">
                             <span className="2xl:text-sm text-xs text-gray-500">Service Provider</span>
                             <Avatar className="h-5 w-5">
