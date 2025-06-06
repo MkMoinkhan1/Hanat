@@ -109,7 +109,7 @@ export function DataTable({
               paginatedData.map((row, rowIndex) => (
                 <tr key={rowIndex} className="border-b">
                   {columns.map((column, colIndex) => (
-                    <td key={colIndex} className="2xl:p-4 p-4 align-middle 2xl:text-sm text-xs">
+                    <td key={colIndex} className="2xl:p-4 p-2 align-middle 2xl:text-sm text-xs">
                       {column.cell ? column.cell(row) : row[column.accessorKey]}
                     </td>
                   ))}

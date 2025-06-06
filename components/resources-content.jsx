@@ -68,29 +68,29 @@ export default function ResourcesContent() {
             <div className="flex items-center space-x-4 w-[20rem]">
               <img src={resource.avatar || "/placeholder.svg"} alt={resource.name} className="w-12 h-12 rounded-full" />
               <div>
-                <h3 className="font-medium text-gray-900">{resource.name}</h3>
+                <h3 className="font-medium text-gray-900 2xl:text-sm text-xs">{resource.name}</h3>
                 <div className="flex items-center mt-1">
                   {[...Array(5)].map((_, i) => (
                     <Star
                       key={i}
-                      className={`h-4 w-4 ${i < resource.rating ? "fill-yellow-400 text-yellow-400" : "text-gray-200"}`}
+                      className={`2xl:h-4 2xl:w-4 w-3 h-3 ${i < resource.rating ? "fill-yellow-400 text-yellow-400" : "text-gray-200"}`}
                     />
                   ))}
                 </div>
               </div>
             </div>
             <div className="flex items-center justify-center space-x-16 w-[20em]">
-              <div className="text-center">
-                <p className="text-sm text-gray-500 mb-1">Service</p>
-                <p className="font-medium text-gray-900">{resource.service}</p>
+              <div className="">
+                <p className="2xl:text-sm text-xs text-gray-500 mb-1">Service</p>
+                <p className="font-medium text-gray-900 2xl:text-sm text-xs">{resource.service}</p>
               </div>
-              <div className="text-center">
-                <p className="text-sm text-gray-500 mb-1">Mobile Number</p>
-                <p className="font-medium text-gray-900">{resource.mobile}</p>
+              <div className="">
+                <p className="2xl:text-sm text-xs text-gray-500 mb-1">Mobile Number</p>
+                <p className="font-medium text-gray-900 2xl:text-sm text-xs">{resource.mobile}</p>
               </div>
             </div>
               <Button variant="outline" className="border-gray-300 text-gray-700">
-                <Eye className="h-4 w-4 mr-2" />
+                <Eye className="2xl:h-4 2xl:w-4 w-3 h-3 mr-2" />
                 View
               </Button>
           </div>

@@ -1,5 +1,5 @@
 "use client"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Link from "next/link"
 import { ChevronRight, Edit, Trash, MoreHorizontal } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -13,13 +13,8 @@ import { toast } from "@/components/ui/use-toast"
 import { Toaster } from "@/components/ui/toaster"
 import UserIcon from "@/public/images/Users-Icon.png"
 import Image from "next/image"
-
-export default function UsersPage() {
-  const [selectedUser, setSelectedUser] = useState(null)
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false)
-
-  // Mock data for users
-  const [users, setUsers] = useState([
+import { useUsersStore } from "@/store/editStore"
+const initialData = [
     {
       id: 1,
       name: "Arlene McCoy",
@@ -120,22 +115,30 @@ export default function UsersPage() {
       status: "Active",
       avatar: "/placeholder.svg?height=40&width=40",
     },
-  ])
-
+  ]
+  
+export default function UsersPage() {
+  const [selectedUser, setSelectedUser] = useState(null)
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false)
+  const {items , setItems , editItem , removeItem } = useUsersStore()
+  useEffect(()=>{
+    setItems(initialData)
+  },[])
   const handleEditUser = (user) => {
     setSelectedUser(user)
     setIsDrawerOpen(true)
   }
-
+  const handleDeleteUser = (user) => {
+    removeItem(user.id)
+  }
   const handleSaveUser = (updatedUser) => {
-    setUsers(users.map((user) => (user.id === updatedUser.id ? updatedUser : user)))
+    editItem(updatedUser)
     toast({
       title: "User updated",
       description: `${updatedUser.name}'s information has been updated successfully.`,
     })
   }
 
-  // Define columns for the data table
   const columns = [
     {
       header: "Full name",
@@ -186,7 +189,7 @@ export default function UsersPage() {
           <Button variant="ghost" size="icon" onClick={() => handleEditUser(row)}>
             <Edit className="h-4 w-4" />
           </Button>
-          <Button variant="ghost" size="icon">
+          <Button variant="ghost" size="icon" onClick={() => handleDeleteUser(row)}>
             <Trash className="h-4 w-4" />
           </Button>
         </div>
@@ -208,7 +211,7 @@ export default function UsersPage() {
                   </div>
 
         <DataTable
-          data={users}
+          data={items}
           columns={columns}
           searchField="name"
           itemsPerPageOptions={[5, 10, 15, 20]}

@@ -16,9 +16,7 @@ import {
 export function AddVariantDialog({ open, onOpenChange, initialVariants = [], onSave }) {
   const [variantData, setVariantData] = useState({
     "multiple-choice": [],
-    "checkbox": [],
     "short-answer": [""],
-    "long-answer": [""],
   })
 
   const [selectedType, setSelectedType] = useState("multiple-choice")
@@ -46,9 +44,7 @@ export function AddVariantDialog({ open, onOpenChange, initialVariants = [], onS
         setNewOption("")
         setVariantData({
           "multiple-choice": [],
-          "checkbox": [],
           "short-answer": [""],
-          "long-answer": [""],
         })
       }
     }
@@ -56,7 +52,7 @@ export function AddVariantDialog({ open, onOpenChange, initialVariants = [], onS
 
   const handleTypeChange = (type) => {
     setSelectedType(type)
-    if (["short-answer", "long-answer"].includes(type)) {
+    if (["short-answer"].includes(type)) {
       setNewOption(variantData[type]?.[0] || "")
     } else {
       setNewOption("")
@@ -82,7 +78,7 @@ export function AddVariantDialog({ open, onOpenChange, initialVariants = [], onS
 
   const handleSave = () => {
     const options =
-      ["short-answer", "long-answer"].includes(selectedType)
+      ["short-answer"].includes(selectedType)
         ? [newOption.trim()]
         : variantData[selectedType]
 
@@ -97,17 +93,15 @@ export function AddVariantDialog({ open, onOpenChange, initialVariants = [], onS
     // Reset all
     setVariantData({
       "multiple-choice": [],
-      "checkbox": [],
       "short-answer": [""],
-      "long-answer": [""],
     })
     setNewOption("")
     setSelectedType("multiple-choice")
   }
 
   const isSaveDisabled =
-    (["short-answer", "long-answer"].includes(selectedType) && !newOption.trim()) ||
-    (["multiple-choice", "checkbox"].includes(selectedType) && variantData[selectedType]?.length === 0)
+    (["short-answer"].includes(selectedType) && !newOption.trim()) ||
+    (["multiple-choice"].includes(selectedType) && variantData[selectedType]?.length === 0)
 
   const renderOptionIcon = () => {
     if (selectedType === "multiple-choice") {
@@ -116,9 +110,7 @@ export function AddVariantDialog({ open, onOpenChange, initialVariants = [], onS
           <div className="h-2 w-2 rounded-full bg-gray-500" />
         </div>
       )
-    } else if (selectedType === "checkbox") {
-      return <div className="h-4 w-4 border border-gray-300 bg-gray-500" />
-    }
+    } 
     return null
   }
 
@@ -126,19 +118,19 @@ export function AddVariantDialog({ open, onOpenChange, initialVariants = [], onS
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[500px] p-0 overflow-hidden">
         <div className="p-6 pb-2">
-          <DialogTitle className="text-xl font-semibold">Add Variant</DialogTitle>
+          <DialogTitle className="text-lg font-semibold">Add Variant</DialogTitle>
         </div>
 
         <div className="px-6 py-4 space-y-6">
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label htmlFor="subcategory" className="block text-sm font-medium mb-2">
+              <label htmlFor="subcategory" className="block 2xl:text-sm text-xs font-medium mb-2">
                 Sub-Category
               </label>
               <Input id="subcategory" value="Sofa" readOnly className="h-10" />
             </div>
             <div>
-              <label htmlFor="type" className="block text-sm font-medium mb-2">
+              <label htmlFor="type" className="block 2xl:text-sm text-xs font-medium mb-2">
                 Type
               </label>
               <Select value={selectedType} onValueChange={handleTypeChange}>
@@ -155,13 +147,13 @@ export function AddVariantDialog({ open, onOpenChange, initialVariants = [], onS
             </div>
           </div>
 
-          {["multiple-choice", "checkbox"].includes(selectedType) ? (
+          {["multiple-choice"].includes(selectedType) ? (
             <div className="space-y-2">
               {variantData[selectedType]?.map((option, index) => (
-                <div key={index} className="flex items-center justify-between py-3 border-b">
-                  <div className="flex items-center gap-3">
+                <div key={index} className="flex items-center justify-between 2xl:py-3 py-0 border-b">
+                  <div className="flex items-center gap-3 overflow-auto">
                     {renderOptionIcon()}
-                    <span>{option}</span>
+                    <span className="2xl:text-sm text-xs">{option}</span>
                   </div>
                   <Button
                     variant="ghost"

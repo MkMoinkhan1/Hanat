@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Link from "next/link"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
@@ -10,6 +10,7 @@ import { Ticket, Eye, Trash2, Filter, AlertTriangle } from "lucide-react"
 import TicketIcon from "@/public/images/Ticket-Icon.png"
 import Image from "next/image"
 import { Badge } from "@/components/ui/badge"
+import { useTicketsStore } from "@/store/editStore"
 // Sample ticket data
 const tickets = [
   {
@@ -65,9 +66,13 @@ const tickets = [
 export default function TicketsPage() {
   const [searchQuery, setSearchQuery] = useState("")
   const [statusFilter, setStatusFilter] = useState("all")
+    const {items , setItems  , removeItem } = useTicketsStore()
+    useEffect(()=>{
+      setItems(tickets)
+    },[])
 
   // Filter tickets based on search query and status
-  const filteredTickets = tickets.filter((ticket) => {
+  const filteredTickets = items.filter((ticket) => {
     const matchesSearch =
       ticket.id.includes(searchQuery) ||
       ticket.bookingId.includes(searchQuery) ||
@@ -77,7 +82,9 @@ export default function TicketsPage() {
 
     return matchesSearch && matchesStatus
   })
-
+const handleRemoveItems = (id) => {
+    removeItem(id)
+}
   return (
     <div className="flex h-screen">
       <div className="flex-1 overflow-auto">
@@ -221,6 +228,7 @@ export default function TicketsPage() {
                         <Button
                           variant="outline"
                           className="h-9 px-4 text-red-600 border-red-200 hover:bg-red-50 2xl:text-sm text-xs font-medium gap-2"
+                          onClick={() => handleRemoveItems(ticket.id)}
                         >
                           <Trash2 className="h-4 w-4" />
                           Delete

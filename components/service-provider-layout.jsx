@@ -18,7 +18,7 @@ export default function ServiceProviderLayout({ children, activeTab, providerId 
 
   return (
       <div className="flex-1 flex flex-col">
-        <header className="py-6 px-7 border-b border-gray-200">
+        <header className="py-6 px-7">
           <div className="flex items-center justify-between">
             <div className="flex items-center">
               <Button
@@ -30,12 +30,12 @@ export default function ServiceProviderLayout({ children, activeTab, providerId 
                 <ArrowLeft className="h-4 w-4" />
               </Button>
               <div>
-                <h1 className="text-lg font-medium">Service Provider</h1>
-                <p className="text-sm text-gray-500">Lorem ipsum management</p>
+                <h1 className="2xl:text-lg text-sm font-medium">Service Provider</h1>
+                <p className="text-xs text-gray-500">Lorem ipsum management</p>
               </div>
             </div>
             <div className="flex space-x-3">
-              <Button variant="outline" className="border-gray-300 text-gray-700">
+              <Button variant="outline" className="border-gray-300 text-gray-700 ">
                 Cancel
               </Button>
               <Button className="bg-gray-900 text-white">Save Changes</Button>
@@ -48,8 +48,8 @@ export default function ServiceProviderLayout({ children, activeTab, providerId 
                 <button
                   key={tab.id}
                   onClick={() => router.push(tab.href)}
-                  className={`px-4 py-2 text-sm font-medium relative ${
-                    activeTab === tab.id ? "text-black" : "text-gray-500 hover:text-gray-700"
+                  className={`px-4 py-2 2xl:text-sm text-xs font-medium relative ${
+                    activeTab === tab.id ? "text-black bg-gray-100" : "text-gray-500 hover:text-gray-700"
                   }`}
                 >
                   {tab.label}

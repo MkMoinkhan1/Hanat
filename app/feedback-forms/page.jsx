@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Link from "next/link"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
@@ -10,6 +10,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import { DataTable } from "@/components/data-table"
 import feedbackIcon from "@/public/images/Feedback-Icon.png"
 import Image from "next/image"
+import { useFeedbackFormsStore } from "@/store/editStore"
 
 // Sample feedback data
 const feedbackData = [
@@ -87,68 +88,61 @@ const feedbackData = [
       "I have a suggestion to improve your service. It would be great if you could provide an estimated time of arrival for the service provider.",
   },
 ]
-const columns = [
-     {
-      header: "Form ID",
-      accessorKey: "formId",
-    },
-     {
-      header: "Issue",
-      accessorKey: "issue",
-    },
-     {
-      header: "Customer name",
-      accessorKey: "customer.name",
-      cell: (row) => 
-        (
-        <div className="flex items-center gap-3">
-          <Avatar className="h-8 w-8">
-            <AvatarImage src={row.customer.avatar || "/placeholder.svg"} alt={row.customer.name} />
-            <AvatarFallback>{row.customer.name.charAt(0)}</AvatarFallback>
-          </Avatar>
-          <span className="font-medium">{row.customer.name}</span>
-        </div>
-      )
-    },  {
-      header: "Action",
-      accessorKey: "action",
-      cell: (row) =>
-        (
-        <div className="flex justify-start gap-2">
-          <Button variant="ghost" size="icon" asChild>
-                      <Link href={`/feedback-forms/${row.id}`}>
-                        <Eye className="h-4 w-4" />
-                      </Link>
-                    </Button>
-          <Button variant="ghost" size="icon">
-            <Trash className="h-4 w-4" />
-          </Button>
-       
-        </div>
-      )
-    },
-]
 
 export default function FeedbackFormsPage() {
-  const [selectedFeedbacks, setSelectedFeedbacks] = useState([])
-
-  const toggleFeedback = (id) => {
-    setSelectedFeedbacks((prev) => (prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]))
+  const {items , setItems , editItem , removeItem } = useFeedbackFormsStore()
+  useEffect(()=>{
+    setItems(feedbackData)
+  },[])
+  const handleRemoveItem = (id) => {
+    removeItem(id)
   }
-
-  const toggleAll = () => {
-    if (selectedFeedbacks.length === feedbackData.length) {
-      setSelectedFeedbacks([])
-    } else {
-      setSelectedFeedbacks(feedbackData.map((feedback) => feedback.id))
-    }
-  }
-
+  const columns = [
+       {
+        header: "Form ID",
+        accessorKey: "formId",
+      },
+       {
+        header: "Issue",
+        accessorKey: "issue",
+      },
+       {
+        header: "Customer name",
+        accessorKey: "customer.name",
+        cell: (row) => 
+          (
+          <div className="flex items-center gap-3">
+            <Avatar className="h-8 w-8">
+              <AvatarImage src={row.customer.avatar || "/placeholder.svg"} alt={row.customer.name} />
+              <AvatarFallback>{row.customer.name.charAt(0)}</AvatarFallback>
+            </Avatar>
+            <span className="font-medium">{row.customer.name}</span>
+          </div>
+        )
+      },  {
+        header: "Action",
+        accessorKey: "action",
+        cell: (row) =>
+          (
+          <div className="flex justify-start gap-2">
+            <Button variant="ghost" size="icon" asChild>
+                        <Link href={`/feedback-forms/${row.id}`}>
+                          <Eye className="h-4 w-4" />
+                        </Link>
+                      </Button>
+            <Button variant="ghost" size="icon" onClick={() => handleRemoveItem(row.id)}>
+              <Trash className="h-4 w-4" />
+            </Button>
+         
+          </div>
+        )
+      },
+  ]
   return (
     <div className="flex h-screen ">
-      <div className="flex-1 overflow-auto 2xl:p-6 p-4">
+      <div className="flex-1 overflow-auto">
         <div className="flex flex-col h-full">
-          <header className=" p-6">
+          <header className="p-4">
               <div className="flex gap-4">
                            <Image src={feedbackIcon} className="2xl:h-12 h-10 w-10 2xl:w-12 border border-r-2 rounded-full p-2" alt="Service Icon" />
                            <div>
@@ -159,9 +153,9 @@ export default function FeedbackFormsPage() {
                            </div>
                          </div>
           </header>
-          <main className="flex-1">
+          <main className="flex-1 p-6">
         <DataTable
-                 data={feedbackData}
+                 data={items}
                  columns={columns}
                  searchField="name"
                  itemsPerPageOptions={[5, 10, 15, 20]}

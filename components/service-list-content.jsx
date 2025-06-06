@@ -51,16 +51,15 @@ export default function ServiceListContent() {
             <div className="flex items-center space-x-4">
               <div className="w-16 h-16 bg-[#D9D9D9] rounded-lg"></div>
               <div>
-                <h3 className="font-medium">{service.name}</h3>
-                <p className="text-sm text-gray-500">{service.description}</p>
+                <h3 className="font-medium 2xl:text-lg text-sm">{service.name}</h3>
+                <p className="2xl:text-sm text-xs text-gray-500">{service.description}</p>
                 <div className="flex items-center space-x-4 mt-1">
-                  <span className="text-sm text-gray-600">{service.category}</span>
-                  <span className="text-sm text-gray-600 bg-gray-300 rounded-sm px-2">{service.duration}</span>
+                  <span className="2xl:text-sm text-xs text-gray-600 bg-gray-300 rounded-sm px-2">{service.category} {service.duration}</span>
                 </div>
               </div>
             </div>
             <div className="text-right">
-              <p className="font-semibold">{service.price}</p>
+              <p className="font-semibold 2xl:text-lg text-sm">{service.price}</p>
             </div>
           </div>
         ))}

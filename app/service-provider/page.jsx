@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Edit, Trash, MoreHorizontal } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -10,73 +10,80 @@ import { DataTable } from "@/components/data-table"
 import { useRouter } from "next/navigation"
 import serviceIcon from "@/public/images/Service-Provider-Icon.png"
 import Image from "next/image"
+import { useServiceProvidersStore } from "@/store/editStore"
+const serviceProviders = [
+  {
+    id: 1,
+    name: "Acme Co.",
+    phone: "(252) 555-0126",
+    area: "Great Falls, Maryland",
+    employee: 2,
+    services: "Service name",
+    serviceCount: "+3",
+    rating: 3,
+    status: "Active",
+    // serviceProviders:
+  },
+  {
+    id: 2,
+    name: "Barone LLC.",
+    phone: "(629) 555-0129",
+    area: "Syracuse, Connecticut",
+    employee: 5,
+    services: "Service name",
+    serviceCount: "+2",
+    rating: 3,
+    status: "Active",
+  },
+  {
+    id: 3,
+    name: "Abstergo Ltd",
+    phone: "(603) 555-0123",
+    area: "Pasadena, Oklahoma",
+    employee: 6,
+    services: "Service name",
+    serviceCount: "+3",
+    rating: 3,
+    status: "Active",
+  },
+  {
+    id: 4,
+    name: "Biffco Enterprises Ltd.",
+    phone: "(907) 555-0101",
+    area: "Corona, Michigan",
+    employee: 4,
+    services: "Service name",
+    serviceCount: "+2",
+    rating: 3,
+    status: "Active",
+  },
+  {
+    id: 5,
+    name: "Binford Ltd.",
+    phone: "(505) 555-0125",
+    area: "Lansing, Illinois",
+    employee: 1,
+    services: "Service name",
+    serviceCount: "",
+    rating: 5,
+    status: "Active",
+  },
+]
 
 export default function ServiceProviderPage() {
+    const {items , setItems , editItem , removeItem } = useServiceProvidersStore()
+    useEffect(()=>{
+      setItems(serviceProviders)
+    },[])
   const router = useRouter()
-  // Mock data for service providers
-  const serviceProviders = [
-    {
-      id: 1,
-      name: "Acme Co.",
-      phone: "(252) 555-0126",
-      area: "Great Falls, Maryland",
-      employee: 2,
-      services: "Service name",
-      serviceCount: "+3",
-      rating: 3,
-      status: "Active",
-    },
-    {
-      id: 2,
-      name: "Barone LLC.",
-      phone: "(629) 555-0129",
-      area: "Syracuse, Connecticut",
-      employee: 5,
-      services: "Service name",
-      serviceCount: "+2",
-      rating: 3,
-      status: "Active",
-    },
-    {
-      id: 3,
-      name: "Abstergo Ltd",
-      phone: "(603) 555-0123",
-      area: "Pasadena, Oklahoma",
-      employee: 6,
-      services: "Service name",
-      serviceCount: "+3",
-      rating: 3,
-      status: "Active",
-    },
-    {
-      id: 4,
-      name: "Biffco Enterprises Ltd.",
-      phone: "(907) 555-0101",
-      area: "Corona, Michigan",
-      employee: 4,
-      services: "Service name",
-      serviceCount: "+2",
-      rating: 3,
-      status: "Active",
-    },
-    {
-      id: 5,
-      name: "Binford Ltd.",
-      phone: "(505) 555-0125",
-      area: "Lansing, Illinois",
-      employee: 1,
-      services: "Service name",
-      serviceCount: "",
-      rating: 5,
-      status: "Active",
-    },
-  ]
 
   // Handle edit user
   const handleEditUser = (user) => {
     router.push(`/service-provider/${user.id}`)
   }
-
+const handleRemoveItem = (id) => {
+  removeItem(id)
+}
   // Render star rating
   const renderRating = (rating) => {
     return (
@@ -157,7 +164,7 @@ export default function ServiceProviderPage() {
           <Button variant="ghost" size="icon" onClick={() => handleEditUser(row)}>
             <Edit className="h-4 w-4" />
           </Button>
-          <Button variant="ghost" size="icon">
+          <Button variant="ghost" size="icon" onClick={() => handleRemoveItem(row.id)}>
             <Trash className="h-4 w-4" />
           </Button>
         </div>
@@ -179,7 +186,7 @@ export default function ServiceProviderPage() {
                          </div>
        
         <DataTable
-          data={serviceProviders}
+          data={items}
           columns={columns}
           searchField="name"
           itemsPerPageOptions={[5, 10, 15, 20]}

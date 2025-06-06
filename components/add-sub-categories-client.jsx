@@ -102,8 +102,8 @@ const addSubCategoriesClient = () => {
           <ChevronLeft className="h-4 w-4" />
         </Button>
         <div>
-          <h1 className="text-lg font-semibold">Service Management</h1>
-          <p className="text-sm text-muted-foreground">
+          <h1 className="2xl:text-lg text-sm font-semibold">Service Management</h1>
+          <p className="2xl:text-sm text-xs text-muted-foreground">
             Lorem ipsum management
           </p>
         </div>
@@ -119,13 +119,13 @@ const addSubCategoriesClient = () => {
           <TabsList className="h-auto bg-transparent p-0">
             <TabsTrigger
               value="edit-category"
-              className="rounded-none border-b-2 border-transparent px-8 py-3 text-sm font-medium text-gray-500 hover:text-gray-700 data-[state=active]:border-black data-[state=active]:text-black data-[state=active]:shadow-none"
+              className="!rounded-none border-b-2 border-transparent px-8 py-3 2xl:text-sm text-xs font-medium text-gray-500 hover:text-gray-700 data-[state=active]:border-black data-[state=active]:text-black data-[state=active]:shadow-none data-[state=active]:bg-gray-100"
             >
              Add Category
             </TabsTrigger>
             <TabsTrigger
               value="sub-category"
-              className="rounded-none border-b-2 px-8 py-3 text-sm font-medium text-gray-500 hover:text-gray-700 data-[state=active]:border-black data-[state=active]:text-black data-[state=active]:shadow-none"
+              className="!rounded-none border-b-2 px-8 py-3 2xl:text-sm text-xs font-medium text-gray-500 hover:text-gray-700 data-[state=active]:border-black data-[state=active]:text-black data-[state=active]:shadow-none data-[state=active]:bg-gray-100"
             >
               Sub-Category
             </TabsTrigger>

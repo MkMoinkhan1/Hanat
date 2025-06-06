@@ -50,19 +50,18 @@ export default function CategoriesContent() {
   const [activeTab, setActiveTab] = useState("edit-category");
   const handleAddVariant = (newVariant) => {
     setVariants([newVariant]);
-    console.log("_______", newVariant);
     setIsAddVariantOpen(false);
   };
   return (
-    <div className="p-7">
+    <div className="2xl:p-7 px-7">
       {/* Tab Navigation */}
       <div className="border-b border-gray-200 mb-6">
         <div className="flex">
           <button
             onClick={() => setActiveTab("edit-category")}
-            className={`px-4 py-2 text-sm font-medium relative ${
+            className={`px-4 py-2 2xl:text-sm text-xs font-medium relative ${
               activeTab === "edit-category"
-                ? "text-black"
+                ? "text-black bg-gray-100"
                 : "text-gray-500 hover:text-gray-700"
             }`}
           >
@@ -73,9 +72,9 @@ export default function CategoriesContent() {
           </button>
           <button
             onClick={() => setActiveTab("sub-category")}
-            className={`px-4 py-2 text-sm font-medium relative ${
+            className={`px-4 py-2 2xl:text-sm text-xs font-medium relative ${
               activeTab === "sub-category"
-                ? "text-black"
+                ? "text-black bg-gray-100"
                 : "text-gray-500 hover:text-gray-700"
             }`}
           >
@@ -90,7 +89,7 @@ export default function CategoriesContent() {
       {activeTab === "edit-category" ? (
         <div className="space-y-6 w-[50%]">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block 2xl:text-sm text-xs font-medium text-gray-700 mb-1">
               Category Name
             </label>
             <Input
@@ -99,7 +98,7 @@ export default function CategoriesContent() {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block 2xl:text-sm text-xs font-medium text-gray-700 mb-1">
               Description
             </label>
             <Textarea
@@ -107,13 +106,6 @@ export default function CategoriesContent() {
               className="min-h-[200px] border-gray-300"
             />
           </div>
-          <Button
-            variant="ghost"
-            className="text-gray-500 hover:bg-transparent hover:text-gray-700 p-0 h-auto font-normal"
-          >
-            <Plus className="h-4 w-4 mr-2" />
-            Add Custom Field
-          </Button>
           <div className="flex justify-end space-x-3 pt-4">
             <Button variant="outline">Cancel</Button>
             <Button className="bg-gray-900 text-white">Save Changes</Button>
@@ -124,16 +116,16 @@ export default function CategoriesContent() {
           {/* Stats Section for Sub-Category */}
           <DashboardDetails stats={stats} />
           <div>
-            <h2 className="text-sm font-medium mb-4">Sub-category list</h2>
-            <div className="space-y-6 w-[50%]">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+            <h2 className="2xl:text-lg text-sm font-medium mb-4">Sub-category list</h2>
+            <div className="space-y-6 w-[50%] p-3">
+              <div >
+                <label className="block 2xl:text-sm text-xs font-medium text-gray-700 mb-1">
                   Sub-Category Name
                 </label>
                 <Input defaultValue="Kitchen" className="border-gray-300" />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block 2xl:text-sm text-xs font-medium text-gray-700 mb-1">
                   Description
                 </label>
                 <Textarea
@@ -142,7 +134,7 @@ export default function CategoriesContent() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block 2xl:text-sm text-xs font-medium text-gray-700 mb-2">
                   Add Sub Sub-Category
                 </label>
                 <div className="flex flex-wrap gap-2 mb-3">
@@ -150,7 +142,7 @@ export default function CategoriesContent() {
                     variant.options.map((option, index) => (
                       <span
                         key={`${vIndex}-${index}`}
-                        className="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm"
+                        className="bg-blue-50 text-blue-700 px-3 py-1 rounded-full 2xl:text-sm text-xs"
                       >
                         {option}
                       </span>
@@ -160,20 +152,14 @@ export default function CategoriesContent() {
                   <Button
                     variant="outline"
                     size="sm"
-                    className="border-gray-300 text-gray-700 rounded-full px-3 py-1 h-auto text-sm"
+                    className="border-gray-300 text-gray-700 rounded-full px-3 py-1 h-auto 2xl:text-sm text-xs"
                     onClick={() => setIsAddVariantOpen(true)}
                   >
-                    ➕ Add new
+                                <Plus className="h-4 w-4 2xl:mr-2 mr-1" />
+                     Add new
                   </Button>
                 </div>
               </div>
-              <Button
-                variant="ghost"
-                className="text-gray-500 hover:bg-transparent hover:text-gray-700 p-0 h-auto font-normal"
-              >
-                <Plus className="h-4 w-4 mr-2" />
-                Add Custom Field
-              </Button>
             </div>
           </div>
         </div>

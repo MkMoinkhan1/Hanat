@@ -1,5 +1,5 @@
 "use client";
-import { CircleCheck, MoreVertical, Trash2 } from "lucide-react";
+import { CircleCheck, Trash2 } from "lucide-react";
 import { Avatar } from "./ui/avatar";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
@@ -10,34 +10,30 @@ import { useEffect, useState } from "react";
 import { EditUserDrawer } from "./edit-user-dialog";
 import { toast } from "./ui/use-toast";
 import { Toaster } from "./ui/toaster";
+import { useUsersStore } from "@/store/editStore";
 
 const NewUserList = ({ newUserData }) => {
-  console.log("NewUserList component rendered with data:", newUserData);
 
   const [selectedUser, setSelectedUser] = useState(null);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [userList, setUsers] = useState(newUserData || []);
-  useEffect(() => {
-    setUsers(newUserData);
-  }, [newUserData]);
+  const {items , setItems , editItem , removeItem } = useUsersStore()
+  useEffect(()=>{
+    setItems(newUserData)
+  },[])
   const handleEditUser = (user) => {
-    console.log("Edit user:", user);
     setSelectedUser(user);
     setIsDrawerOpen(true);
   };
+
   const handleDeleteUser = (user) => {
-    setUsers(userList.filter((u) => u.id !== user.id));
+    removeItem(user.id);
     toast({
       title: "User deleted",
       description: `${user.name}'s information has been deleted successfully.`,
     });
   };
   const handleSaveUser = (updatedUser) => {
-    setUsers(
-      newUserData.map((user) =>
-        user.id === updatedUser.id ? updatedUser : user
-      )
-    );
+    editItem(updatedUser)
     toast({
       title: "User updated",
       description: `${updatedUser.name}'s information has been updated successfully.`,
@@ -60,7 +56,7 @@ const NewUserList = ({ newUserData }) => {
       </CardHeader>
       <CardContent className="px-4 pb-4">
         <div className="space-y-4">
-          {userList?.map((user) => (
+          {items?.map((user) => (
             <div key={user.id} className="flex items-center justify-between">
               <div className="flex items-center gap-3 w-[45%]">
                 <Avatar>
@@ -114,7 +110,7 @@ const NewUserList = ({ newUserData }) => {
               </div>
             </div>
           ))}
-          {userList.length === 0 && (
+          {items.length === 0 && (
             <div className="text-center text-gray-500">No new users found.</div>
           )}
         </div>
