@@ -40,13 +40,13 @@ export default function UserPieChart({ data, centerValue }) {
         display: false,
       },
     },
-    // onHover: (_, elements) => {
-    //   if (elements.length > 0) {
-    //     setHoveredIndex(elements[0].index)
-    //   } else {
-    //     setHoveredIndex(null)
-    //   }
-    // },
+    onHover: (_, elements) => {
+      if (elements.length > 0) {
+        setHoveredIndex(elements[0].index)
+      } else {
+        setHoveredIndex(null)
+      }
+    },
   }
 
   return (

@@ -218,7 +218,7 @@ export default function CategoryEditPage() {
                         <div key={index} className="border border-gray-200 rounded-lg p-8 border-r[16px] mb-3 ">
                   <div className="flex justify-between ">
                     <div>
-                      <h3 className="text-sm ">{subcat.subcategory}</h3>
+                      <h3 className=" 2xl:text-lg text-sm  ">{subcat.subcategory}</h3>
                       <p className="2xl:text-sm text-xs text-gray-500 mt-1">Lorem ipsum management</p>
                     </div>
                     <div>

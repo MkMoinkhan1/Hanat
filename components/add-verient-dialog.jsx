@@ -139,9 +139,7 @@ export function AddVariantDialog({ open, onOpenChange, initialVariants = [], onS
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="multiple-choice">Multiple Choice</SelectItem>
-                  <SelectItem value="checkbox">Checkbox</SelectItem>
                   <SelectItem value="short-answer">Short Answer</SelectItem>
-                  <SelectItem value="long-answer">Long Answer</SelectItem>
                 </SelectContent>
               </Select>
             </div>

@@ -107,8 +107,8 @@ useEffect(() => {
           <ChevronLeft className="h-4 w-4" />
         </Button>
         <div>
-          <h1 className="text-lg font-semibold">Service Management</h1>
-          <p className="text-sm text-muted-foreground">
+          <h1 className="2xl:text-lg text-sm font-semibold">Service Management</h1>
+          <p className="2xl:text-sm text-xs text-muted-foreground">
             Lorem ipsum management
           </p>
         </div>
@@ -124,13 +124,13 @@ useEffect(() => {
           <TabsList className="h-auto bg-transparent p-0">
             <TabsTrigger
               value="edit-category"
-              className="rounded-none border-b-2 border-transparent px-8 py-3 text-sm font-medium text-gray-500 hover:text-gray-700 data-[state=active]:border-black data-[state=active]:text-black data-[state=active]:shadow-none"
+              className="!rounded-none border-b-2 border-transparent px-8 py-3 2xl:text-sm text-xs font-medium text-gray-500 hover:text-gray-700 data-[state=active]:border-black data-[state=active]:text-black data-[state=active]:shadow-none data-[state=active]:bg-gray-100"
             >
               {isNewCategory ? "Add Category" : "Edit Category"}
             </TabsTrigger>
             <TabsTrigger
               value="sub-category"
-              className="rounded-none border-b-2 px-8 py-3 text-sm font-medium text-gray-500 hover:text-gray-700 data-[state=active]:border-black data-[state=active]:text-black data-[state=active]:shadow-none"
+              className="!rounded-none border-b-2 border-transparent px-8 py-3 2xl:text-sm text-xs font-medium text-gray-500 hover:text-gray-700 data-[state=active]:border-black data-[state=active]:text-black data-[state=active]:shadow-none data-[state=active]:bg-gray-100"
             >
               Sub-Category
             </TabsTrigger>
@@ -148,11 +148,11 @@ useEffect(() => {
           <div className="p-6">
             <DashboardDetails stats={stats} />
             <h2 className="text-base font-medium mb-4">Sub-category list</h2>
-            <div className="space-y-4">
+            <div className="space-y-4 p-4">
               <div>
                 <label
                   htmlFor="subcategoryName"
-                  className="block text-sm font-medium mb-1"
+                  className="block  2xl:text-sm text-xs  font-medium mb-1"
                 >
                   Sub-Category Name
                 </label>
@@ -169,7 +169,7 @@ useEffect(() => {
               <div>
                 <label
                   htmlFor="description"
-                  className="block text-sm font-medium mb-1"
+                  className="block  2xl:text-sm text-xs  font-medium mb-1"
                 >
                   Description
                 </label>
@@ -184,7 +184,7 @@ useEffect(() => {
               </div>
 
               <div className="mt-8">
-                <h3 className="text-sm font-medium mb-2">Add Variant</h3>
+                <h3 className=" 2xl:text-sm text-xs  font-medium mb-2">Add Variant</h3>
                 <div className="flex flex-wrap gap-2 mb-4">
                 {variants.map((variant, index) => (
   <div key={index} className="flex gap-1">

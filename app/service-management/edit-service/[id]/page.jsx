@@ -2,19 +2,17 @@
 
 import { useState } from "react"
 import { useParams, useRouter } from "next/navigation"
-import { ChevronLeft, Upload, Edit, Plus } from "lucide-react"
+import { ChevronLeft, Upload, Edit } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
+import { Input } from "@/components/ui/input"   
 import { Textarea } from "@/components/ui/textarea"
 import { Badge } from "@/components/ui/badge"
-import Sidebar from "@/components/sidebar"
 
 export default function ServiceEditPage() {
   const router = useRouter()
   const params = useParams()
   const serviceId = params.id
 
-  // Mock service data
   const [service, setService] = useState({
     id: serviceId,
     name: "Cleaning",
@@ -22,7 +20,6 @@ export default function ServiceEditPage() {
     image: "/placeholder.svg?height=80&width=80",
   })
 
-  // Mock categories data
   const categories = [
     {
       id: 1,
@@ -63,8 +60,8 @@ export default function ServiceEditPage() {
             <ChevronLeft className="h-4 w-4" />
           </Button>
           <div>
-            <h1 className="text-lg font-semibold">Service Management</h1>
-            <p className="text-sm text-muted-foreground">Lorem ipsum management</p>
+            <h1 className="2xl:text-lg text-sm font-semibold">Service Management</h1>
+            <p className="2xl:text-sm text-xs text-muted-foreground">Lorem ipsum management</p>
           </div>
         </div>
 
@@ -87,14 +84,14 @@ export default function ServiceEditPage() {
 
               <div className="space-y-4">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium mb-1">
+                  <label htmlFor="name" className="block 2xl:text-sm text-xs font-medium mb-1">
                     Service Name
                   </label>
                   <Input id="name" name="name" value={service.name} onChange={handleInputChange} className="h-10" />
                 </div>
 
                 <div>
-                  <label htmlFor="description" className="block text-sm font-medium mb-1">
+                  <label htmlFor="description" className="block 2xl:text-sm text-xs font-medium mb-1">
                     Description
                   </label>
                   <Textarea
@@ -112,14 +109,14 @@ export default function ServiceEditPage() {
             {/* Right Column - Category List */}
             <div className="w-full md:w-1/2">
               <div className="flex items-center justify-between mb-4">
-                <h2 className="text-lg font-medium">Category list</h2>
+                <h2 className="2xl:text-lg text-sm font-medium">Category list</h2>
               </div>
 
               <div className="space-y-6">
                 {categories.map((category) => (
                   <div key={category.id} className="border rounded-lg p-4">
                     <div className="flex items-center justify-between mb-1">
-                      <h3 className="font-medium">{category.name}</h3>
+                      <h3 className="font-medium 2xl:text-lg text-sm">{category.name}</h3>
                       <Button
                         variant="default"
                         size="sm"
@@ -130,7 +127,7 @@ export default function ServiceEditPage() {
                         Edit
                       </Button>
                     </div>
-                    <p className="text-sm text-gray-500 mb-2">{category.description}</p>
+                    <p className="2xl:text-sm text-xs text-gray-500 mb-2">{category.description}</p>
                     <div className="flex flex-wrap gap-2">
                       {category.subcategories.map((subcat, index) => (
                         <Badge

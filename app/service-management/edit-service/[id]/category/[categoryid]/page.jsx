@@ -9,8 +9,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import SubCategory from "../../../../../../components/sub-category"
-import Link from "next/link"
+
 
 export default function CategoryEditPage() {
   const router = useRouter()
@@ -121,8 +120,8 @@ export default function CategoryEditPage() {
             <ChevronLeft className="h-4 w-4" />
           </Button>
           <div>
-            <h1 className="text-lg font-semibold">Service Management</h1>
-            <p className="text-sm text-muted-foreground">Lorem ipsum management</p>
+            <h1 className="2xl:text-lg text-sm font-semibold">Service Management</h1>
+            <p className="2xl:text-sm text-xs text-muted-foreground">Lorem ipsum management</p>
           </div>
         </div>
 
@@ -132,13 +131,13 @@ export default function CategoryEditPage() {
             <TabsList className="h-auto bg-transparent p-0">
               <TabsTrigger
                 value="edit-category"
-                className="rounded-none border-b-2 border-transparent px-8 py-3 text-sm font-medium text-gray-500 hover:text-gray-700 data-[state=active]:border-black data-[state=active]:text-black data-[state=active]:shadow-none"
+                className="!rounded-none border-b-2 border-transparent px-8 py-3 2xl:text-sm text-xs font-medium text-gray-500 hover:text-gray-700 data-[state=active]:border-black data-[state=active]:text-black data-[state=active]:shadow-none data-[state=active]:bg-gray-100"
               >
                 {isNewCategory ? "Add Category" : "Edit Category"}
               </TabsTrigger>
               <TabsTrigger
                 value="sub-category"
-                className="rounded-none border-b-2 border-transparent px-8 py-3 text-sm font-medium text-gray-500 hover:text-gray-700 data-[state=active]:border-black data-[state=active]:text-black data-[state=active]:shadow-none"
+                className="!rounded-none border-b-2 border-transparent px-8 py-3 2xl:text-sm text-xs font-medium text-gray-500 hover:text-gray-700 data-[state=active]:border-black data-[state=active]:text-black data-[state=active]:shadow-none data-[state=active]:bg-gray-100"
               >
                 Sub-Category
               </TabsTrigger>
@@ -152,7 +151,7 @@ export default function CategoryEditPage() {
             {activeTab === "edit-category" ? (
               <div className="space-y-6 max-w-xl">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium mb-1">
+                  <label htmlFor="name" className="block 2xl:text-sm text-xs font-medium mb-1">
                     Category Name
                   </label>
                   <Input
@@ -166,7 +165,7 @@ export default function CategoryEditPage() {
                 </div>
 
                 <div>
-                  <label htmlFor="description" className="block text-sm font-medium mb-1">
+                  <label htmlFor="description" className="block 2xl:text-sm text-xs font-medium mb-1">
                     Description
                   </label>
                   <Textarea
@@ -209,19 +208,19 @@ export default function CategoryEditPage() {
                   <div className="space-y-2">
                      
                 <div>
-                  <h3 className="text-sm font-medium mb-2">Sub-Categories</h3>
+                  <h3 className="2xl:text-sm text-xs font-medium mb-2">Sub-Categories</h3>
                     {subcategories.length === 0 ? (
-                      <p className="text-sm text-gray-500">No sub-categories added yet.</p>
+                      <p className="2xl:text-sm text-xs text-gray-500">No sub-categories added yet.</p>
                     ) : (
                       subcategories.map((subcat, index) => (
                         <div key={index} className="border border-gray-200 rounded-lg p-8 border-r[16px] mb-3 ">
                   <div className="flex justify-between ">
                     <div>
-                      <h3 className="font-medium">{subcat.subcategory}</h3>
-                      <p className="text-sm text-gray-500 mt-1">Lorem ipsum management</p>
+                      <h3 className="font-medium 2xl:text-lg text-sm">{subcat.subcategory}</h3>
+                      <p className="2xl:text-sm text-xs text-gray-500 mt-1">Lorem ipsum management</p>
                     </div>
                     <div>
-                      <p className="text-sm text-gray-500 mb-1">Avg Rating</p>
+                      <p className="2xl:text-sm text-xs text-gray-500 mb-1">Avg Rating</p>
                       <div className="flex">
                         {[...Array(5)].map((_, i) => (
                           <Star

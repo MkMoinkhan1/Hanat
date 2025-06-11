@@ -3,6 +3,7 @@ import { CardContent } from "@/components/ui/card";
 import { Star } from "lucide-react";
 
 const DashboardDetails = ({ stats,value }) => {
+  const isTrue = stats[1].value.length>7;
   return (
     <div
       className={`grid grid-cols-1 gap-2 md:grid-cols-2 ${value==="dashboard"?"lg:grid-cols-5":`lg:grid-cols-${stats.length}`} py-4 border-y-2 border-dashed border-spacing-14 mb-6`}
@@ -16,9 +17,9 @@ const DashboardDetails = ({ stats,value }) => {
         >
           <CardContent className="p-0 w-full !pr-0">
             <p className="2xl:text-xs text-[0.65rem] text-muted-foreground">{stat.label}</p>
-            <div className="text-[21px] font-[600] items-center text-primary flex flex-row gap-2">
+            <div className={`text-[21px] font-[600] 2xl:!items-center items-center text-primary flex 2xl:flex-row 2xl:gap-2 gap-2 ${isTrue && "xl:flex-col xl:!items-start xl:gap-0"} `}>
               {stat.value}
-              <div className="text-xs mt-1 flex">
+              <div className={`text-xs mt-1 flex ${isTrue && "xl:relative xl:top-[-8px]"} `}>
                 {stat.change && (
                   <span
                     className={`mr-1 2xl:text-xs text-[0.65rem] font-medium ${

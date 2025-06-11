@@ -58,7 +58,7 @@ export default function ServiceEditPage() {
             <ChevronLeft className="h-4 w-4" />
           </Button>
           <div>
-            <h1 className="text-sm font-semibold">Service Management</h1>
+            <h1 className=" 2xl:text-lg text-sm  font-semibold">Service Management</h1>
             <p className="2xl:text-sm text-xs text-muted-foreground">Lorem ipsum management</p>
           </div>
         </div>
@@ -115,7 +115,7 @@ export default function ServiceEditPage() {
             {/* Right Column - Category List */}
             <div className="w-full md:w-1/2">
               <div className="flex items-center justify-between mb-4">
-                <h2 className="text-sm font-medium">Category list</h2>
+                <h2 className=" 2xl:text-lg text-sm  font-medium">Category list</h2>
                 <Button
                 variant={"outline"}
                   className="flex items-center gap-2 2xl:text-sm text-xs"
@@ -130,7 +130,7 @@ export default function ServiceEditPage() {
                 {categories.map((category) => (
                   <div key={category.id} className="border rounded-lg p-6">
                     <div className="flex items-center justify-between mb-1">
-                      <h3 className="text-sm font-medium">{category.name}</h3>
+                      <h3 className=" 2xl:text-lg text-sm  font-medium">{category.name}</h3>
                     </div>
                     <p className="2xl:text-sm text-xs text-gray-500 mb-2">{category.description}</p>
                     <div className="flex flex-wrap gap-2">
