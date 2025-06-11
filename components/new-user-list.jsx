@@ -19,7 +19,9 @@ const NewUserList = ({ newUserData }) => {
   const {items , setItems , editItem , removeItem } = useUsersStore()
   useEffect(()=>{
     setItems(newUserData)
-  },[])
+    
+  },[newUserData])
+  console.log("New User Data:", newUserData);
   const handleEditUser = (user) => {
     setSelectedUser(user);
     setIsDrawerOpen(true);
@@ -40,7 +42,7 @@ const NewUserList = ({ newUserData }) => {
     });
   };
   return (
-    <Card className="lg:col-span-2 max-h-[25rem] overflow-auto">
+    <Card className="lg:col-span-2 max-h-[20rem] overflow-auto">
       <CardHeader className="flex flex-row items-center justify-between pb-2 pt-4 px-4">
         <CardTitle className="2xl:text-sm text-xs font-medium">
           New Users

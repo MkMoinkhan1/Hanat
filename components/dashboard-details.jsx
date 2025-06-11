@@ -6,7 +6,7 @@ const DashboardDetails = ({ stats,value }) => {
   const isTrue = stats[1].value.length>7;
   return (
     <div
-      className={`grid grid-cols-1 gap-2 md:grid-cols-2 ${value==="dashboard"?"lg:grid-cols-5":`lg:grid-cols-${stats.length}`} py-4 border-y-2 border-dashed border-spacing-14 mb-6`}
+      className={`grid grid-cols-4 gap-2 ${value==="dashboard"?"lg:grid-cols-5":`lg:grid-cols-${stats.length}`} py-4 border-y-2 border-dashed border-spacing-14 mb-6`}
     >
       {stats.map((stat, index) => (
         <div
