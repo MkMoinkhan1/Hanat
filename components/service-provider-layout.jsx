@@ -9,11 +9,11 @@ export default function ServiceProviderLayout({ children, activeTab, providerId 
   const router = useRouter()
 
   const tabs = [
-    { id: "personal-details", label: "Personal Details", href: `/service-provider/${providerId}` },
-    { id: "booking", label: "Booking", href: `/service-provider/${providerId}/booking` },
-    { id: "service-list", label: "Service List", href: `/service-provider/${providerId}/service-list` },
-    { id: "resources", label: "Resources", href: `/service-provider/${providerId}/resources` },
-    { id: "categories", label: "Categories", href: `/service-provider/${providerId}/categories` },
+    { id: "personal-details", label: "Personal Details", href: `/admin/service-provider/${providerId}` },
+    { id: "booking", label: "Booking", href: `/admin/service-provider/${providerId}/booking` },
+    { id: "service-list", label: "Service List", href: `/admin/service-provider/${providerId}/service-list` },
+    { id: "resources", label: "Resources", href: `/admin/service-provider/${providerId}/resources` },
+    { id: "categories", label: "Categories", href: `/admin/service-provider/${providerId}/categories` },
   ]
 
   return (
@@ -25,7 +25,7 @@ export default function ServiceProviderLayout({ children, activeTab, providerId 
                 variant="ghost"
                 size="icon"
                 className="mr-2 h-8 w-8 p-0"
-                onClick={() => router.push("/service-provider")}
+                onClick={() => router.push("/admin/service-provider")}
               >
                 <ArrowLeft className="h-4 w-4" />
               </Button>

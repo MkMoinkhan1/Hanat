@@ -96,7 +96,7 @@ export function DataTable({
               {columns.map((column, index) => (
                 <th
                   key={index}
-                  className="h-12 px-4 text-left align-middle 2xl:text-sm text-xs  font-medium text-muted-foreground"
+                  className="h-12 px-2 text-left align-middle 2xl:text-sm text-xs  font-medium text-muted-foreground"
                   style={column.width ? { width: column.width } : {}}
                 >
                   {column.header}

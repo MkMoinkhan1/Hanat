@@ -22,7 +22,7 @@ export default function CategoryTab() {
 
   // Handle tab clicks
   const handleEditCategoryClick = () => {
-    router.push("/edit-category")
+    router.push(`${pathname}/edit-category`)
   }
 
   const handleSubCategoryClick = () => {
@@ -31,18 +31,18 @@ export default function CategoryTab() {
     if (lastSubCategoryPath && lastSubCategoryPath !== "/sub-category") {
       router.push(lastSubCategoryPath)
     } else {
-      router.push("/sub-category")
+      router.push(`${pathname}/sub-category`)
     }
   }
 
   // Handle back button click
   const handleBackClick = () => {
-    if (pathname.includes("/edit")) {
+    if (pathname.includes("/admin/edit")) {
       // If we're on an edit page, go back to the subcategory listing
       router.push("/sub-category")
     } else {
       // Otherwise go to a parent page or dashboard
-      router.push("/dashboard")
+      router.push("/admin/dashboard")
     }
   }
 

@@ -17,9 +17,11 @@ const DashboardDetails = ({ stats,value }) => {
         >
           <CardContent className="p-0 w-full !pr-0">
             <p className="2xl:text-xs text-[0.65rem] text-muted-foreground">{stat.label}</p>
-            <div className={`text-[21px] font-[600] 2xl:!items-center items-center text-primary flex 2xl:flex-row 2xl:gap-2 gap-2 ${isTrue && "xl:flex-col xl:!items-start xl:gap-0"} `}>
+            <div className={`text-[21px] font-[600] flex flex-col items-start gap-0 `}
+            
+            >
               {stat.value}
-              <div className={`text-xs mt-1 flex ${isTrue && "xl:relative xl:top-[-8px]"} `}>
+              <div className={`text-xs mt-1 flex relative top-[-8px] `}>
                 {stat.change && (
                   <span
                     className={`mr-1 2xl:text-xs text-[0.65rem] font-medium ${

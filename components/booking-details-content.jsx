@@ -14,7 +14,7 @@ export default function BookingDetailsContent({ bookingId }) {
       const [showRescheduleDialog, setShowRescheduleDialog] = useState(false)
 
   const handleViewInvoice = () => {
-    router.push(`/service-provider/${params.id}/booking/${bookingId}/invoice/IDS-8263849`)
+    router.push(`/admin/service-provider/${params.id}/booking/${bookingId}/invoice/IDS-8263849`)
   }
 
   return (
@@ -22,7 +22,7 @@ export default function BookingDetailsContent({ bookingId }) {
       {/* Header */}
       <div className="mb-8">
         <div className="flex items-center gap-6 mb-4">
-              <Button variant="ghost" size="icon" className="h-8 w-8" onClick={() => router.push(`/service-provider/${params.id}/booking`)}>
+              <Button variant="ghost" size="icon" className="h-8 w-8" onClick={() => router.push(`/admin/service-provider/${params.id}/booking`)}>
                         <ChevronLeft className="h-4 w-4" />
                       </Button>
           <div>

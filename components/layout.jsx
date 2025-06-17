@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import homeLogo from "@/public/images/mainlogo.png"
@@ -13,6 +13,7 @@ import bookingManagementIcon from "@/public/images/Booking_management-Icon.png"
 import feedbackIcon from "@/public/images/Feedback-Icon.png"
 import ticketIcon from "@/public/images/Ticket-Icon.png"
 import settingIcon from "@/public/images/Setting-Icon.png"
+import logoutIcon from "@/public/images/logout.png"
 import {
  ChevronRight,
 } from "lucide-react";
@@ -28,39 +29,38 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
 
-const Layout = ({ children }) => {
+const Layout = ({ children,token }) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const pathname = usePathname();
-
   const mainNavItems = [
     {
       title: "Dashboard",
-      href: "/dashboard",
+      href: "/admin/dashboard",
       icon: dashboardIcon,
     },
     {
       title: "Users",
-      href: "/users",
+      href: "/admin/users",
       icon: usersIcon,
     },
     {
       title: "Service Provider",
-      href: "/service-provider",
+      href: "/admin/service-provider",
       icon: serviceProviderIcon,
     },
     {
       title: "Service Management",
-      href: "/service-management",
+      href: "/admin/service-management",
       icon: serviceManagementIcon,
     },
     {
       title: "Booking Management",
-      href: "/booking-management",
+      href: "/admin/booking-management",
       icon: bookingManagementIcon,
     },
     {
       title: "Feedback Forms",
-      href: "/feedback-forms",
+      href: "/admin/feedback-forms",
       icon: feedbackIcon,
     },
   ];
@@ -68,12 +68,12 @@ const Layout = ({ children }) => {
   const otherNavItems = [
     {
       title: "Tickets",
-      href: "/tickets",
+      href: "/admin/tickets",
       icon: ticketIcon,
     },
     {
       title: "Settings",
-      href: "/settings",
+      href: "/admin/settings",
       icon: settingIcon,
     },
   ];
@@ -83,9 +83,13 @@ const Layout = ({ children }) => {
   };
 
   const isActiveLink = (href) => {
-    if (href === "/dashboard" && pathname === "/") return true;
+    if (href === "/admin/dashboard" && pathname === "/") return true;
     return pathname === href || pathname.startsWith(`${href}/`);
   };
+const removeCookies = () => {
+  document.cookie = 'auth-token=; Max-Age=0; path=/;';
+  window.location.href = '/auth/login'; 
+};
 
   return (
     <div className="flex h-screen">
@@ -99,7 +103,7 @@ const Layout = ({ children }) => {
         {/* Sidebar Header */}
         <div className="flex h-16 items-center border-b px-4">
           <Link
-            href="/"
+            href="/admin/dashboard"
             className={cn(
               "flex items-center gap-2 font-semibold",
               isCollapsed && "justify-center"
@@ -266,15 +270,24 @@ const Layout = ({ children }) => {
               isCollapsed && "justify-center"
             )}
           >
+            {!isCollapsed && (
+              <div className="flex justify-between w-full items-center">
+                <div className="flex flex-row gap-2">
             <div className="flex h-9 w-9 items-center justify-center rounded-full bg-muted">
               <span className="text-xs font-medium">SS</span>
             </div>
-            {!isCollapsed && (
-              <div className="flex flex-col">
-                <span className="2xl:text-sm text-xs font-medium">Slim Shady</span>
+                <div className="flex flex-col">
+                  <span className="2xl:text-sm text-xs font-medium">Slim Shady</span>
                 <span className="text-xs text-muted-foreground">
                   shady@handit.com
                 </span>
+                </div>
+              </div>
+              <Image
+                src={logoutIcon}
+                alt="Settings Icon"
+                className="h-5 w-5 ml-auto cursor-pointer" onClick={removeCookies}/>
+                
               </div>
             )}
           </div>

@@ -73,7 +73,7 @@ export default function BookingContent() {
       header: "Action",
       accessorKey: "action",
       cell: (row) => (
-        <div className="flex justify-end gap-2">
+        <div className="flex justify-center gap-2">
           <EllipsisVertical className="h-4 w-4" />
         </div>
       ),
@@ -158,30 +158,9 @@ export default function BookingContent() {
     <div className="p-7">
       {/* Stats Section */}
         {/* Search and Filter */}
-      <div className="flex items-center justify-between mb-6">
-        <div className="relative w-[400px]">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
-          <Input placeholder="Search" className="pl-10 border-gray-300" />
-        </div>
-        <div className="flex items-center space-x-3">
-          <Button variant="outline" className="border-gray-300 text-gray-700">
-            Weekly
-            <ChevronDown className="ml-2 h-4 w-4" />
-          </Button>
-        </div>
-      </div>
       <DashboardDetails stats={stats} />
       {/* Filter and Status */}
-      <div className="flex items-center space-x-3 mb-6">
-        <Button variant="outline" className="border-gray-300 text-gray-700">
-          All Status
-          <ChevronDown className="ml-2 h-4 w-4" />
-        </Button>
-        <Button variant="outline" className="border-gray-300 text-gray-700">
-          <Filter className="mr-2 h-4 w-4" />
-          Filter
-        </Button>
-      </div>
+
 
       {/* Bookings Table */}
       <DataTable

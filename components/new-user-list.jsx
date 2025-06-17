@@ -51,7 +51,7 @@ const NewUserList = ({ newUserData }) => {
           variant="ghost"
           size="sm"
           className="text-xs text-blue-600 h-7 px-2"
-          onClick={() => router.push("/users")}
+          onClick={() => router.push("/admin/users")}
         >
           View All
         </Button>

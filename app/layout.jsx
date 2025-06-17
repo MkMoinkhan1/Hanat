@@ -1,5 +1,4 @@
 import "./globals.css"
-import Layout from "@/components/layout"
 import { Urbanist } from "next/font/google";
 
 
@@ -19,8 +18,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={` ${urbanist.className} antialiased`}>
-        
-        <Layout>{children}</Layout>
+            {children}
       </body>
     </html>
   )

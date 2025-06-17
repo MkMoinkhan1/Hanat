@@ -35,3 +35,9 @@ export const useTicketsStore = create((set) => ({
   removeItem: (id) =>
     set((state) => ({ items: state.items.filter((item) => item.id !== id) })),
 }));    
+export const useResourcesStore = create((set) => ({
+  items: [],
+  setItems: (items) => set({ items }),
+  removeItem: (id) =>
+    set((state) => ({ items: state.items.filter((item) => item.id !== id) })),
+}));    

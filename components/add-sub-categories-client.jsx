@@ -56,9 +56,6 @@ const addSubCategoriesClient = () => {
       setVariants([ newVariant]);
       setIsAddVariantOpen(false);
     };
-    useEffect(() => {
-      console.log("Variants updated:", variants);
-    }, [variants]);
       const handleInputChange = (e) => {
         const { name, value } = e.target;
         setSubcategoryForm((prev) => ({ ...prev, [name]: value }));
@@ -70,7 +67,7 @@ const addSubCategoriesClient = () => {
         setLoading(true);
         const newParams = new URLSearchParams(Array.from(searchParams.entries()));
         newParams.set("tab", value);
-        router.push(`?${newParams.toString()}`);
+        router.push(`/admin/?${newParams.toString()}`);
     
         setTimeout(() => {
           setActiveTab(value);
@@ -83,8 +80,12 @@ const addSubCategoriesClient = () => {
       const isNewCategory = categoryId === "new";
     
       useEffect(() => {
+        if(screen.width < 1200){
+          
+        }
+
         if (defaultTab === "edit-category") {
-          const categoryUrl = `/service-management/add-service/add-category`;
+          const categoryUrl = `/admin/service-management/add-service/add-category`;
           router.replace(categoryUrl);
         } else {
           setActiveTab(defaultTab);
