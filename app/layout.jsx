@@ -16,7 +16,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    // dir="rtl"
+    <html lang="en" >
       <body className={` ${urbanist.className} antialiased`}>
             {children}
       </body>

@@ -1,9 +1,7 @@
-import React from 'react'
+import ServiceProviderBooking from "@/components/service-provider-booking"
 
-const page = () => {
-  return (
-    <div>Booking Managemnet Page</div>
-  )
+export default async function ServiceProviderBookingPage({ params }) {
+return(
+  <ServiceProviderBooking/>
+)
 }
-
-export default page

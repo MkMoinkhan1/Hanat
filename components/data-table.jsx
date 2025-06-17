@@ -10,6 +10,8 @@ export function DataTable({
   data,
   columns,
   searchField = "name",
+  management,
+  monthlyFilter,
   itemsPerPageOptions = [5, 10, 25, 50],
   defaultItemsPerPage = 5,
 }) {
@@ -20,6 +22,7 @@ export function DataTable({
   const [paginatedData, setPaginatedData] = useState([])
   const [totalPages, setTotalPages] = useState(1)
   const [statusFilter, setStatusFilter] = useState("All")
+  const [weeklyFilter, setWeeklyFilter] = useState("Weekly")
 
   useEffect(() => {
     if (!data) return
@@ -70,7 +73,9 @@ export function DataTable({
             onChange={(e) => setSearchQuery(e.target.value)}
           />
         </div>
-            <div className="flex items-center gap-2 2xl:text-sm text-xs">
+            {
+              !management ? (
+                <div className={`flex items-center gap-2 2xl:text-sm text-xs ${monthlyFilter ? "w-[18rem]":""}`}>
             <Select value={statusFilter} onValueChange={setStatusFilter}>
               <SelectTrigger className="w-[120px] 2xl:text-sm text-xs">
                 <SelectValue placeholder="All Status" />
@@ -81,11 +86,28 @@ export function DataTable({
                 <SelectItem value="Inactive">Inactive</SelectItem>
               </SelectContent>
             </Select>
+            {
+              monthlyFilter && (
+                <Select value={weeklyFilter} onValueChange={setWeeklyFilter}>
+                  <SelectTrigger className="w-[120px] 2xl:text-sm text-xs">
+                    <SelectValue placeholder="Monthly" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {monthlyFilter.map((option) => (
+                      <SelectItem key={option} value={option} className="2xl:text-sm text-xs">
+                        {option}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+            )}
             <Button variant="outline" className="text-xs 2xl:text-sm" >
               <Filter className="h-4 w-4" />
               Filter
             </Button>
           </div>
+              ):""
+            }
       </div>
 
       {/* Table */}
@@ -96,7 +118,7 @@ export function DataTable({
               {columns.map((column, index) => (
                 <th
                   key={index}
-                  className="h-12 px-2 text-left align-middle 2xl:text-sm text-xs  font-medium text-muted-foreground"
+                  className={`h-12 px-2  ${management && column.header==="Action"?"text-center":"text-left"} align-middle 2xl:text-sm text-xs  font-medium text-muted-foreground`}
                   style={column.width ? { width: column.width } : {}}
                 >
                   {column.header}
