@@ -1,5 +1,6 @@
 "use client"
 
+import MainButton from "@/components/main_button"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -58,7 +59,8 @@ export default function FAQsPage() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 p-6">
+                        <MainButton/>
       <div className="flex items-center justify-between">
         <h3 className="2xl:text-lg text-sm font-medium">Create FAQs for users</h3>
         <Button

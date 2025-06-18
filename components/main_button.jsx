@@ -1,31 +1,21 @@
-"use client"
-
-import { usePathname } from "next/navigation"
-import { Button } from "@/components/ui/button"
-import { ArrowLeft } from "lucide-react"
-import Link from "next/link"
-import React, { useState } from "react"
-import Image from "next/image"
+import Image from 'next/image'
+import React from 'react'
+import { Button } from "./ui/button"
 import SettingIcon from "@/public/images/Setting-Icon.png"
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+const MainButton = () => {
+      const pathname = usePathname()
 
-export const HandlerContext = React.createContext();
-
-export default function SettingsLayout({
-  children,
-}) {
-  const pathname = usePathname()
-    const [handler,setHandler] = useState(null);
-    console.log('HANDLER', handler)
-  const isActive = (path) => {
+      const isActive = (path) => {
     if (path === "/admin/settings") {
       return pathname === "/admin/settings"
     }
     return pathname === path
   }
-
   return (
-    <HandlerContext.Provider value={{ handler, setHandler }}>
-        <header className="flex h-16 items-center justify-between px-6">
+    <>
+         <header className="flex h-16 items-center justify-between ">
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-3">
               <Image
@@ -41,14 +31,10 @@ export default function SettingsLayout({
           </div>
           <div className="flex items-center gap-3">
             <Button variant="outline">Cancel</Button>
-            <Button className="bg-slate-900 hover:bg-slate-800" onClick={()=>{
-                console.log('CALLED HANDLER',handler)
-                handler && handler()}}>Save Changes</Button>
+            <Button className="bg-slate-900 hover:bg-slate-800">Save Changes</Button>
           </div>
         </header>
-
-        {/* Navigation Tabs */}
-        <div className="border-b pt-3 px-6">
+         <div className="border-b my-6 ">
           <nav className="flex">
             <Link
               href="/admin/settings"
@@ -102,8 +88,8 @@ export default function SettingsLayout({
             </Link>
           </nav>
         </div>
-
-        <main className="p-6">{children}</main>
-    </HandlerContext.Provider>
+    </>
   )
 }
+
+export default MainButton

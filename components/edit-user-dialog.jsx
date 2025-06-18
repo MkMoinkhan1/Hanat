@@ -1,7 +1,7 @@
 "use client"
 
+import { CalendarDays ,Upload } from "lucide-react"
 import { useState, useEffect } from "react"
-import { X, Upload } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetFooter } from "@/components/ui/sheet"
 import { Input } from "@/components/ui/input"
@@ -52,6 +52,23 @@ export function EditUserDrawer({ user, isOpen, onClose, onSave }) {
     onSave({ ...user, ...formData })
     onClose()
   }
+
+// Calculate min/max date strings
+const getDateRange = () => {
+  const today = new Date()
+  const minDate = new Date(today.getFullYear() - 120, today.getMonth(), today.getDate())
+  const maxDate = new Date(today.getFullYear() - 7, today.getMonth(), today.getDate())
+
+  const formatDate = (date) =>
+    `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, "0")}-${date
+      .getDate()
+      .toString()
+      .padStart(2, "0")}`
+
+  return { min: formatDate(minDate), max: formatDate(maxDate) }
+}
+
+const { min, max } = getDateRange()
 
   // Format date for input field (assuming dob is in format MM/DD/YYYY)
   const formatDateForInput = (dateString) => {
@@ -132,30 +149,34 @@ export function EditUserDrawer({ user, isOpen, onClose, onSave }) {
                 />
               </div>
 
-              <div className="space-y-1">
-                <Label htmlFor="dob" className="text-xs">
-                  Date of Birth
-                </Label>
-                <div className="relative">
-                  <Input
-                    id="dob"
-                    name="dob"
-                    type="date"
-                    value={formatDateForInput(formData.dob)}
-                    onChange={(e) => {
-                      const date = new Date(e.target.value)
-                      const formattedDate = `${(date.getMonth() + 1).toString().padStart(2, "0")}/${date.getDate().toString().padStart(2, "0")}/${date.getFullYear()}`
-                      handleInputChange({ target: { name: "dob", value: formattedDate } })
-                    }}
-                    className="w-full h-9 text-sm"
-                  />
-                  {formData.dob && (
-                    <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-muted-foreground text-xs">
-                      {formatDateForDisplay(formatDateForInput(formData.dob))}
-                    </div>
-                  )}
-                </div>
-              </div>
+            <div className="space-y-1">
+  <Label htmlFor="dob" className="text-xs">
+    Date of Birth
+  </Label>
+  <div className="relative">
+    <Input
+      id="dob"
+      name="dob"
+      type="date"
+      min={min}
+      max={max}
+      value={formatDateForInput(formData.dob)}
+      onFocus={(e) => {
+        // Force open on focus if browser supports
+        e.target.showPicker?.()
+      }}
+      onChange={(e) => {
+        const date = new Date(e.target.value)
+        const formattedDate = `${(date.getMonth() + 1)
+          .toString()
+          .padStart(2, "0")}/${date.getDate().toString().padStart(2, "0")}/${date.getFullYear()}`
+        handleInputChange({ target: { name: "dob", value: formattedDate } })
+      }}
+      className="w-full h-9 text-sm pr-10 appearance-none"
+    />
+  </div>
+</div>
+
 
               <div className="space-y-1">
                 <Label htmlFor="gender" className="text-xs">

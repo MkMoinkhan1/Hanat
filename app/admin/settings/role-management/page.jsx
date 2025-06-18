@@ -12,6 +12,7 @@ import {
 import { useRoleManagementStore } from "@/store/editStore";
 import { DataTable } from "@/components/data-table";
 import { useEffect } from "react";
+import MainButton from "@/components/main_button";
 
 // Sample role management data
 const roleManagementData = [
@@ -113,6 +114,8 @@ export default function RoleManagementPage() {
     removeItem(user.id);
   };
   return (
+    <div className="p-6">
+      <MainButton />
     <div className="2xl:p-6 p-4 mb-4 space-y-6">
       <DataTable
         data={items}
@@ -122,6 +125,7 @@ export default function RoleManagementPage() {
         itemsPerPageOptions={[5, 10, 15, 20]}
         defaultItemsPerPage={5}
       />
+    </div>
     </div>
   );
 }

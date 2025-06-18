@@ -123,15 +123,18 @@ const removeCookies = () => {
               </>
             )}
           </Link>
-          <div className={cn(!isCollapsed ? "ml-auto" : "")}>
+          <div   className={cn(
+    "flex items-center",
+    isCollapsed ? "justify-center w-full" : "ml-auto"
+  )}>
             <Button
               variant="ghost"
               size="icon"
               onClick={toggleSidebar}
-              className="h-9 w-9"
+              className={`h-9 w-9 `}
             >
               {isCollapsed ? (
-                <Image src={hamburgerIcon} alt="Hamburger icon" className="h-6 w-6" />
+                <Image src={hamburgerIcon} alt="Hamburger icon" className="h-6 w-6 " />
               ) : (
                 <Image src={hamburgerIcon} alt="Hamburger icon" className="h-6 w-6" />
               )}
@@ -170,7 +173,7 @@ const removeCookies = () => {
                           )}
                         >
                           <div
-                            className={cn(isCollapsed ? "h-6 w-6" : "h-5 w-5")}
+                            className={cn(isCollapsed ? "h-5 w-5" : "h-5 w-5")}
                           >
                             <Image
                             src={item.icon}
@@ -230,7 +233,7 @@ const removeCookies = () => {
                           )}
                         >
                           <div
-                            className={cn(isCollapsed ? "h-6 w-6" : "h-5 w-5")}
+                            className={cn(isCollapsed ? "h-5 w-5" : "h-5 w-5")}
                           >
                              <Image
                             src={item.icon}
@@ -263,35 +266,45 @@ const removeCookies = () => {
         </div>
 
         {/* Sidebar Footer */}
-        <div className="border-t p-4">
-          <div
-            className={cn(
-              "flex items-center gap-3",
-              isCollapsed && "justify-center"
-            )}
-          >
-            {!isCollapsed && (
-              <div className="flex justify-between w-full items-center">
-                <div className="flex flex-row gap-2">
-            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-muted">
-              <span className="text-xs font-medium">SS</span>
-            </div>
-                <div className="flex flex-col">
-                  <span className="2xl:text-sm text-xs font-medium">Slim Shady</span>
-                <span className="text-xs text-muted-foreground">
-                  shady@handit.com
-                </span>
-                </div>
-              </div>
-              <Image
-                src={logoutIcon}
-                alt="Settings Icon"
-                className="h-5 w-5 ml-auto cursor-pointer" onClick={removeCookies}/>
-                
-              </div>
-            )}
+       <div className="border-t p-4">
+  <div
+    className={cn(
+      "flex items-center gap-3",
+      isCollapsed && "justify-center"
+    )}
+  >
+    {isCollapsed ? (
+      // Show only avatar + logout icon
+      <div className="flex flex-col items-center gap-2">
+        <div className="flex h-9 w-9 items-center justify-center rounded-full bg-muted">
+          <span className="text-xs font-medium">SS</span>
+        </div>
+      </div>
+    ) : (
+      // Full footer when expanded
+      <div className="flex justify-between w-full items-center">
+        <div className="flex flex-row gap-2 items-center">
+          <div className="flex h-9 w-9 items-center justify-center rounded-full bg-muted">
+            <span className="text-xs font-medium">SS</span>
+          </div>
+          <div className="flex flex-col">
+            <span className="2xl:text-sm text-xs font-medium">Slim Shady</span>
+            <span className="text-xs text-muted-foreground">
+              shady@handit.com
+            </span>
           </div>
         </div>
+        <Image
+          src={logoutIcon}
+          alt="Logout Icon"
+          className="h-5 w-5 ml-auto cursor-pointer"
+          onClick={removeCookies}
+        />
+      </div>
+    )}
+  </div>
+</div>
+
       </div>
 
       {/* Main Content */}

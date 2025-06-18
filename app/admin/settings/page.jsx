@@ -1,40 +1,31 @@
-"use client"
+"use client";
 
-import { useContext, useEffect, useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Upload } from "lucide-react"
-import { HandlerContext } from "./layout"
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Upload } from "lucide-react";
+import MainButton from "@/components/main_button";
 
-export default function SettingsPage() {
-  console.log("SettingsPage rendered")
-  const {handler,setHandler} = useContext(HandlerContext);
-  const value = useContext(HandlerContext);
-  console.log("SettingsPage value",value)
-
-  const [accountForm, setAccountForm] = useState({
-    fullName: "",
-    email: "",
-    phoneNumber: "",
-    role: "",
-  })
-  function handleAccountChange(){
-    // logic
-    console.log("SettingsPage handleAccountChange", accountForm)
+const formDataVal = 
+  {
+    fullName:"Moin Khan",
+    email:"Moin@123.com",
+    phoneNumber:"7724081607",
+    role:"Chain Snatching"
   }
-  useEffect(() => {
-    console.log("SettingsPage useEffect", handler)
-    setHandler(()=>handleAccountChange)
-    return ()=>{
-setHandler(null)
-    }
-  },[accountForm])
+export default function SettingsPage() {
+  const [accountForm, setAccountForm] = useState(formDataVal);
   return (
+    <div className="p-6">
+        <MainButton/>
     <div className="space-y-8">
       <div className="flex items-center gap-4">
         <Avatar className="2xl:h-16 2xl:w-16 h-10 w-10">
-          <AvatarImage src="/placeholder.svg?height=64&width=64" alt="Profile" />
+          <AvatarImage
+            src="/placeholder.svg?height=64&width=64"
+            alt="Profile"
+          />
           <AvatarFallback className="2xl:text-sm text-xs">SS</AvatarFallback>
         </Avatar>
         <Button variant="outline" size="sm" className="gap-2">
@@ -44,14 +35,20 @@ setHandler(null)
       </div>
 
       <div>
-        <h3 className="2xl:text-sm text-xs 2xl:font-medium text-muted-foreground mb-4">PERSONAL DETAILS</h3>
+        <h3 className="2xl:text-sm text-xs 2xl:font-medium text-muted-foreground mb-4">
+          PERSONAL DETAILS
+        </h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="space-y-2">
-            <label className="2xl:text-sm text-xs  font-medium">Full Name</label>
+            <label className="2xl:text-sm text-xs  font-medium">
+              Full Name
+            </label>
             <Input
               placeholder="Enter your name"
               value={accountForm.fullName}
-              onChange={(e) => setAccountForm({ ...accountForm, fullName: e.target.value })}
+              onChange={(e) =>
+                setAccountForm({ ...accountForm, fullName: e.target.value })
+              }
             />
           </div>
           <div className="space-y-2">
@@ -59,15 +56,21 @@ setHandler(null)
             <Input
               placeholder="Enter your mail"
               value={accountForm.email}
-              onChange={(e) => setAccountForm({ ...accountForm, email: e.target.value })}
+              onChange={(e) =>
+                setAccountForm({ ...accountForm, email: e.target.value })
+              }
             />
           </div>
           <div className="space-y-2">
-            <label className="2xl:text-sm text-xs  font-medium">Phone Number</label>
+            <label className="2xl:text-sm text-xs  font-medium">
+              Phone Number
+            </label>
             <Input
               placeholder="Enter your name"
               value={accountForm.phoneNumber}
-              onChange={(e) => setAccountForm({ ...accountForm, phoneNumber: e.target.value })}
+              onChange={(e) =>
+                setAccountForm({ ...accountForm, phoneNumber: e.target.value })
+              }
             />
           </div>
         </div>
@@ -77,11 +80,14 @@ setHandler(null)
             <Input
               placeholder="Enter your role"
               value={accountForm.role}
-              onChange={(e) => setAccountForm({ ...accountForm, role: e.target.value })}
+              onChange={(e) =>
+                setAccountForm({ ...accountForm, role: e.target.value })
+              }
             />
           </div>
         </div>
       </div>
     </div>
-  )
+    </div>
+  );
 }

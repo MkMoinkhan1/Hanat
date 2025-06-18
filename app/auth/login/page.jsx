@@ -77,6 +77,9 @@ export default function LoginPage() {
     if (!emailError && !passwordError) {
         if(formData.email === admin_email && formData.password === admin_password) {
           document.cookie = `auth-token=${encodeURIComponent("jiefcmunycgedyugd73t76nx273y8721nyz287")}; path=/; max-age=${formData.rememberMe?"604800":"86400"}`
+           const userInfoString = encodeURIComponent(JSON.stringify(formData));
+document.cookie = `user-info=${userInfoString}; path=/; max-age=${formData.rememberMe ? "604800" : "86400"}`;
+
           router.push("/admin/dashboard")
         }
     }
