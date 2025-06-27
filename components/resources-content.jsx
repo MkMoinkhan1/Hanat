@@ -9,6 +9,7 @@ import { Badge } from "./ui/badge";
 import Image from "next/image";
 import { useResourcesStore } from "@/store/editStore";
 import { useEffect } from "react";
+import { useTranslations } from "next-intl";
 const serviceProviders = [
   {
     id: 1,
@@ -55,9 +56,10 @@ const renderRating = (rating) => {
   );
 };
 export default function ResourcesContent() {
+  const t = useTranslations("ServiceProvider.resourceTable");
   const columns = [
     {
-      header: "Resource name",
+      header: t("name"),
       accessorKey: "name",
       cell: (row) => (
         <div className="flex items-center gap-3">
@@ -73,20 +75,20 @@ export default function ResourcesContent() {
       ),
     },
     {
-      header: "Service",
+      header: t("service"),
       accessorKey: "service",
     },
     {
-      header: "Mobile Number",
+      header: t("phone"),
       accessorKey: "phone",
     },
     {
-      header: "Avg Rating",
+      header: t("rating"),
       accessorKey: "rating",
       cell: (row) => renderRating(row.rating),
     },
     {
-      header: "Status",
+      header: t("status"),
       accessorKey: "status",
       cell: (row) => (
         <Badge
@@ -102,7 +104,7 @@ export default function ResourcesContent() {
       ),
     },
     {
-      header: "Action",
+      header: t("action"),
       accessorKey: "action",
       cell: (row) => (
         <div className="flex gap-1">
@@ -141,7 +143,6 @@ export default function ResourcesContent() {
   useEffect(() => {
     setItems(serviceProviders);
   }, []);
-  console.log("Items in ResourcesContent:", items);
   return (
     <div className="p-4">
       <DataTable

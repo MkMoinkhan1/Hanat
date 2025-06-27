@@ -11,9 +11,12 @@ import { EditUserDrawer } from "./edit-user-dialog";
 import { toast } from "./ui/use-toast";
 import { Toaster } from "./ui/toaster";
 import { useUsersStore } from "@/store/editStore";
+import { useTranslations } from "next-intl";
+import { useParams } from "next/navigation";
 
 const NewUserList = ({ newUserData }) => {
-
+  const {locale} = useParams()
+  const t = useTranslations("HomePage")
   const [selectedUser, setSelectedUser] = useState(null);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const {items , setItems , editItem , removeItem } = useUsersStore()
@@ -45,15 +48,15 @@ const NewUserList = ({ newUserData }) => {
     <Card className="lg:col-span-2 max-h-[20rem] overflow-auto">
       <CardHeader className="flex flex-row items-center justify-between pb-2 pt-4 px-4">
         <CardTitle className="2xl:text-sm text-xs font-medium">
-          New Users
+          {t('new_user')}
         </CardTitle>
         <Button
           variant="ghost"
           size="sm"
           className="text-xs text-blue-600 h-7 px-2"
-          onClick={() => router.push("/admin/users")}
-        >
-          View All
+          onClick={() => router.push(`/${locale}/admin/users`)}
+        > 
+          {t('view_all')}
         </Button>
       </CardHeader>
       <CardContent className="px-4 pb-4">
@@ -76,7 +79,7 @@ const NewUserList = ({ newUserData }) => {
                       variant="outline"
                       className="bg-blue-50 text-blue-600 hover:bg-blue-50 text-xs font-normal"
                     >
-                      New
+                      {t('new')}
                     </Badge>
                   </div>
                 </div>
@@ -86,7 +89,7 @@ const NewUserList = ({ newUserData }) => {
                 className="text-muted-foreground rounded-md gap-0.5 px-1.5 text-xs"
               >
                 <CircleCheck className="fill-green-500 dark:fill-green-400 w-[13px] h-[13px] text-white" />
-                Active{" "}
+                {t('active')}{" "}
               </Badge>
               <div className="flex gap-1">
                 <Button
@@ -113,7 +116,7 @@ const NewUserList = ({ newUserData }) => {
             </div>
           ))}
           {items.length === 0 && (
-            <div className="text-center text-gray-500">No new users found.</div>
+            <div className="text-center text-gray-500">{t('no_found')}.</div>
           )}
         </div>
       </CardContent>

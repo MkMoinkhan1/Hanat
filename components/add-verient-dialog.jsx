@@ -12,8 +12,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import { useTranslations } from "next-intl"
 
 export function AddVariantDialog({ open, onOpenChange, initialVariants = [], onSave }) {
+  const t = useTranslations("ServiceProvider.AddVariantDialog")
   const [variantData, setVariantData] = useState({
     "multiple-choice": [],
     "short-answer": [""],
@@ -118,28 +120,28 @@ export function AddVariantDialog({ open, onOpenChange, initialVariants = [], onS
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[500px] p-0 overflow-hidden">
         <div className="p-6 pb-2">
-          <DialogTitle className="text-lg font-semibold">Add Variant</DialogTitle>
+          <DialogTitle className="text-lg font-semibold">{t('Add Variant')}</DialogTitle>
         </div>
 
         <div className="px-6 py-4 space-y-6">
           <div className="grid grid-cols-2 gap-4">
             <div>
               <label htmlFor="subcategory" className="block 2xl:text-sm text-xs font-medium mb-2">
-                Sub-Category
+                {t('Sub-Category')}
               </label>
               <Input id="subcategory" value="Sofa" readOnly className="h-10" />
             </div>
             <div>
               <label htmlFor="type" className="block 2xl:text-sm text-xs font-medium mb-2">
-                Type
+                {t('Type')}
               </label>
               <Select value={selectedType} onValueChange={handleTypeChange}>
                 <SelectTrigger id="type" className="h-10">
-                  <SelectValue placeholder="Select type" />
+                  <SelectValue placeholder={t("Select type")} />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="multiple-choice">Multiple Choice</SelectItem>
-                  <SelectItem value="short-answer">Short Answer</SelectItem>
+                  <SelectItem value="multiple-choice">{t('Multiple Choice')}</SelectItem>
+                  <SelectItem value="short-answer">{t('Short Answer')}</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -184,7 +186,7 @@ export function AddVariantDialog({ open, onOpenChange, initialVariants = [], onS
           ) : (
             <div className="py-3">
               <Input
-                placeholder="Enter the question"
+                placeholder={t("Enter the question")}
                 value={newOption}
                 onChange={(e) => setNewOption(e.target.value)}
               />
@@ -194,14 +196,14 @@ export function AddVariantDialog({ open, onOpenChange, initialVariants = [], onS
 
         <div className="flex justify-between p-6 pt-2 border-t">
           <Button variant="outline" onClick={() => onOpenChange(false)}>
-            Cancel
+            {t('Cancel')}
           </Button>
           <Button
             className="bg-gray-900 hover:bg-gray-800"
             onClick={handleSave}
             disabled={isSaveDisabled}
           >
-            Save
+            {t('Save')}
           </Button>
         </div>
       </DialogContent>

@@ -5,6 +5,7 @@ import HomeIcon from "@/public/images/Dashboard-Main-Icon.png";
 import UserPieChart from "@/components/user-pie-chart";
 import NewUserList from "@/components/new-user-list";
 import UserLineChart from "@/components/line-chart"
+
 import {
   Select,
   SelectContent,
@@ -28,7 +29,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import DashboardDetails from "@/components/dashboard-details";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useTranslations } from 'next-intl'
+import { useParams, useRouter } from "next/navigation";
 
 // Register ChartJS components
 ChartJS.register(
@@ -177,6 +179,9 @@ const usersData = [
 ];
 
 export default function AdminDashboard() {
+  const t = useTranslations('HomePage')
+  const td = useTranslations('DashboardDetails');
+  const {locale} = useParams();
   const router = useRouter();
   const [timeframe, setTimeframe] = useState("weekly");
 
@@ -254,13 +259,13 @@ export default function AdminDashboard() {
       oldUsers,
       chartData: [
         {
-          name: "New customer",
+          name: t("new_customers"),
           value: newUsers.length,
           color: "#6366f1",
           percentage: totalUsers > 0 ? (newUsers.length / totalUsers) * 100 : 0,
         },
         {
-          name: "Old Customers",
+          name: t("old_customers"),
           value: oldUsers.length,
           color: "#f97316",
           percentage: totalUsers > 0 ? (oldUsers.length / totalUsers) * 100 : 0,
@@ -367,41 +372,41 @@ export default function AdminDashboard() {
   ];
 
   const stats = [
-    {
-      label: "Total Bookings",
-      value: "1200",
-      change: "+12",
-      note: "vs last week",
-      changeType: "positive",
-    },
-    {
-      label: "Total Revenue",
-      value: "$45,094",
-      change: "-8%",
-      note: "vs last week",
-      changeType: "negative",
-    },
-    {
-      label: "Commission earned by Hanat",
-      value: "$1200",
-      change: "+12%",
-      note: "vs last week",
-      changeType: "positive",
-    },
-    {
-      label: "Most selected sub category",
-      value: "120",
-      change: "+12",
-      note: "vs last week",
-      changeType: "positive",
-    },
-    {
-      label: "Most selected optional extras",
-      value: "28",
-      note: "Requires attention",
-      changeType: "neutral",
-    },
-  ];
+  {
+    label: td("totalBookings.label"),
+    value: "1200",
+    change: "+12",
+    note: td("totalBookings.note"),
+    changeType: "positive",
+  },
+  {
+    label: td("totalRevenue.label"),
+    value: "$45,094",
+    change: "-8%",
+    note: td("totalRevenue.note"),
+    changeType: "negative",
+  },
+  {
+    label: td("commissionHanat.label"),
+    value: "$1200",
+    change: "+12%",
+    note: td("commissionHanat.note"),
+    changeType: "positive",
+  },
+  {
+    label: td("mostSelectedSubCategory.label"),
+    value: "120",
+    change: "+12",
+    note: td("mostSelectedSubCategory.note"),
+    changeType: "positive",
+  },
+  {
+    label: td("mostSelectedOptionalExtras.label"),
+    value: "28",
+    note: td("mostSelectedOptionalExtras.note"),
+    changeType: "neutral",
+  },
+]
 
   const getTimeframeLabel = (timeframe) => {
     switch (timeframe) {
@@ -433,9 +438,9 @@ export default function AdminDashboard() {
             alt="Home Icon"
           />
           <div>
-            <h1 className="2xl:text-lg text-sm font-semibold">Dashboard</h1>
+            <h1 className="2xl:text-lg text-sm font-semibold">{t("title")}</h1>
             <p className="text-xs text-muted-foreground">
-              Lorem ipsum management
+             {t("about")}
             </p>
           </div>
         </div>
@@ -451,15 +456,15 @@ export default function AdminDashboard() {
           <Card className="overflow-hidden">
             <CardHeader className="flex flex-row items-center justify-between pb-2 pt-4 px-4">
               <CardTitle className="text-xs sm:text-sm font-medium">
-                Top Rated Service Providers
+                {t('service_provider')}
               </CardTitle>
               <Button
                 variant="ghost"
                 size="sm"
                 className="text-xs text-blue-600 h-7 px-2"
-                onClick={() => router.push("/admin/service-provider")}
+                onClick={() => router.push(`/${locale}/admin/service-provider`)}
               >
-                View All
+                {t('view_all')}
               </Button>
             </CardHeader>
             <CardContent className="px-4 pb-4">
@@ -494,7 +499,7 @@ export default function AdminDashboard() {
               <CardHeader className="flex flex-row items-center justify-between pb-2 pt-4 px-4">
                 <div>
                   <CardTitle className="2xl:text-sm text-xs text-muted-foreground mb-1">
-                    New Users
+                    {t('new_user')}
                   </CardTitle>
                   <div className="flex items-center gap-2">
                     <span className="text-xl font-semibold">
@@ -521,9 +526,9 @@ export default function AdminDashboard() {
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="weekly">Weekly</SelectItem>
-                    <SelectItem value="monthly">Monthly</SelectItem>
-                    <SelectItem value="yearly">Yearly</SelectItem>
+                    <SelectItem value="weekly">{t('weekly')}</SelectItem>
+                    <SelectItem value="monthly">{t('monthly')}</SelectItem>
+                    <SelectItem value="yearly">{t('yearly')}</SelectItem>
                   </SelectContent>
                 </Select>
               </CardHeader>
