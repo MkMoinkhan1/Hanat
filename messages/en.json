@@ -1,0 +1,374 @@
+{
+  "HomePage": {
+    "title": "Dashboard",
+    "about": "This is the Dashboard Page",
+    "service_provider": "Top Rated Service Providers",
+    "view_all": "View All",
+    "new_user": "New User",
+    "weekly": "Weekly",
+    "monthly": "Monthly",
+    "yearly": "Yearly",
+    "new": "New",
+    "active": "Active",
+    "no_found": "No new users found",
+    "new_customers": "New Customers",
+    "old_customers": "Old Customers"
+  },
+  "DashboardDetails": {
+    "totalBookings": {
+      "label": "Total Bookings",
+      "note": "vs last week"
+    },
+    "totalRevenue": {
+      "label": "Total Revenue",
+      "note": "vs last week"
+    },
+    "commissionHanat": {
+      "label": "Commission earned by Hanat",
+      "note": "vs last week"
+    },
+    "mostSelectedSubCategory": {
+      "label": "Most selected sub category",
+      "note": "vs last week"
+    },
+    "mostSelectedOptionalExtras": {
+      "label": "Most selected optional extras",
+      "note": "Requires attention"
+    }
+  },
+  "SideBar": {
+    "main": "MAIN",
+    "other": "OTHER",
+    "dashboard": "Dashboard",
+    "users": "Users",
+    "serviceProvider": "Service Provider",
+    "serviceManagement": "Service Management",
+    "bookingManagement": "Booking Management",
+    "feedbackForms": "Feedback Forms",
+    "tickets": "Tickets",
+    "settings": "Settings"
+  },
+  "Setting": {
+    "title": "Settings",
+    "about": "Manage your preferences",
+    "save": "Save Changes",
+    "cancel": "Cancel",
+    "account_settings": "Account Settings",
+    "password": "Password",
+    "role_management": "Role Management",
+    "language": "Language",
+    "faqs": "FAQs"
+  },
+  "AccountSetting": {
+    "upload_new": "Upload New",
+    "personal_details": "Personal Details",
+    "full_name": "Full Name",
+    "email": "Email",
+    "phone_number": "Phone Number",
+    "role": "Role",
+    "placeholder": {
+      "full_name": "Enter your name",
+      "email": "Enter your mail",
+      "phone_number": "Enter your number",
+      "role": "Enter your role"
+    }
+  },
+  "Password": {
+    "update_password": "Update Password",
+    "current_password": "Current Password",
+    "new_password": "New Password",
+    "confirm_password": "Confirm Password",
+    "placeholder": {
+      "current": "Enter your current password",
+      "new": "Enter your new password",
+      "confirm": "Confirm your password"
+    },
+    "error": {
+      "incorrect_current": "Current password is incorrect",
+      "required": "Password is required",
+      "min_length": "Password must be at least 6 characters",
+      "mismatch": "Passwords do not match"
+    }
+  },
+  "Language": {
+    "title": "Select your preferred language"
+  },
+  "Faqs": {
+    "title": "Create FAQs for users",
+    "add_new_faq": "Add New FAQ",
+    "enter_question": "Enter question",
+    "enter_answer": "Enter answer",
+    "add_faq_button": "Add FAQ",
+    "new_faq": "New FAQ",
+    "faq_list": "FAQ List",
+    "edit": "Edit",
+    "delete": "Delete",
+    "save": "Save",
+    "cancel": "Cancel",
+    "question_label": "Question",
+    "answer_label": "Answer",
+    "faq": "FAQ",
+    "placeholder": {
+      "question": "Enter a question",
+      "answer": "Enter an answer"
+    }
+  },
+  "Ticket": {
+    "tickets": "Tickets",
+    "description": "Lorem ipsum management",
+    "search_placeholder": "Search...",
+    "all_status": "All Status",
+    "pending": "Pending",
+    "resolved": "Resolved",
+    "cancelled": "Cancelled",
+    "filter": "Filter",
+    "ticket_id": "Ticket ID",
+    "attached_booking_id": "Attached Booking ID",
+    "status": "Status",
+    "by": "By",
+    "date": "Date",
+    "service_provider": "Service Provider",
+    "view": "View",
+    "delete": "Delete"
+  },
+  "EditUserDrawer": {
+    "title": "Edit User",
+    "subtitle": "Manage your user details.",
+    "upload": "Upload New",
+    "status": {
+      "active": "Active",
+      "inactive": "Inactive"
+    },
+    "sections": {
+      "customer": "Customer Details",
+      "contact": "Contact Details"
+    },
+    "form": {
+      "name": "Full Name",
+      "namePlaceholder": "Enter your name",
+      "dob": "Date of Birth",
+      "gender": "Gender",
+      "genderPlaceholder": "Select gender",
+      "email": "Email",
+      "emailPlaceholder": "Enter your email",
+      "phone": "Phone Number",
+      "phonePlaceholder": "Enter your phone number"
+    },
+    "genders": {
+      "man": "Man",
+      "woman": "Woman",
+      "trans": "Trans/Non-binary",
+      "other": "Other"
+    },
+    "actions": {
+      "cancel": "Cancel",
+      "save": "Save Changes"
+    }
+  },
+  "Users": {
+    "title": "Users",
+    "about": "This is the Users Page"
+  },
+  "ServiceProvider": {
+    "title": "Service Provider",
+    "about": "This is the Service Provider Page",
+    "cancel": "Cancel",
+    "save": "Save Changes",
+    "Table": {
+      "service_provider": "Service Provider",
+      "mobile_number": "Mobile Number",
+      "service_area": "Service Area",
+      "employee": "Employee",
+      "services": "Services",
+      "additional_services": "Additional Services",
+      "avg_rating": "Avg Rating",
+      "status": "Status",
+      "action": "Action",
+      "edit_user": "Edit User",
+      "delete_user": "Delete User"
+    },
+    "ServiceProviderTabs": {
+      "personal_details": "Personal Details",
+      "booking": "Booking",
+      "service_list": "Service List",
+      "resources": "Resources",
+      "categories": "Categories"
+    },
+    "ServiceProvider-PersonalDetails": {
+      "upload": "Upload New",
+      "status": {
+        "active": "Active",
+        "inactive": "Inactive"
+      },
+      "personal_details": "PERSONAL DETAILS",
+      "business_details": "BUSINESS DETAILS",
+      "form": {
+        "name": "Full Name",
+        "namePlaceholder": "Enter your name",
+        "email": "Email",
+        "emailPlaceholder": "Enter your mail",
+        "phone": "Phone Number",
+        "phonePlaceholder": "Enter your phone number",
+        "business_name": "Business Name",
+        "business_namePlaceholder": "Enter your business name",
+        "service_area": "Service Area",
+        "service_areaPlaceholder": "Select location",
+        "type_of_service": "Type of Service",
+        "type_of_servicePlaceholder": "Select type of service"
+      },
+      "PersonalDetails-Dashboard": {
+        "total_bookings": "Total Bookings Completed",
+        "rating": "Overall Rating",
+        "pending_bookings": "Pending Bookings",
+        "joining_date": "Joining Date",
+        "reviews": "Reviews",
+        "requires_attention": "Requires attention",
+        "week": "vs last week"
+      }
+    },
+    "Booking": {
+      "booking_id": "Booking ID",
+      "type": "Type",
+      "customer_name": "Customer Name",
+      "service": "Service",
+      "service_provider": "Service Provider",
+      "booking_date": "Booking Date",
+      "status": "Status",
+      "action": "Action",
+      "view": "View",
+      "cancel_booking": "Cancel Booking",
+      "reschedule_booking": "Reschedule Booking",
+      "Total Bookings": "Total Bookings",
+      "Total Revenue": "Total Revenue",
+      "Money generated by the provider": "Money generated by the provider",
+      "Commission earned by Hanat": "Commission earned by Hanat",
+      "vs last week": "vs last week"
+    },
+     "BookingDetailsContent": {
+    "order_id": "Order ID",
+    "order_type": "Order Type",
+    "price": "$220",
+    "including_tax": "Including tax",
+    "booking_date": "Booking Date and Time",
+    "status": "Status",
+    "pending": "⚠️ Pending",
+    "view_chats": "View Chats",
+    "view_invoice": "View Invoice",
+    "customer_details": "CUSTOMER DETAILS",
+    "location": "Location",
+    "requested_service": "Requested Service",
+    "resource_details": "RESOURCE DETAILS",
+    "service": "Service",
+    "mobile_number": "Mobile Number",
+    "reschedule": "Reschedule this Booking",
+    "service_provider_details": "SERVICE PROVIDER DETAILS",
+    "issue_details": "ISSUE/TICKETS DETAILS",
+    "not_available": "Not Available"
+  },
+   "Invoice": {
+    "title": "Invoice",
+    "invoiceId": "Invoice Id",
+    "subHeading": "Sub heading",
+    "taxId": "TAX I.D",
+    "gstin": "GSTIN",
+    "nric": "NRIC/FIN I.D",
+    "invoice": "Invoice",
+    "client": "Client",
+    "date": "Date",
+    "description": "Description",
+    "subtotal": "Subtotal",
+    "discount": "Discount (%)",
+    "tax": "Tax",
+    "totalAmount": "Total Amount",
+    "currency": "JOD",
+    "paymentNote1": "Payment made via bank transfer / cheque in the name of: Jay Janikaram",
+    "paymentNote2": "MyBank a/c no 01234567890, MG Road Branch, Bangalore, India | rtgs: neft ifsc: MY1800000000001"
+  },
+   "RescheduleDialog": {
+    "title": "Reschedule this Booking",
+    "bookingTitle": "AC Repairing",
+    "bookingType": "(External)",
+    "pendingStatus": "⚠️ Pending",
+    "currentResourceTitle": "CURRENT RESOURCE DETAILS",
+    "resourceName": "Floyd Miles",
+    "service": "Service",
+    "serviceValue": "Electrician",
+    "mobile": "Mobile Number",
+    "dateLabel": "Change Date",
+    "timeLabel": "Block Time",
+    "changeResource": "Change Resource",
+    "placeholderDate": "Date of Service",
+    "placeholderTime": "Time of Service",
+    "placeholderResource": "Select Resource",
+    "rescheduleButton": "Reschedule",
+    "cancelButton": "Cancel"
+  },
+  "ServiceList": {
+    "add_service": "Add Service"
+  },
+   "resourceTable": {
+    "name": "Resource name",
+    "service": "Service",
+    "phone": "Mobile Number",
+    "rating": "Avg Rating",
+    "status": "Status",
+    "action": "Action"
+  },
+        "Categories-Dashboard": {
+        "Total Revenue": "Total Revenue",
+        "Overall Rating": "Overall Rating",
+        "Money generated by the provider": "Money generated by the provider",
+        "Commission earned by Hanat": "Commission earned by Hanat",
+        "reviews": "Reviews",
+        "week": "vs last week",
+          "Edit Category": "Edit Category",
+      "Sub-Category": "Sub-Category",
+      "Category Name": "Category Name",
+      "Enter Category name": "Enter Category name",
+      "Description": "Description",
+      "Enter Description": "Enter Description",
+      "Cancel": "Cancel",
+      "Save Changes": "Save Changes",
+      "Sub-category list": "Sub-category list",
+      "Sub-Category Name": "Sub-Category Name",
+      "Add Sub Sub-Category": "Add Sub Sub-Category",
+      "Add new": "Add new"
+      },
+      "AddVariantDialog": {
+      "Add Variant": "Add Variant",
+      "Sub-Category": "Sub-Category",
+      "Type": "Type",
+      "Multiple Choice": "Multiple Choice",
+      "Short Answer": "Short Answer",
+      "Add Option": "Add Option",
+      "Enter the question": "Enter the question",
+      "Cancel": "Cancel",
+      "Save": "Save",
+      "Select type": "Select type"
+    }
+},
+ "ServiceManagement": {
+    "title": "Service Management",
+    "description": "Lorem ipsum management",
+    "addService": "Add Service",
+    "searchPlaceholder": "Search...",
+    "filter": "Filter",
+    "allStatus": "All Status",
+    "internet": "Internet",
+    "electrician": "Electrician",
+    "cleaning": "Cleaning",
+    "edit": "Edit",
+    "page": "Page",
+    "of":"of",
+     "ServiceEdit": {
+    "headerTitle": "Service Management",
+    "headerSubtitle": "Lorem ipsum management",
+    "uploadNew": "Upload New",
+    "serviceName": "Service Name",
+    "description": "Description",
+    "descriptionPlaceholder": "Enter Description",
+    "categoryList": "Category list",
+    "edit": "Edit"
+  }
+  }
+}

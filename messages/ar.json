@@ -1,0 +1,374 @@
+{
+  "HomePage": {
+    "title": "لوحة التحكم",
+    "about": "هذه هي صفحة لوحة التحكم",
+    "service_provider": "مقدمو الخدمات الأعلى تقييمًا",
+    "view_all": "عرض الكل",
+    "new_user": "مستخدم جديد",
+    "weekly": "أسبوعيًا",
+    "monthly": "شهريًا",
+    "yearly": "سنويًا",
+    "new": "جديد",
+    "active": "نشط",
+    "no_found": "لم يتم العثور على مستخدمين جدد",
+    "new_customers": "عملاء جدد",
+    "old_customers": "عملاء قدامى"
+  },
+  "DashboardDetails": {
+    "totalBookings": {
+      "label": "إجمالي الحجوزات",
+      "note": "مقارنة بالأسبوع الماضي"
+    },
+    "totalRevenue": {
+      "label": "إجمالي الإيرادات",
+      "note": "مقارنة بالأسبوع الماضي"
+    },
+    "commissionHanat": {
+      "label": "العمولة المكتسبة من Hanat",
+      "note": "مقارنة بالأسبوع الماضي"
+    },
+    "mostSelectedSubCategory": {
+      "label": "الفئة الفرعية الأكثر اختيارًا",
+      "note": "مقارنة بالأسبوع الماضي"
+    },
+    "mostSelectedOptionalExtras": {
+      "label": "الخيارات الإضافية الأكثر اختيارًا",
+      "note": "يتطلب الانتباه"
+    }
+  },
+  "SideBar": {
+    "main": "الرئيسية",
+    "other": "أخرى",
+    "dashboard": "لوحة التحكم",
+    "users": "المستخدمون",
+    "serviceProvider": "مقدمو الخدمات",
+    "serviceManagement": "إدارة الخدمة",
+    "bookingManagement": "إدارة الحجز",
+    "feedbackForms": "نماذج الملاحظات",
+    "tickets": "التذاكر",
+    "settings": "الإعدادات"
+  },
+  "Setting": {
+    "title": "الإعدادات",
+    "about": "إدارة تفضيلاتك",
+    "save": "حفظ التغييرات",
+    "cancel": "إلغاء",
+    "account_settings": "إعدادات الحساب",
+    "password": "كلمة المرور",
+    "role_management": "إدارة الأدوار",
+    "language": "اللغة",
+    "faqs": "الأسئلة الشائعة"
+  },
+  "AccountSetting": {
+    "upload_new": "تحميل جديد",
+    "personal_details": "المعلومات الشخصية",
+    "full_name": "الاسم الكامل",
+    "email": "البريد الإلكتروني",
+    "phone_number": "رقم الهاتف",
+    "role": "الدور",
+    "placeholder": {
+      "full_name": "أدخل اسمك",
+      "email": "أدخل بريدك الإلكتروني",
+      "phone_number": "أدخل رقم هاتفك",
+      "role": "أدخل دورك"
+    }
+  },
+  "Password": {
+    "update_password": "تحديث كلمة المرور",
+    "current_password": "كلمة المرور الحالية",
+    "new_password": "كلمة المرور الجديدة",
+    "confirm_password": "تأكيد كلمة المرور",
+    "placeholder": {
+      "current": "أدخل كلمة المرور الحالية",
+      "new": "أدخل كلمة المرور الجديدة",
+      "confirm": "أكد كلمة المرور"
+    },
+    "error": {
+      "incorrect_current": "كلمة المرور الحالية غير صحيحة",
+      "required": "كلمة المرور مطلوبة",
+      "min_length": "يجب أن تتكون كلمة المرور من 6 أحرف على الأقل",
+      "mismatch": "كلمات المرور غير متطابقة"
+    }
+  },
+  "Language": {
+    "title": "اختر لغتك المفضلة"
+  },
+  "Faqs": {
+    "title": "إنشاء الأسئلة الشائعة للمستخدمين",
+    "add_new_faq": "إضافة سؤال شائع جديد",
+    "enter_question": "أدخل السؤال",
+    "enter_answer": "أدخل الإجابة",
+    "add_faq_button": "أضف سؤال شائع",
+    "new_faq": "سؤال شائع جديد",
+    "faq_list": "قائمة الأسئلة الشائعة",
+    "edit": "تعديل",
+    "delete": "حذف",
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "question_label": "السؤال",
+    "answer_label": "الإجابة",
+    "faq": "سؤال شائع",
+    "placeholder": {
+      "question": "أدخل سؤالا",
+      "answer": "أدخل الإجابة"
+    }
+  },
+  "Ticket": {
+    "tickets": "تذاكر",
+    "description": "إدارة لوريم إيبسوم",
+    "search_placeholder": "بحث...",
+    "all_status": "كل الحالات",
+    "pending": "قيد الانتظار",
+    "resolved": "تم الحل",
+    "cancelled": "ألغيت",
+    "filter": "تصفية",
+    "ticket_id": "معرف التذكرة",
+    "attached_booking_id": "معرف الحجز المرفق",
+    "status": "الحالة",
+    "by": "بواسطة",
+    "date": "التاريخ",
+    "service_provider": "مزود الخدمة",
+    "view": "عرض",
+    "delete": "حذف"
+  },
+  "EditUserDrawer": {
+    "title": "تعديل المستخدم",
+    "subtitle": "إدارة تفاصيل المستخدم الخاص بك.",
+    "upload": "رفع جديد",
+    "status": {
+      "active": "نشط",
+      "inactive": "غير نشط"
+    },
+    "sections": {
+      "customer": "تفاصيل العميل",
+      "contact": "تفاصيل الاتصال"
+    },
+    "form": {
+      "name": "الاسم الكامل",
+      "namePlaceholder": "أدخل اسمك",
+      "dob": "تاريخ الميلاد",
+      "gender": "الجنس",
+      "genderPlaceholder": "اختر الجنس",
+      "email": "البريد الإلكتروني",
+      "emailPlaceholder": "أدخل بريدك الإلكتروني",
+      "phone": "رقم الهاتف",
+      "phonePlaceholder": "أدخل رقم هاتفك"
+    },
+    "genders": {
+      "man": "ذكر",
+      "woman": "أنثى",
+      "trans": "متنوع/غير ثنائي",
+      "other": "آخر"
+    },
+    "actions": {
+      "cancel": "إلغاء",
+      "save": "حفظ التغييرات"
+    }
+  },
+  "Users": {
+    "title": "المستخدمون",
+    "about": "هذه هي صفحة المستخدمين"
+  },
+  "ServiceProvider": {
+    "title": "مزود الخدمة",
+    "about": "هذه هي صفحة مزود الخدمة",
+    "cancel": "إلغاء",
+    "save": "حفظ التغييرات",
+    "Table": {
+      "service_provider": "مزود الخدمة",
+      "mobile_number": "رقم الجوال",
+      "service_area": "منطقة الخدمة",
+      "employee": "الموظف",
+      "services": "الخدمات",
+      "additional_services": "خدمات إضافية",
+      "avg_rating": "متوسط التقييم",
+      "status": "الحالة",
+      "action": "الإجراء",
+      "edit_user": "تعديل المستخدم",
+      "delete_user": "حذف المستخدم"
+    },
+    "ServiceProviderTabs": {
+      "personal_details": "التفاصيل الشخصية",
+      "booking": "الحجوزات",
+      "service_list": "قائمة الخدمات",
+      "resources": "الموارد",
+      "categories": "الفئات"
+    },
+    "ServiceProvider-PersonalDetails": {
+      "upload": "تحميل جديد",
+      "status": {
+        "active": "نشط",
+        "inactive": "غير نشط"
+      },
+      "personal_details": "تفاصيل شخصية",
+      "business_details": "تفاصيل النشاط التجاري",
+      "form": {
+        "name": "الاسم الكامل",
+        "namePlaceholder": "أدخل اسمك",
+        "email": "البريد الإلكتروني",
+        "emailPlaceholder": "أدخل بريدك الإلكتروني",
+        "phone": "رقم الهاتف",
+        "phonePlaceholder": "أدخل رقم هاتفك",
+        "business_name": "اسم النشاط التجاري",
+        "business_namePlaceholder": "أدخل اسم نشاطك التجاري",
+        "service_area": "منطقة الخدمة",
+        "service_areaPlaceholder": "اختر الموقع",
+        "type_of_service": "نوع الخدمة",
+        "type_of_servicePlaceholder": "اختر نوع الخدمة"
+      },
+      "PersonalDetails-Dashboard": {
+        "total_bookings": "إجمالي الحجوزات المكتملة",
+        "rating": "التقييم العام",
+        "pending_bookings": "الحجوزات المعلقة",
+        "joining_date": "تاريخ الانضمام",
+        "reviews": "المراجعات",
+        "requires_attention": "يتطلب الانتباه",
+        "week": "مقارنة بالأسبوع الماضي"
+      }
+    },
+    "Booking": {
+      "booking_id": "رقم الحجز",
+      "type": "النوع",
+      "customer_name": "اسم العميل",
+      "service": "الخدمة",
+      "service_provider": "مقدم الخدمة",
+      "booking_date": "تاريخ الحجز",
+      "status": "الحالة",
+      "action": "الإجراء",
+      "view": "عرض",
+      "cancel_booking": "إلغاء الحجز",
+      "reschedule_booking": "إعادة جدولة الحجز",
+      "Total Bookings": "إجمالي الحجوزات",
+      "Total Revenue": "إجمالي الإيرادات",
+      "Money generated by the provider": "الأموال الناتجة عن المزود",
+      "Commission earned by Hanat": "العمولة المكتسبة من قبل Hanat",
+      "vs last week": "مقارنة بالأسبوع الماضي"
+    },
+     "BookingDetailsContent": {
+    "order_id": "معرف الطلب",
+    "order_type": "نوع الطلب",
+    "price": "$220",
+    "including_tax": "شامل الضريبة",
+    "booking_date": "تاريخ ووقت الحجز",
+    "status": "الحالة",
+    "pending": "⚠️ قيد الانتظار",
+    "view_chats": "عرض المحادثات",
+    "view_invoice": "عرض الفاتورة",
+    "customer_details": "تفاصيل العميل",
+    "location": "الموقع",
+    "requested_service": "الخدمة المطلوبة",
+    "resource_details": "تفاصيل المورد",
+    "service": "الخدمة",
+    "mobile_number": "رقم الهاتف",
+    "reschedule": "إعادة جدولة هذا الحجز",
+    "service_provider_details": "تفاصيل مقدم الخدمة",
+    "issue_details": "تفاصيل المشكلة / التذاكر",
+    "not_available": "غير متوفر"
+  },
+    "Invoice": {
+    "title": "فاتورة",
+    "invoiceId": "رقم الفاتورة",
+    "subHeading": "عنوان فرعي",
+    "taxId": "الرقم الضريبي",
+    "gstin": "الرقم الضريبي الموحد",
+    "nric": "رقم الهوية / الإقامة",
+    "invoice": "الفاتورة",
+    "client": "العميل",
+    "date": "التاريخ",
+    "description": "الوصف",
+    "subtotal": "الإجمالي الفرعي",
+    "discount": "الخصم (%)",
+    "tax": "الضريبة",
+    "totalAmount": "المبلغ الإجمالي",
+    "currency": "دينار أردني",
+    "paymentNote1": "تم الدفع عن طريق التحويل البنكي / الشيك باسم: جاي جانيكرام",
+    "paymentNote2": "بنك MyBank رقم الحساب 01234567890، فرع طريق MG، بنغالور، الهند | rtgs: neft ifsc: MY1800000000001"
+  },
+    "RescheduleDialog": {
+    "title": "إعادة جدولة هذا الحجز",
+    "bookingTitle": "إصلاح مكيف الهواء",
+    "bookingType": "(خارجي)",
+    "pendingStatus": "⚠️ قيد الانتظار",
+    "currentResourceTitle": "تفاصيل المورد الحالي",
+    "resourceName": "فلويد مايلز",
+    "service": "الخدمة",
+    "serviceValue": "كهربائي",
+    "mobile": "رقم الهاتف",
+    "dateLabel": "تغيير التاريخ",
+    "timeLabel": "تحديد الوقت",
+    "changeResource": "تغيير المورد",
+    "placeholderDate": "تاريخ الخدمة",
+    "placeholderTime": "وقت الخدمة",
+    "placeholderResource": "اختر المورد",
+    "rescheduleButton": "إعادة الجدولة",
+    "cancelButton": "إلغاء"
+  },
+   "ServiceList": {
+    "add_service": "إضافة خدمة"
+  },
+    "resourceTable": {
+    "name": "اسم المورد",
+    "service": "الخدمة",
+    "phone": "رقم الهاتف",
+    "rating": "متوسط التقييم",
+    "status": "الحالة",
+    "action": "الإجراء"
+  },
+  "Categories-Dashboard": {
+  "Total Revenue": "إجمالي الإيرادات",
+  "Overall Rating": "التقييم العام",
+  "Money generated by the provider": "الأموال التي جمعها المزود",
+  "Commission earned by Hanat": "العمولة التي حصلت عليها Hanat",
+  "reviews": "مراجعات",
+  "week": "مقارنة بالأسبوع الماضي",
+    "Edit Category": "تعديل الفئة",
+      "Sub-Category": "الفئة الفرعية",
+      "Category Name": "اسم الفئة",
+      "Enter Category name": "أدخل اسم الفئة",
+      "Description": "الوصف",
+      "Enter Description": "أدخل الوصف",
+      "Cancel": "إلغاء",
+      "Save Changes": "حفظ التغييرات",
+      "Sub-category list": "قائمة الفئات الفرعية",
+      "Sub-Category Name": "اسم الفئة الفرعية",
+      "Add Sub Sub-Category": "إضافة فئة فرعية فرعية",
+      "Add new": "أضف جديد"
+},
+ "AddVariantDialog": {
+      "Add Variant": "أضف خيارًا",
+      "Sub-Category": "الفئة الفرعية",
+      "Type": "النوع",
+      "Multiple Choice": "اختيار من متعدد",
+      "Short Answer": "إجابة قصيرة",
+      "Add Option": "أضف خيارًا",
+      "Enter the question": "أدخل السؤال",
+      "Cancel": "إلغاء",
+      "Save": "حفظ",
+      "Select type": "اختر النوع"
+    }
+  },
+   "ServiceManagement": {
+    "title": "إدارة الخدمة",
+    "description": "لوريم إيبسوم إدارة",
+    "addService": "إضافة خدمة",
+    "searchPlaceholder": "ابحث...",
+    "filter": "تصفية",
+    "allStatus": "كل الحالات",
+    "internet": "الإنترنت",
+    "electrician": "فني كهربائي",
+    "cleaning": "تنظيف",
+    "edit": "تعديل",
+    "page": "الصفحة",
+    "of":"من",
+     "ServiceEdit": {
+    "headerTitle": "إدارة الخدمة",
+    "headerSubtitle": "لوريم إيبسوم إدارة",
+    "uploadNew": "تحميل جديد",
+    "serviceName": "اسم الخدمة",
+    "description": "الوصف",
+    "descriptionPlaceholder": "أدخل الوصف",
+    "categoryList": "قائمة الفئات",
+    "edit": "تعديل"
+  }
+  }
+}
