@@ -12,7 +12,7 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { useTranslations } from "next-intl"
 
 
-export default function CategoryEditPage() {
+export default function ServiceCategoryComponent({params , activePage}) {
   const router = useRouter()
   const {id,locale} = useParams()
   const path = usePathname()
@@ -112,11 +112,13 @@ export default function CategoryEditPage() {
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
-    <div className="flex h-screen bg-white">
+    <div className="flex h-screen bg-white px-4">
 
-      <div className="flex-1 flex flex-col overflow-hidden">
+      <div className="flex-1 flex flex-col overflow-auto">
         {/* Header */}
-        <div className="flex items-center gap-4  bg-white px-6 py-4">
+     
+        {
+            activePage === "service-provider" ? "":   <div className="flex items-center gap-4  bg-white px-6 py-4">
           <Button variant="ghost" size="icon" className="h-8 w-8" onClick={() => router.back()}>
             <ChevronLeft className="h-4 w-4" />
           </Button>
@@ -125,6 +127,7 @@ export default function CategoryEditPage() {
             <p className="2xl:text-sm text-xs text-muted-foreground">{t('subtitle')}</p>
           </div>
         </div>
+        }
 
         {/* Tabs */}
         <div className="border-b bg-white">

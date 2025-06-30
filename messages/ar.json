@@ -129,7 +129,17 @@
     "date": "التاريخ",
     "service_provider": "مزود الخدمة",
     "view": "عرض",
-    "delete": "حذف"
+    "delete": "حذف", "ticketDetail": {
+    "title": "التذاكر",
+    "description": "إدارة وعرض رسائل التذاكر",
+    "ticketId": "معرّف التذكرة",
+    "delete": "حذف",
+    "date": "التاريخ",
+    "attachedBookingId": "معرّف الحجز المرتبط",
+    "by": "بواسطة",
+    "serviceProvider": "مقدم الخدمة",
+    "addCommentPlaceholder": "أضف تعليقك..."
+  }
   },
   "EditUserDrawer": {
     "title": "تعديل المستخدم",
@@ -369,6 +379,66 @@
     "descriptionPlaceholder": "أدخل الوصف",
     "categoryList": "قائمة الفئات",
     "edit": "تعديل"
+  },
+   "CategoryPage": {
+    "title": "إدارة الخدمة",
+    "subtitle": "لوريم إيبسوم للإدارة",
+    "addCategory": "إضافة فئة",
+    "editCategory": "تعديل الفئة",
+    "categoryName": "اسم الفئة",
+    "description": "الوصف",
+    "addCustomField": "إضافة حقل مخصص",
+    "cancel": "إلغاء",
+    "saveChanges": "حفظ التغييرات",
+    "subCategoryTab": "الفئات الفرعية",
+    "searchPlaceholder": "بحث...",
+    "subCategories": "الفئات الفرعية",
+    "noSubCategories": "لم تتم إضافة أي فئات فرعية بعد.",
+    "avgRating": "متوسط التقييم",
+    "categoryNamePlaceholder": "أدخل اسم الفئة",
+    "descriptionPlaceholder": "أدخل الوصف"
+  },
+   "SubCategoriesPage": {
+    "totalRevenue": "إجمالي الإيرادات",
+    "overallRating": "التقييم العام",
+    "providerEarnings": "الأموال التي تم تحقيقها من قبل المزود",
+    "platformCommission": "العمولة التي حصلت عليها Hanat",
+    "vsLastWeek": "مقارنة بالأسبوع الماضي",
+    "reviews": "مراجعة",
+       "serviceManagement": "إدارة الخدمة",
+    "managementNote": "لوريم إيبسوم للإدارة",
+    "addCategory": "إضافة فئة",
+    "editCategory": "تعديل الفئة",
+    "subCategory": "الفئة الفرعية",
+    "subCategoryList": "قائمة الفئات الفرعية",
+    "subCategoryName": "اسم الفئة الفرعية",
+    "subcategoryPlaceholder" :" أدخل اسم الفئة الفرعية",
+    "description": "الوصف",
+    "descriptionPlaceholder": "أدخل الوصف",
+    "addVariant": "إضافة متغير",
+    "editCustomField": "تعديل الحقل المخصص",
+    "loading": "جارٍ التحميل..."
+  }
+  },
+  "FeedBackForms": {
+    "title": "نماذج الملاحظات",
+    "description": "إدارة لوريم إيبسوم",
+    "Form ID": "معرف النموذج",
+    "Issue": "المشكلة",
+    "Customer name": "اسم العميل",
+    "Action": "الإجراء",
+     "feedbackDetail": {
+    "notFound": "الملاحظات غير موجودة",
+    "notFoundMessage": "لم يتم العثور على نموذج الملاحظات المطلوب.",
+    "title": "نماذج الملاحظات",
+    "subtitle": "إدارة وتتبع القضايا المقدمة",
+    "formId": "معرف النموذج",
+    "issue": "المشكلة",
+    "avgRating": "متوسط التقييم",
+    "date": "التاريخ",
+    "customerName": "اسم العميل",
+    "bookingDetails": "تفاصيل الحجز",
+    "description": "الوصف"
   }
   }
 }

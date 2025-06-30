@@ -1,12 +1,13 @@
-import ServiceProviderLayout from "@/components/service-provider-layout"
 import BookingDetailsContent from "@/components/booking-details-content"
 
-export default function ServiceProviderBookingDetailsPage({
+export default async function ServiceProviderBookingDetailsPage({
   params,
 }) {
+    const param = await params
+
   return (
     // <ServiceProviderLayout activeTab="booking" providerId={params.id}>
-      <BookingDetailsContent bookingId={params} />
+      <BookingDetailsContent bookingId={param} />
     // </ServiceProviderLayout>
   )
 }

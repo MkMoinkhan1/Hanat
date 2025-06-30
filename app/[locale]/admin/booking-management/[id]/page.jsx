@@ -1,9 +1,9 @@
 
-
-import BookingManagementDetailsComponent from "@/components/booking-management-details-component"
+import BookingDetailsContent from "@/components/booking-details-content";
 export default async function BookingManagementDetailsPage({ params }) {
   const param = await params
   return (
-   <BookingManagementDetailsComponent bookingId={param.id}/>
+      <BookingDetailsContent bookingId={param} />
+
   );
 }

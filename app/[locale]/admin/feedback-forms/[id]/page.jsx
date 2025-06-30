@@ -1,13 +1,6 @@
+// Sample feedback data
 "use client"
 
-import Link from "next/link"
-import { ArrowLeft } from "lucide-react"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Separator } from "@/components/ui/separator"
-
-// Sample feedback data
 const feedbackData = {
   f1a2b3c4: {
     id: "f1a2b3c4",
@@ -83,9 +76,19 @@ const feedbackData = {
       "I have a suggestion to improve your service. It would be great if you could provide an estimated time of arrival for the service provider.",
   },
 }
+import Link from "next/link"
+import { ArrowLeft } from "lucide-react"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
+import { Separator } from "@/components/ui/separator"
+import { useTranslations } from "next-intl"
+import { useParams, useRouter } from "next/navigation"
 
-export default function FeedbackDetailPage({ params }) {
-  const {locale} = params
+export default function FeedbackDetailPage({  }) {
+  const router = useRouter()
+  const params = useParams()
+  const t = useTranslations("FeedBackForms.feedbackDetail")
   const feedback = feedbackData[params.id]
 
   if (!feedback) {
@@ -93,14 +96,12 @@ export default function FeedbackDetailPage({ params }) {
       <div className="flex h-screen">
         <div className="flex-1 p-6">
           <div className="flex items-center gap-2 mb-6">
-            <Button variant="ghost" size="icon" asChild>
-              <Link href={`/${locale}/admin/feedback-forms`}>
+            <Button variant="ghost" size="icon" asChild onClick={() => router.back()}>
                 <ArrowLeft className="h-4 w-4" />
-              </Link>
             </Button>
-            <h1 className="text-xl font-semibold">Feedback not found</h1>
+            <h1 className="text-xl font-semibold">{t("notFound")}</h1>
           </div>
-          <p>The requested feedback form could not be found.</p>
+          <p>{t("notFoundMessage")}</p>
         </div>
       </div>
     )
@@ -110,14 +111,16 @@ export default function FeedbackDetailPage({ params }) {
     <div className="flex h-screen">
       <div className="flex-1 overflow-auto">
         <header className="flex items-center gap-3 border-b p-4">
-          <Button variant="ghost" size="icon" asChild>
-            <Link href={`/${locale}/admin/feedback-forms`}>
+          <Button variant="ghost" size="icon" asChild onClick={() => router.back()}>
+            {/* <Link href={`/${locale}/admin/feedback-forms`}> */}
               <ArrowLeft className="h-4 w-4" />
-            </Link>
+            {/* </Link> */}
           </Button>
           <div>
-            <h1 className="text-lg font-semibold">Feedback Forms</h1>
-            <p className="2xl:text-sm text-xs text-muted-foreground">Manage and track your Raised issues</p>
+            <h1 className="text-lg font-semibold">{t("title")}</h1>
+            <p className="2xl:text-sm text-xs text-muted-foreground">
+              {t("subtitle")}
+            </p>
           </div>
         </header>
         <main className="p-6">
@@ -126,17 +129,23 @@ export default function FeedbackDetailPage({ params }) {
               <div className="grid grid-cols-2 gap-8">
                 <div>
                   <div className="mb-6">
-                    <h3 className="2xl:text-sm text-xs font-medium text-muted-foreground mb-1">Form ID</h3>
+                    <h3 className="2xl:text-sm text-xs font-medium text-muted-foreground mb-1">
+                      {t("formId")}
+                    </h3>
                     <p className="text-lg font-semibold">{feedback.formId}</p>
                   </div>
 
                   <div className="mb-6">
-                    <h3 className="2xl:text-sm text-xs font-medium text-muted-foreground mb-1">Issue</h3>
+                    <h3 className="2xl:text-sm text-xs font-medium text-muted-foreground mb-1">
+                      {t("issue")}
+                    </h3>
                     <p className="font-medium">{feedback.issue}</p>
                   </div>
 
                   <div className="mb-6">
-                    <h3 className="2xl:text-sm text-xs font-medium text-muted-foreground mb-1">Avg. Rating</h3>
+                    <h3 className="2xl:text-sm text-xs font-medium text-muted-foreground mb-1">
+                      {t("avgRating")}
+                    </h3>
                     <div className="flex text-amber-400">
                       {Array.from({ length: 5 }).map((_, i) => (
                         <svg
@@ -159,14 +168,18 @@ export default function FeedbackDetailPage({ params }) {
                   </div>
 
                   <div className="mb-6">
-                    <h3 className="2xl:text-sm text-xs font-medium text-muted-foreground mb-1">Date</h3>
+                    <h3 className="2xl:text-sm text-xs font-medium text-muted-foreground mb-1">
+                      {t("date")}
+                    </h3>
                     <p>{feedback.date}</p>
                   </div>
                 </div>
 
                 <div>
                   <div className="mb-6">
-                    <h3 className="2xl:text-sm text-xs font-medium text-muted-foreground mb-1">Customer Name</h3>
+                    <h3 className="2xl:text-sm text-xs font-medium text-muted-foreground mb-1">
+                      {t("customerName")}
+                    </h3>
                     <div className="flex items-center gap-2">
                       <Avatar className="h-8 w-8">
                         <AvatarImage
@@ -180,7 +193,9 @@ export default function FeedbackDetailPage({ params }) {
                   </div>
 
                   <div className="mb-6">
-                    <h3 className="2xl:text-sm text-xs font-medium text-muted-foreground mb-1">Booking Details</h3>
+                    <h3 className="2xl:text-sm text-xs font-medium text-muted-foreground mb-1">
+                      {t("bookingDetails")}
+                    </h3>
                     <p className="font-medium">{feedback.bookingId}</p>
                   </div>
                 </div>
@@ -189,13 +204,12 @@ export default function FeedbackDetailPage({ params }) {
               <Separator className="my-6" />
 
               <div>
-                <h3 className="2xl:text-sm text-xs font-medium text-muted-foreground mb-2">Description</h3>
-                <p className="2xl:text-sm text-xs leading-relaxed">{feedback.description}</p>
-              </div>
-
-              <div className="mt-8 flex justify-end gap-2">
-                <Button variant="outline">Mark as Resolved</Button>
-                <Button>Reply to Customer</Button>
+                <h3 className="2xl:text-sm text-xs font-medium text-muted-foreground mb-2">
+                  {t("description")}
+                </h3>
+                <p className="2xl:text-sm text-xs leading-relaxed">
+                  {feedback.description}
+                </p>
               </div>
             </CardContent>
           </Card>

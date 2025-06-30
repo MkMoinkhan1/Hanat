@@ -39,7 +39,7 @@ export default function TicketsComponent() {
   const [searchQuery, setSearchQuery] = useState("")
   const [statusFilter, setStatusFilter] = useState("all")
   const { items, setItems, removeItem } = useTicketsStore()
-  const t = useTranslations()
+  const t = useTranslations('Ticket')
   const local = useLocale()
   const {locale} = useParams()
   const dir = local === "ar" ? "rtl" : "ltr"

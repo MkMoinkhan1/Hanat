@@ -9,10 +9,9 @@ import { AddVariantDialog } from "@/components/add-verient-dialog";
 import DashboardDetails from "@/components/dashboard-details";
 import { useTranslations } from "next-intl";
 
-
-const Page = () => {
+const SubCategoryComponent = ({ params, activePage }) => {
   const router = useRouter();
-  const { locale,categoryid, id } = useParams();
+  const { locale, categoryid, id } = useParams();
   const t = useTranslations("ServiceManagement.SubCategoriesPage");
   const stats = [
     {
@@ -23,20 +22,20 @@ const Page = () => {
       changeType: "negative",
     },
     {
-      label: t('overallRating'),
+      label: t("overallRating"),
       value: "4.3",
-      change: `(45 ${t('reviews')})`,
+      change: `(45 ${t("reviews")})`,
       changeType: "neutral",
     },
     {
-      label: t('providerEarnings'),
+      label: t("providerEarnings"),
       value: "$ 145,674",
       change: "+12%",
       note: t("vsLastWeek"),
       changeType: "positive",
     },
     {
-      label: t('platformCommission'),
+      label: t("platformCommission"),
       value: "$ 1200",
       change: "+12%",
       note: t("vsLastWeek"),
@@ -78,9 +77,7 @@ const Page = () => {
     const newParams = new URLSearchParams(Array.from(searchParams.entries()));
     newParams.set("tab", value);
     router.push(
-      `/${locale}/admin/service-management/edit-service/${id}/category/${
-        categoryid
-      }?${newParams.toString()}`
+      `/${locale}/admin/service-management/edit-service/${id}/category/${categoryid}?${newParams.toString()}`
     );
 
     setTimeout(() => {
@@ -100,33 +97,41 @@ const Page = () => {
   return (
     <div>
       {/* Header */}
-      <div className="flex items-center gap-4 bg-white px-6 py-4">
-        <Button
-          variant="ghost"
-          size="icon"
-          className="h-8 w-8"
-          onClick={() => router.back()}
-        >
-         {
-          direction === "rtl" ? ( <ChevronRight className="h-4 w-4" />):( <ChevronLeft className="h-4 w-4" />)
-         }
-        </Button>
-        <div>
-          <h1 className="2xl:text-lg text-sm font-semibold">
-            {t('serviceManagement')}
-          </h1>
-          <p className="2xl:text-sm text-xs text-muted-foreground">
-            {t('managementNote')}
-          </p>
-        </div>
-      </div>
 
+      {activePage === "service-provider" ? (
+        ""
+      ) : (
+        <div className="flex items-center gap-4 bg-white px-6 py-4">
+          <Button
+            variant="ghost"
+            size="icon"
+            className="h-8 w-8"
+            onClick={() => router.back()}
+          >
+            {direction === "rtl" ? (
+              <ChevronRight className="h-4 w-4" />
+            ) : (
+              <ChevronLeft className="h-4 w-4" />
+            )}
+          </Button>
+          <div>
+            <h1 className="2xl:text-lg text-sm font-semibold">
+              {t("serviceManagement")}
+            </h1>
+            <p className="2xl:text-sm text-xs text-muted-foreground">
+              {t("managementNote")}
+            </p>
+          </div>
+        </div>
+      )}
       {/* Tabs */}
       <div className="border-b bg-white">
         <Tabs
           value={activeTab}
           onValueChange={handleTabChange}
-          className={`w-full ${direction === "rtl" ? "flex justify-end items-center" : "text-left"}`}
+          className={`w-full ${
+            direction === "rtl" ? "flex justify-end items-center" : "text-left"
+          }`}
         >
           <TabsList className="h-auto bg-transparent p-0">
             <TabsTrigger
@@ -139,7 +144,7 @@ const Page = () => {
               value="sub-category"
               className="!rounded-none border-b-2 border-transparent px-8 py-3 2xl:text-sm text-xs font-medium text-gray-500 hover:text-gray-700 data-[state=active]:border-black data-[state=active]:text-black data-[state=active]:shadow-none data-[state=active]:bg-gray-100"
             >
-              {t('subCategory')}
+              {t("subCategory")}
             </TabsTrigger>
           </TabsList>
         </Tabs>
@@ -154,14 +159,16 @@ const Page = () => {
         ) : activeTab !== "edit-category" ? (
           <div className="p-6">
             <DashboardDetails stats={stats} />
-            <h2 className="text-base font-medium mb-4">{t('subCategoryList')}</h2>
+            <h2 className="text-base font-medium mb-4">
+              {t("subCategoryList")}
+            </h2>
             <div className="space-y-4 p-4">
               <div>
                 <label
                   htmlFor="subcategoryName"
                   className="block  2xl:text-sm text-xs  font-medium mb-1"
                 >
-                  {t('subCategoryName')}
+                  {t("subCategoryName")}
                 </label>
                 <Input
                   id="subcategoryName"
@@ -178,7 +185,7 @@ const Page = () => {
                   htmlFor="description"
                   className="block  2xl:text-sm text-xs  font-medium mb-1"
                 >
-                  {t('description')}
+                  {t("description")}
                 </label>
                 <Input
                   id="description"
@@ -192,7 +199,7 @@ const Page = () => {
 
               <div className="mt-8">
                 <h3 className=" 2xl:text-sm text-xs  font-medium mb-2">
-                  {t('addVariant')}
+                  {t("addVariant")}
                 </h3>
                 <div className="flex flex-wrap gap-2 mb-4">
                   {variants.map((variant, index) => (
@@ -216,7 +223,7 @@ const Page = () => {
                   onClick={() => setIsAddVariantOpen(true)}
                 >
                   <Plus className="h-3 w-3" />
-                  {t('editCustomField')}
+                  {t("editCustomField")}
                 </Button>
               </div>
             </div>
@@ -236,4 +243,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default SubCategoryComponent;

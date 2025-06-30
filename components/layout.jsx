@@ -56,10 +56,14 @@ const otherNavItems = [
 ];
   const toggleSidebar = () => setIsCollapsed(!isCollapsed);
 
-  const isActiveLink = (href) => {
-    if (href === `/${locale}/admin/dashboard` && pathname === "/") return true;
-    return pathname === href || pathname.startsWith(`/${locale}${href}/`);
-  };
+const isActiveLink = (href) => {
+  const current = pathname.replace(`/${locale}`, ""); 
+  const target = href.replace(`/${locale}`, "");      
+
+  return (
+    current === target || current.startsWith(`${target}/`)
+  );
+};
 
   const removeCookies = () => {
     document.cookie = 'auth-token=; Max-Age=0; path=/;';
@@ -69,7 +73,7 @@ const otherNavItems = [
   return (
     <div className="flex h-screen">
       <div className={cn("relative flex flex-col border-r bg-background transition-all duration-300", isCollapsed ? "w-[80px]" : "w-[250px]")}> 
-        <div className="flex h-16 items-center border-b px-4">
+        <div className="flex h-16 items-center justify-between border-b px-4">
           <Link href={`/${locale}/admin/dashboard`} className={cn("flex items-center gap-2 font-semibold", isCollapsed && "justify-center")}> 
             {!isCollapsed && (
               <span className="text-lg">
@@ -77,7 +81,7 @@ const otherNavItems = [
               </span>
             )}
           </Link>
-          <div className={cn("flex items-center", isCollapsed ? "justify-center w-full" : "ml-auto")}> 
+          <div className={cn("flex items-center", isCollapsed ? "justify-center w-full" : `${direction==="rtl"?"":"ml-auto"}`)}> 
             <Button variant="ghost" size="icon" onClick={toggleSidebar} className="h-9 w-9">
               <Image src={hamburgerIcon} alt="Hamburger icon" className="h-6 w-6" />
             </Button>
@@ -179,7 +183,7 @@ const otherNavItems = [
                     <span className="text-xs text-muted-foreground">shady@handit.com</span>
                   </div>
                 </div>
-                <Image src={logoutIcon} alt="Logout Icon" className="h-5 w-5 ml-auto cursor-pointer" onClick={removeCookies} />
+                <Image src={logoutIcon} alt="Logout Icon" className={`h-5 w-5 ${direction==="rtl"?"rotate-180":"ml-auto"} cursor-pointer `}  onClick={removeCookies} />
               </div>
             )}
           </div>

@@ -9,6 +9,7 @@ import { useState } from "react";
 import Image from "next/image";
 
 const BookingManagementDetailsComponent = ({bookingId}) => {
+  bookingId = bookingId.id
   // This component is used to display the details of a booking management 
       const {locale} = useParams()
        const router = useRouter() 

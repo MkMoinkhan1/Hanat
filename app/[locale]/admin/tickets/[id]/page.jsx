@@ -1,16 +1,16 @@
 "use client";
 
-import React from "react";
-
-import { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { ArrowLeft, Eye, Trash2, Send, AlertTriangle } from "lucide-react";
+import { useTranslations } from "next-intl";
+import { ArrowLeft, Trash2, Send, AlertTriangle, ArrowRight } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
-import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
+import { cn } from "@/lib/utils";
+import { useParams } from "next/navigation";
 
 // Current user info
 const currentUser = {
@@ -65,7 +65,9 @@ const ticketData = {
 };
 
 export default function TicketDetailPage({ params }) {
-  const {locale} = params;
+  const { locale } = useParams();
+  const t = useTranslations("Ticket.ticketDetail");
+  const direction = locale === "ar" ? "rtl" : "ltr";
   const [messages, setMessages] = useState(ticketData.messages);
   const [newMessage, setNewMessage] = useState("");
   const messagesEndRef = useRef(null);
@@ -120,7 +122,6 @@ export default function TicketDetailPage({ params }) {
     setMessages([...messages, newMessageObj]);
     setNewMessage("");
 
-    // Reset textarea height
     if (textareaRef.current) {
       textareaRef.current.style.height = "40px";
     }
@@ -138,31 +139,32 @@ export default function TicketDetailPage({ params }) {
   };
 
   return (
-    <div className="flex h-screen  ">
+    <div className="flex h-screen">
       <div className="flex flex-1">
         <div className="flex flex-1 flex-col border-r">
           <header className="flex items-center gap-3 border-b p-4">
-            <Button variant="ghost" size="icon" asChild>
-              <Link href={`/${locale}/admin/tickets`}>
-                <ArrowLeft className="h-4 w-4" />
-              </Link>
-            </Button>
-            <div>
-              <h1 className="text-lg font-semibold">Tickets</h1>
-              <p className="2xl:text-sm text-xs text-muted-foreground">
-                Manage and track your Raised issues
-              </p>
+            <div className="flex gap-4 items-center">
+              <Button variant="ghost" size="icon" asChild>
+                <Link href={`/${locale}/admin/tickets`}>
+                {
+                  direction === "rtl" ?  <ArrowRight className="h-4 w-4" />:( <ArrowLeft className="h-4 w-4" />)
+                }
+                 
+                </Link>
+              </Button>
+              <div>
+                <h1 className="2xl:text-lg text-sm font-semibold">{t("title")}</h1>
+                <p className="text-xs text-muted-foreground">{t("description")}</p>
+              </div>
             </div>
           </header>
+
           <ScrollArea className="flex-1 p-6">
             <div className="space-y-6 max-w-4xl mx-auto">
               {messages.map((message) => {
                 const isOwn = isCurrentUser(message.sender.id);
                 return (
-                  <div
-                    key={message.id}
-                    className={cn("flex gap-3", isOwn && "flex-row-reverse")}
-                  >
+                  <div key={message.id} className={cn("flex gap-3", isOwn && "flex-row-reverse")}>
                     <Avatar className="h-10 w-10 flex-shrink-0">
                       <AvatarImage
                         src={message.sender.avatar || "/placeholder.svg"}
@@ -173,25 +175,14 @@ export default function TicketDetailPage({ params }) {
                       </AvatarFallback>
                     </Avatar>
                     <div className="flex flex-col max-w-[75%]">
-                      <div
-                        className={cn(
-                          "flex items-center gap-2 mb-1",
-                          isOwn && "justify-end"
-                        )}
-                      >
-                        <h3 className="font-medium text-gray-900 2xl:text-sm text-xs">
-                          {message.sender.name}
-                        </h3>
-                        <span className="text-xs text-gray-500">
-                          {message.timestamp}
-                        </span>
+                      <div className={cn("flex items-center gap-2 mb-1", isOwn && "justify-end")}>
+                        <h3 className="font-medium text-gray-900 2xl:text-sm text-xs">{message.sender.name}</h3>
+                        <span className="text-xs text-gray-500">{message.timestamp}</span>
                       </div>
                       <div
                         className={cn(
                           "inline-block rounded-lg p-4 2xl:text-sm text-xs text-gray-700 leading-relaxed text-left",
-                          isOwn
-                            ? "bg-blue-50 self-end"
-                            : "bg-gray-50 self-start"
+                          isOwn ? "bg-blue-50 self-end" : "bg-gray-50 self-start"
                         )}
                       >
                         {message.content}
@@ -203,20 +194,18 @@ export default function TicketDetailPage({ params }) {
               <div ref={messagesEndRef} />
             </div>
           </ScrollArea>
+
           <div className="border-t p-4">
             <div className="flex items-center gap-3">
               <Avatar className="h-8 w-8">
-                <AvatarImage
-                  src="/placeholder.svg?height=32&width=32"
-                  alt="You"
-                />
+                <AvatarImage src="/placeholder.svg?height=32&width=32" alt="You" />
                 <AvatarFallback>SS</AvatarFallback>
               </Avatar>
               <div className="relative flex-1">
                 <textarea
                   ref={textareaRef}
                   className="min-h-10 w-full resize-none rounded-md border border-input bg-background px-3 py-2 pr-10 2xl:text-sm text-xs ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                  placeholder="Add your comment..."
+                  placeholder={t("addCommentPlaceholder")}
                   value={newMessage}
                   onChange={(e) => setNewMessage(e.target.value)}
                   onKeyDown={handleKeyDown}
@@ -236,77 +225,65 @@ export default function TicketDetailPage({ params }) {
             </div>
           </div>
         </div>
+
+        {/* Right Sidebar */}
         <div className="w-[300px] border-l">
           <div className="p-4">
             <div className="flex items-center justify-between">
               <div className="2xl:text-sm text-xs font-medium text-muted-foreground">
-                Ticket ID
+                {t("ticketId")}
               </div>
-              <Button
-                variant="outline"
-                size="sm"
-                className="h-8 text-red-500 border-red-200"
-              >
+              <Button variant="outline" size="sm" className="h-8 text-red-500 border-red-200">
                 <Trash2 className="mr-1 h-3.5 w-3.5" />
-                Delete
+                {t("delete")}
               </Button>
             </div>
             <div className="mt-1 font-medium">ID: {ticketData.id}</div>
 
             <div className="flex items-center gap-2 mt-1 justify-between">
-              <p className=" 2xl:text-sm text-xs text-muted-foreground">Date <span className="ml-1 2xl:text-sm font-semibold text-xs ">
-                  {ticketData.date}
-                </span></p>
-                  <Badge
+              <p className="2xl:text-sm text-xs text-muted-foreground">
+                {t("date")}
+                <span className="ml-1 2xl:text-sm font-semibold text-xs">{ticketData.date}</span>
+              </p>
+              <Badge
                 variant="outline"
-                className=" rounded-sm !px-1 text-muted-foreground 2xl:text-sm text-xs gap-1"
-                >
+                className="rounded-sm !px-1 text-muted-foreground 2xl:text-sm text-xs gap-1"
+              >
                 <AlertTriangle className="h-4 w-4 text-white fill-orange-500" />
                 {ticketData.status}
-                </Badge>
+              </Badge>
             </div>
             <Separator className="my-4" />
 
-           <div className="flex items-center justify-between">
-             <div>
-              <div className="2xl:text-sm text-xs font-medium text-muted-foreground">
-              Attached Booking Id
+            <div className="2xl:text-sm text-xs font-medium text-muted-foreground">
+              {t("attachedBookingId")}
             </div>
             <div className="mt-1 font-medium">{ticketData.bookingId}</div>
-            </div>
-           </div>
 
-            <div className="2xl:text-sm text-xs font-medium text-muted-foreground mt-4">By</div>
-           <div className="flex items-center justify-between">
-             <div className="mt-2 flex items-center gap-2">
+            <div className="2xl:text-sm text-xs font-medium text-muted-foreground mt-4">
+              {t("by")}
+            </div>
+            <div className="mt-2 flex items-center gap-2">
               <Avatar className="h-6 w-6">
                 <AvatarImage
                   src={ticketData.assignedTo.avatar || "/placeholder.svg"}
                   alt={ticketData.assignedTo.name}
                 />
-                <AvatarFallback>
-                  {ticketData.assignedTo.initials}
-                </AvatarFallback>
+                <AvatarFallback>{ticketData.assignedTo.initials}</AvatarFallback>
               </Avatar>
-              <span className="text-sm font-medium">
-                {ticketData.assignedTo.name}
-              </span>
+              <span className="text-sm font-medium">{ticketData.assignedTo.name}</span>
             </div>
-           </div>
+
             <div className="2xl:text-sm text-xs font-medium text-muted-foreground mt-4">
-              Service Provider
+              {t("serviceProvider")}
             </div>
-            <div className="flex items-center justify-between">
-              <div className="mt-2 flex items-center gap-2">
+            <div className="mt-2 flex items-center gap-2">
               <Avatar className="h-6 w-6">
                 <AvatarFallback className="bg-rose-500 text-white">
                   {ticketData.serviceProvider.initials}
                 </AvatarFallback>
               </Avatar>
-              <span className="text-sm font-medium">
-                {ticketData.serviceProvider.name}
-              </span>
-            </div>
+              <span className="text-sm font-medium">{ticketData.serviceProvider.name}</span>
             </div>
           </div>
         </div>
