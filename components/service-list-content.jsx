@@ -4,8 +4,10 @@ import { Plus } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useState } from "react"
 import AddServiceDialog from "@/components/add-service-dialog"
+import { useTranslations } from "next-intl"
 
 export default function ServiceListContent() {
+  const t = useTranslations("ServiceProvider.ServiceList")
   const [showAddDialog, setShowAddDialog] = useState(false)
 
   const services = [
@@ -48,7 +50,7 @@ export default function ServiceListContent() {
       <div className="space-y-4">
         {services.map((service) => (
           <div key={service.id} className="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-4 gap-2">
               <div className="w-16 h-16 bg-[#D9D9D9] rounded-lg"></div>
               <div>
                 <h3 className="font-medium 2xl:text-lg text-sm">{service.name}</h3>
@@ -71,7 +73,7 @@ export default function ServiceListContent() {
         onClick={() => setShowAddDialog(true)}
       >
         <Plus className="h-4 w-4 mr-2" />
-        Add Service
+        {t('add_service')}
       </Button>
 
       <AddServiceDialog open={showAddDialog} onOpenChange={setShowAddDialog} />

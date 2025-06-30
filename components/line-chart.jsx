@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Button } from "./ui/button";
@@ -11,8 +11,16 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { ChevronDown } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 const UserLineChart = ({data,option}) => {
+      const [direction, setDirection] = useState("ltr");
+  
+    useEffect(() => {
+      if (typeof window !== "undefined") {
+        setDirection(document?.documentElement?.dir || "ltr");
+      }
+    }, []);
   return (
       <Card className="xl:col-span-2 overflow-hidden">
             <CardHeader className="flex flex-row items-center justify-between pb-2 pt-4 px-4">
@@ -22,8 +30,8 @@ const UserLineChart = ({data,option}) => {
                 </CardTitle>
                 <div className="flex items-baseline">
                   <span className="text-xl sm:text-2xl font-bold">1200</span>
-                  <span className="ml-2 text-xs font-medium text-green-500">
-                    +12 vs last Month
+                  <span className={cn(" text-xs font-medium text-green-500",direction === "rtl"?"mr-2":"ml-2")}>
+                    +12 <span>vs last Month</span>
                   </span>
                 </div>
               </div>

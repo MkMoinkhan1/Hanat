@@ -1,19 +1,24 @@
 "use client"
 
-import { ArrowLeft } from "lucide-react"
+import { ArrowLeft, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { useRouter } from "next/navigation"
+import { useParams, useRouter } from "next/navigation"
+import { useTranslations } from "next-intl"
 
 
 export default function ServiceProviderLayout({ children, activeTab, providerId }) {
   const router = useRouter()
-
+  const {locale , id} = providerId
+  console.log("ServiceProviderLayout params", providerId)
+  const direction = locale === "ar" ? "rtl" : "ltr"
+  const t = useTranslations("ServiceProvider.ServiceProviderTabs")
+  const td = useTranslations("ServiceProvider")
   const tabs = [
-    { id: "personal-details", label: "Personal Details", href: `/admin/service-provider/${providerId}` },
-    { id: "booking", label: "Booking", href: `/admin/service-provider/${providerId}/booking` },
-    { id: "service-list", label: "Service List", href: `/admin/service-provider/${providerId}/service-list` },
-    { id: "resources", label: "Resources", href: `/admin/service-provider/${providerId}/resources` },
-    { id: "categories", label: "Categories", href: `/admin/service-provider/${providerId}/categories` },
+    { id: "personal-details", label: t("personal_details"), href: `/${locale}/admin/service-provider/${id}` },
+    { id: "booking", label: t("booking"), href: `/${locale}/admin/service-provider/${id}/booking` },
+    { id: "service-list", label: t("service_list"), href: `/${locale}/admin/service-provider/${id}/service-list` },
+    { id: "resources", label: t("resources"), href: `/${locale}/admin/service-provider/${id}/resources` },
+    { id: "categories", label: t("categories"), href: `/${locale}/admin/service-provider/${id}/categories` },
   ]
 
   return (
@@ -24,21 +29,23 @@ export default function ServiceProviderLayout({ children, activeTab, providerId 
               <Button
                 variant="ghost"
                 size="icon"
-                className="mr-2 h-8 w-8 p-0"
-                onClick={() => router.push("/admin/service-provider")}
+                className={`${direction === "rtl"?"ml-2":"mr-2"} h-8 w-8 border rounded-[50%] p-4`}
+                onClick={() => router.push(`/${locale}/admin/service-provider`)}
               >
-                <ArrowLeft className="h-4 w-4" />
+                {
+                  direction === "rtl" ? <ArrowRight className="h-4 w-4  " /> : <ArrowLeft className="h-4 w-4" />
+                }
               </Button>
               <div>
-                <h1 className="2xl:text-lg text-sm font-medium">Service Provider</h1>
-                <p className="text-xs text-gray-500">Lorem ipsum management</p>
+                <h1 className="2xl:text-lg text-sm font-medium">{td('title')}</h1>
+                <p className="text-xs text-gray-500">{td('about')}</p>
               </div>
             </div>
-            <div className="flex space-x-3">
+            <div className="flex gap-2">
               <Button variant="outline" className="border-gray-300 text-gray-700 ">
-                Cancel
+                {td('cancel')}
               </Button>
-              <Button className="bg-gray-900 text-white">Save Changes</Button>
+              <Button className="bg-gray-900 text-white">{td('save')}</Button>
             </div>
           </div>
 

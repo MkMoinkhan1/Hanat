@@ -36,15 +36,7 @@ export default function CategoryTab() {
   }
 
   // Handle back button click
-  const handleBackClick = () => {
-    if (pathname.includes("/admin/edit")) {
-      // If we're on an edit page, go back to the subcategory listing
-      router.push("/sub-category")
-    } else {
-      // Otherwise go to a parent page or dashboard
-      router.push("/admin/dashboard")
-    }
-  }
+
 
   return (
     <header className="py-6 px-7 border-b border-gray-200">

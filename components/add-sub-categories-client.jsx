@@ -38,6 +38,7 @@ const stats = [
 
 const addSubCategoriesClient = () => {
     const router = useRouter();
+    const {locale} = useParams();
       const searchParams = useSearchParams();
       const defaultTab = searchParams.get("tab") || "edit-category";
     
@@ -67,7 +68,7 @@ const addSubCategoriesClient = () => {
         setLoading(true);
         const newParams = new URLSearchParams(Array.from(searchParams.entries()));
         newParams.set("tab", value);
-        router.push(`/admin/?${newParams.toString()}`);
+        router.push(`/${locale}/admin/?${newParams.toString()}`);
     
         setTimeout(() => {
           setActiveTab(value);
@@ -85,7 +86,7 @@ const addSubCategoriesClient = () => {
         }
 
         if (defaultTab === "edit-category") {
-          const categoryUrl = `/admin/service-management/add-service/add-category`;
+          const categoryUrl = `/${locale}/admin/service-management/add-service/add-category`;
           router.replace(categoryUrl);
         } else {
           setActiveTab(defaultTab);

@@ -8,30 +8,32 @@ import DashboardDetails from "./dashboard-details"
 import Image from "next/image"
 import serviceProviderLogo from "@/public/images/service-provider-logo.png"
 import { Badge } from "./ui/badge"
+import { useTranslations } from "next-intl"
 
-export default function PersonalDetailsContent() {
+export default function PersonalDetailsContent({param}) {
+  const t = useTranslations("ServiceProvider.ServiceProvider-PersonalDetails")
   const stats = [
     {
-      label: "Total Bookings Completed",
+      label: t("PersonalDetails-Dashboard.total_bookings"),
       value: "1200",
       change: "+12",
-      note: "vs last week",
+      note: t("PersonalDetails-Dashboard.week"),
       changeType: "positive",
     },
     {
-      label: "Overall Rating",
+      label: t("PersonalDetails-Dashboard.rating"),
       value: "4.3",
-      change: `(45 Reviews)`,
+      change: `(45 ${t('PersonalDetails-Dashboard.reviews')})`,
     changeType: "neutral",
     },
     {
-      label: "Pending Bookings",
+      label: t("PersonalDetails-Dashboard.pending_bookings"),
       value: "28",
-      change: "Requires attention",
+      change: t("PersonalDetails-Dashboard.requires_attention"),
       changeType: "neutral",
     },
     {
-      label: "Joining Date",
+      label: t("PersonalDetails-Dashboard.joining_date"),
       value: "4-January",
       change:"2024",
        changeType: "neutral",
@@ -59,7 +61,7 @@ export default function PersonalDetailsContent() {
           
                <Button variant="outline" className="border-gray-300 text-gray-700 2xl:text-sm text-xs">
             <Upload className="2xl:h-4 2xl:w-4 2xl:mr-2 w-2 h-2 mr-1 " />
-            Upload New
+            {t('upload')}
           </Button>
             </div>
            <Badge
@@ -67,7 +69,7 @@ export default function PersonalDetailsContent() {
                 className="text-muted-foreground rounded-md gap-0.5 px-1.5 text-xs "
               >
                 <CircleCheck className="fill-green-500 dark:fill-green-400 w-[13px] h-[13px] text-white" />
-                Active{" "}
+                {t('status.active')}
               </Badge>
             </div>
             </div>
@@ -78,35 +80,35 @@ export default function PersonalDetailsContent() {
       {/* Personal Details Form */}
       <div className="space-y-8">
         <div>
-          <h3 className="2xl:text-sm text-xs font-medium text-gray-500 mb-4">PERSONAL DETAILS</h3>
+          <h3 className="2xl:text-sm text-xs font-medium text-gray-500 mb-4">{t('personal_details')}</h3>
           <div className="grid grid-cols-3 gap-6">
             <div>
-              <label className="block 2xl:text-sm text-xs font-medium text-gray-700 mb-1">Full Name</label>
-              <Input placeholder="Enter your name" className="border-gray-300 2xl:text-sm text-xs" />
+              <label className="block 2xl:text-sm text-xs font-medium text-gray-700 mb-1">{t('form.name')}</label>
+              <Input placeholder={t('form.namePlaceholder')} className="border-gray-300 2xl:text-sm text-xs" />
             </div>
             <div>
-              <label className="block 2xl:text-sm text-xs font-medium text-gray-700 mb-1">Email</label>
-              <Input placeholder="Enter your mail" className="border-gray-300 2xl:text-sm text-xs" />
+              <label className="block 2xl:text-sm text-xs font-medium text-gray-700 mb-1">{t('form.email')}</label>
+              <Input placeholder={t('form.emailPlaceholder')} className="border-gray-300 2xl:text-sm text-xs" />
             </div>
             <div>
-              <label className="block 2xl:text-sm text-xs font-medium text-gray-700 mb-1">Phone Number</label>
-              <Input placeholder="Enter your name" className="border-gray-300 2xl:text-sm text-xs" />
+              <label className="block 2xl:text-sm text-xs font-medium text-gray-700 mb-1">{t('form.phone')}</label>
+              <Input placeholder={t('form.phonePlaceholder')} className="border-gray-300 2xl:text-sm text-xs" />
             </div>
           </div>
         </div>
 
         <div>
-          <h3 className="2xl:text-sm text-xs font-medium text-gray-500 mb-4">BUSINESS DETAILS</h3>
+          <h3 className="2xl:text-sm text-xs font-medium text-gray-500 mb-4">{t('business_details')}</h3>
           <div className="grid grid-cols-3 gap-6">
             <div>
-              <label className="block 2xl:text-sm text-xs font-medium text-gray-700 mb-1">Business Name</label>
-              <Input placeholder="Enter your business name" className="border-gray-300 2xl:text-sm text-xs" />
+              <label className="block 2xl:text-sm text-xs font-medium text-gray-700 mb-1">{t('form.business_name')}</label>
+              <Input placeholder={t('form.business_namePlaceholder')} className="border-gray-300 2xl:text-sm text-xs" />
             </div>
             <div>
-              <label className="block 2xl:text-sm text-xs font-medium text-gray-700 mb-1">Type of Service</label>
+              <label className="block 2xl:text-sm text-xs font-medium text-gray-700 mb-1">{t('form.type_of_service')}</label>
               <Select>
                 <SelectTrigger className="border-gray-300">
-                  <SelectValue placeholder="Select type of service" />
+                  <SelectValue placeholder={t('form.service_areaPlaceholder')} />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="electrician" >Electrician</SelectItem>
@@ -116,10 +118,10 @@ export default function PersonalDetailsContent() {
               </Select>
             </div>
             <div>
-              <label className="block 2xl:text-sm text-xs font-medium text-gray-700 mb-1">Service Area</label>
+              <label className="block 2xl:text-sm text-xs font-medium text-gray-700 mb-1">{t('form.service_area')}</label>
               <Select>
                 <SelectTrigger className="border-gray-300">
-                  <SelectValue placeholder="Select location" />
+                  <SelectValue placeholder={t("form.service_areaPlaceholder")} />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="new-york" className="2xl:text-sm text-xs">New York</SelectItem>
