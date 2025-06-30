@@ -440,5 +440,28 @@
     "bookingDetails": "تفاصيل الحجز",
     "description": "الوصف"
   }
+  },
+  "BookingManagement": {
+    "title": "إدارة الحجوزات",
+    "description": "لوريم إيبسوم للإدارة",
+    "totalBookings": "إجمالي الحجوزات",
+    "totalRevenue": "إجمالي الإيرادات",
+    "providerRevenue": "الأموال التي يجنيها المزود",
+    "commission": "العمولة المكتسبة من حنات",
+    "vsLastWeek": "مقارنة بالأسبوع الماضي",
+    "bookingID": "معرف الحجز",
+    "type": "النوع",
+    "customerName": "اسم العميل",
+    "service": "الخدمة",
+    "serviceProvider": "مقدم الخدمة",
+    "bookingDate": "تاريخ الحجز",
+    "status": "الحالة",
+    "action": "الإجراء",
+    "view": "عرض",
+    "cancelBooking": "إلغاء الحجز",
+    "rescheduleBooking": "إعادة جدولة الحجز",
+    "pending": "قيد الانتظار",
+    "completed": "مكتمل",
+    "cancelled": "ملغي"
   }
 }
