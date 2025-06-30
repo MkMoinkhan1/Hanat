@@ -316,6 +316,24 @@
    "ServiceList": {
     "add_service": "إضافة خدمة"
   },
+  "AddServiceDialog": {
+    "title": "إضافة خدمة جديدة",
+    "uploadButton": "رفع جديد",
+    "categoryLabel": "الفئة",
+    "categoryPlaceholder": "اختر نوع الفئة",
+    "subCategoryLabel": "الفئة الفرعية",
+    "subCategoryPlaceholder": "اختر نوع الفئة الفرعية",
+    "durationLabel": "المدة",
+    "durationPlaceholder": "أدخل المدة",
+    "serviceAreaLabel": "منطقة الخدمة",
+    "serviceAreaPlaceholder": "اختر الموقع",
+    "chargesLabel": "الرسوم",
+    "chargesPlaceholder": "أدخل الرسوم",
+    "descriptionLabel": "الوصف",
+    "descriptionPlaceholder": "أدخل الوصف",
+    "cancelButton": "إلغاء",
+    "saveButton": "حفظ"
+  },
     "resourceTable": {
     "name": "اسم المورد",
     "service": "الخدمة",

@@ -6,36 +6,38 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Upload } from "lucide-react"
+import { useTranslations } from "next-intl"
 
 
 
 export default function AddServiceDialog({ open, onOpenChange }) {
+  const t = useTranslations("ServiceProvider.AddServiceDialog")
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-2xl">
         <DialogHeader>
-          <DialogTitle className="2xl:text-lg text-sm">Add new service</DialogTitle>
+          <DialogTitle className="2xl:text-lg text-sm">{t("title")}</DialogTitle>
         </DialogHeader>
 
         <div className="space-y-6">
           {/* Image Upload */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-4 gap-2">
             <div className="2xl:w-24 2xl:h-24 h-14 w-14 bg-gray-200 rounded-lg flex items-center justify-center">
               <div className="text-gray-400">📷</div>
             </div>
             <Button variant="outline" className="border-gray-300 text-gray-700">
-              <Upload className="h-4 w-4 mr-2" />
-              Upload New
+              <Upload className={`h-4 w-4 mr-2`} />
+              {t('uploadButton')}
             </Button>
           </div>
 
           {/* Form Fields */}
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block 2xl:text-sm text-xs font-medium text-gray-700 mb-1">Category</label>
+              <label className="block 2xl:text-sm text-xs font-medium text-gray-700 mb-1">{t('categoryLabel')}</label>
               <Select>
                 <SelectTrigger>
-                  <SelectValue placeholder="Select type of Category" />
+                  <SelectValue placeholder={t("categoryPlaceholder" )}/>
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="electrician">Electrician</SelectItem>
@@ -45,10 +47,10 @@ export default function AddServiceDialog({ open, onOpenChange }) {
               </Select>
             </div>
             <div>
-              <label className="block 2xl:text-sm text-xs font-medium text-gray-700 mb-1">Sub-category</label>
+              <label className="block 2xl:text-sm text-xs font-medium text-gray-700 mb-1">{t('subCategoryLabel')}</label>
               <Select>
                 <SelectTrigger>
-                  <SelectValue placeholder="Select type of sub category" />
+                  <SelectValue placeholder={t('subCategoryPlaceholder')} />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="wiring">Wiring</SelectItem>
@@ -60,14 +62,14 @@ export default function AddServiceDialog({ open, onOpenChange }) {
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block 2xl:text-sm text-xs font-medium text-gray-700 mb-1">Duration</label>
-              <Input placeholder="Enter Duration" />
+              <label className="block 2xl:text-sm text-xs font-medium text-gray-700 mb-1">{t('durationLabel')}</label>
+              <Input placeholder={t('durationPlaceholder')} />
             </div>
             <div>
-              <label className="block 2xl:text-sm text-xs font-medium text-gray-700 mb-1">Service Area</label>
+              <label className="block 2xl:text-sm text-xs font-medium text-gray-700 mb-1">{t('serviceAreaLabel')}</label>
               <Select>
                 <SelectTrigger>
-                  <SelectValue placeholder="Select location" />
+                  <SelectValue placeholder={t('serviceAreaPlaceholder')} />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="new-york">New York</SelectItem>
@@ -79,21 +81,21 @@ export default function AddServiceDialog({ open, onOpenChange }) {
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block 2xl:text-sm text-xs font-medium text-gray-700 mb-1">Charges</label>
-              <Input placeholder="Enter Charges" />
+              <label className="block 2xl:text-sm text-xs font-medium text-gray-700 mb-1">{t('chargesLabel')}</label>
+              <Input placeholder={t('chargesPlaceholder')}/>
             </div>
             <div>
-              <label className="block 2xl:text-sm text-xs font-medium text-gray-700 mb-1">Description</label>
-              <Textarea placeholder="Enter Description" className="min-h-[80px]" />
+              <label className="block 2xl:text-sm text-xs font-medium text-gray-700 mb-1">{t('descriptionLabel')}</label>
+              <Textarea placeholder={t('descriptionPlaceholder')} className="min-h-[80px]" />
             </div>
           </div>
 
           {/* Action Buttons */}
           <div className="flex justify-end space-x-3 pt-4">
             <Button variant="outline" onClick={() => onOpenChange(false)}>
-              Cancel
+              {t('cancelButton')}
             </Button>
-            <Button className="bg-gray-900 text-white">Save</Button>
+            <Button className="bg-gray-900 text-white">{t('saveButton')}</Button>
           </div>
         </div>
       </DialogContent>

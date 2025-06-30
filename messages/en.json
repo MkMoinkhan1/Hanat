@@ -317,6 +317,23 @@
   "ServiceList": {
     "add_service": "Add Service"
   },
+  "AddServiceDialog": {
+    "title": "Add new service",
+    "uploadButton": "Upload New",
+    "categoryLabel": "Category",
+    "categoryPlaceholder": "Select type of Category",
+    "subCategoryLabel": "Sub-category",
+    "subCategoryPlaceholder": "Select type of sub category",
+    "durationLabel": "Duration",
+    "durationPlaceholder": "Enter Duration",
+    "serviceAreaLabel": "Service Area",
+    "serviceAreaPlaceholder": "Select location",
+    "chargesLabel": "Charges",
+    "chargesPlaceholder": "Enter Charges",
+    "descriptionLabel": "Description",
+    "descriptionPlaceholder": "Enter Description",
+    "cancelButton": "Cancel",
+    "saveButton": "Save"},
    "resourceTable": {
     "name": "Resource name",
     "service": "Service",
