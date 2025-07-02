@@ -143,7 +143,7 @@ export default function UsersPage() {
 
   const columns = [
     {
-      header: "Full name",
+      header: t("Full name"),
       accessorKey: "name",
       cell: (row) => (
         <div className="flex items-center gap-3">
@@ -156,23 +156,23 @@ export default function UsersPage() {
       ),
     },
     {
-      header: "Email Address",
+      header: t("Email Address"),
       accessorKey: "email",
     },
     {
-      header: "Mobile Number",
+      header: t("Mobile Number"),
       accessorKey: "phone",
     },
     {
-      header: "DOB",
+      header: t("DOB"),
       accessorKey: "dob",
     },
     {
-      header: "Gender",
+      header: t("Gender"),
       accessorKey: "gender",
     },
     {
-      header: "Status",
+      header: t("Status"),
       accessorKey: "status",
       cell: (row) => (
         <Badge
@@ -184,7 +184,7 @@ export default function UsersPage() {
       ),
     },
     {
-      header: "Action",
+      header: t("Action"),
       accessorKey: "action",
       cell: (row) => (
         <div className="flex justify-start gap-2">

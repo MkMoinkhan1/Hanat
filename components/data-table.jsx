@@ -1,12 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import {
-  ChevronLeft,
-  ChevronRight,
-  Search,
-  Filter,
-} from "lucide-react";
+import { ChevronLeft, ChevronRight, Search, Filter } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {
@@ -16,9 +11,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { cn } from "@/lib/utils";
 
-// Optional utility if you don’t already have one
-const cn = (...classes) => classes.filter(Boolean).join(" ");
 
 export function DataTable({
   data,
@@ -28,7 +22,7 @@ export function DataTable({
   monthlyFilter,
   itemsPerPageOptions = [5, 10, 25, 50],
   defaultItemsPerPage = 5,
-  selectFilterItems
+  selectFilterItems,
 }) {
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
@@ -56,8 +50,7 @@ export function DataTable({
 
     const filtered = searchQuery
       ? filteredStatus.filter((item) => {
-          const searchValue =
-            item[searchField]?.toString().toLowerCase() || "";
+          const searchValue = item[searchField]?.toString().toLowerCase() || "";
           return searchValue.includes(searchQuery.toLowerCase());
         })
       : filteredStatus;
@@ -109,11 +102,11 @@ export function DataTable({
                 <SelectValue placeholder="All Status" />
               </SelectTrigger>
               <SelectContent>
-               {
-                selectFilterItems?.map((option,index) =>(
-                  <SelectItem key={index} value={option}>{option==="All"?"All Status":option}</SelectItem>
-                ))
-               }
+                {selectFilterItems?.map((option, index) => (
+                  <SelectItem key={index} value={option}>
+                    {option === "All" ? "All Status" : option}
+                  </SelectItem>
+                ))}
               </SelectContent>
             </Select>
 
@@ -136,10 +129,11 @@ export function DataTable({
               </Select>
             )}
 
-            <Button variant="outline" className="text-xs 2xl:text-sm">
-              <Filter className="h-4 w-4" />
-              Filter
-            </Button>
+                <Button variant="outline" className="text-xs 2xl:text-sm">
+
+                  <Filter className="h-4 w-4" />
+                  Filter
+                </Button>
           </div>
         )}
       </div>
@@ -207,10 +201,11 @@ export function DataTable({
                 onClick={() => handlePageChange(currentPage - 1)}
                 disabled={currentPage === 1}
               >
-                {
-                  direction === "rtl"? <ChevronRight className="h-4 w-4" /> : <ChevronLeft className="h-4 w-4" />
-                }
-               
+                {direction === "rtl" ? (
+                  <ChevronRight className="h-4 w-4" />
+                ) : (
+                  <ChevronLeft className="h-4 w-4" />
+                )}
               </Button>
               <span className="2xl:text-sm text-xs">
                 Page {currentPage} of {totalPages}
@@ -221,8 +216,11 @@ export function DataTable({
                 onClick={() => handlePageChange(currentPage + 1)}
                 disabled={currentPage === totalPages}
               >
-                {direction === "rtl"? <ChevronLeft className="h-4 w-4" />:<ChevronRight className="h-4 w-4" /> }
-                
+                {direction === "rtl" ? (
+                  <ChevronLeft className="h-4 w-4" />
+                ) : (
+                  <ChevronRight className="h-4 w-4" />
+                )}
               </Button>
             </div>
           </div>
