@@ -91,7 +91,7 @@ export default function AddServiceDialog({ open, onOpenChange }) {
           </div>
 
           {/* Action Buttons */}
-          <div className="flex justify-end space-x-3 pt-4">
+          <div className="flex justify-end space-x-3 gap-2 pt-4">
             <Button variant="outline" onClick={() => onOpenChange(false)}>
               {t('cancelButton')}
             </Button>

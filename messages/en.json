@@ -178,7 +178,14 @@
   },
   "Users": {
     "title": "Users",
-    "about": "This is the Users Page"
+    "about": "This is the Users Page",
+    "Full name" : "Full Name",
+    "Email Address": "Email Address",
+    "Mobile Number": "Mobile Number",
+    "Status": "Status",
+    "Action": "Action",
+    "DOB": "DOB", 
+    "Gender": "Gender"
   },
   "ServiceProvider": {
     "title": "Service Provider",
