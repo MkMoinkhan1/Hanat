@@ -4,10 +4,12 @@ import Image from "next/image"
 import { useState } from "react"
 
 import { useParams, useRouter } from "next/navigation"
+import { login } from "@/http/auth"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Checkbox } from "@/components/ui/checkbox"
+import { toast } from "sonner"
 
 import loginImg from "@/public/images/login-image.webp"
 export default function LoginPage() {
@@ -18,7 +20,7 @@ export default function LoginPage() {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
-    rememberMe: false,
+    isRemembered: false,
   })
   const [errors, setErrors] = useState({
     email: "",
@@ -33,16 +35,15 @@ export default function LoginPage() {
     if (!email) return "Email is required"
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if (!emailRegex.test(email)) return "Please enter a valid email address"
-    if(email !== admin_email) return "Email is incorrect"
+    // if(email !== admin_email) return "Email is incorrect"
     return ""
   }
 
   const validatePassword = (password) => {
     if (!password) return "Password is required"
     if (password.length < 6) return "Password must be at least 6 characters"
-    if(password !== admin_password) return "Password is incorrect"
-    return ""
-  }
+    // if(password !== admin_password) return "Password is incorrect"
+      }
 
   const handleInputChange = (field, value) => {
     setFormData((prev) => ({ ...prev, [field]: value }))
@@ -59,11 +60,12 @@ export default function LoginPage() {
     setTouched((prev) => ({ ...prev, [field]: true }))
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
 
     const emailError = validateEmail(formData.email)
     const passwordError = validatePassword(formData.password)
+    const { email, password, isRemembered } = formData
 
     setErrors({
       email: emailError,
@@ -76,14 +78,22 @@ export default function LoginPage() {
     })
 
     if (!emailError && !passwordError) {
-        if(formData.email === admin_email && formData.password === admin_password) {
-          document.cookie = `auth-token=${encodeURIComponent("jiefcmunycgedyugd73t76nx273y8721nyz287")}; path=/; max-age=${formData.rememberMe?"604800":"86400"}`
-           const userInfoString = encodeURIComponent(JSON.stringify(formData));
-document.cookie = `user-info=${userInfoString}; path=/; max-age=${formData.rememberMe ? "604800" : "86400"}`;
-
-          router.push(`/${locale}/admin/dashboard`)
-        }
+           try {
+    const res = await login(email, password, isRemembered)
+    console.log('Logged in:', res)
+    if(res){
+      if (res.user.isRemembered) {
+        cookieStore.set({name:'auth-token', value:JSON.stringify(res.user), maxAge: 60 * 60 * 24 * 7})
+      } else {
+        cookieStore.set({name:'auth-token', value:JSON.stringify(res.user), maxAge: 60 * 60 * 24})
+      }
+      router.push(`/${locale}/admin/dashboard`)
     }
+  } catch (err) {
+    console.log('Login error:', err)
+        toast(err.response.data.message);
+  }
+        }
   }
 
   return (
@@ -160,8 +170,8 @@ document.cookie = `user-info=${userInfoString}; path=/; max-age=${formData.remem
               <div className="flex items-center space-x-2">
                 <Checkbox
                   id="remember"
-                  checked={formData.rememberMe}
-                  onCheckedChange={(checked) => handleInputChange("rememberMe", checked)}
+                  checked={formData.isRemembered}
+                  onCheckedChange={(checked) => handleInputChange("isRemembered", checked)}
                 />
                 <Label htmlFor="remember" className="text-sm text-gray-700">
                   Remember me
