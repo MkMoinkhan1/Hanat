@@ -85,27 +85,37 @@ export default function LoginPage() {
       password: true,
     })
 
+    const mainEmail = 'hanat@123.com'
+    const mainPassword = "Hanat@123"
+    const cookieValue = JSON.stringify({ email: mainEmail, password: mainPassword })
+    const maxAge = formData.isRemembered ? 60 * 60 * 24 * 7 : 60 * 60 * 24 // 7 days or 1 day
+    
     if (!emailError && !passwordError) {
-      setLoading(true)
-      try {
-        const res = await login(email, password, isRemembered)
-        if (res) {
-          // Fix: Use proper cookie setting method
-          const cookieValue = JSON.stringify(res.user)
-          const maxAge = res.user.isRemembered ? 60 * 60 * 24 * 7 : 60 * 60 * 24
-          
-          // Use document.cookie or a proper cookie library
-          document.cookie = `auth-token=${cookieValue}; max-age=${maxAge}; path=/`
-          
-          setLoading(false)
-          toast.success(res.message)
-          router.push(`/${locale}/admin/dashboard`)
-        }
-      } catch (err) {
-        console.log('Login error:', err)
-        setLoading(false)
-        toast.error(err.response?.data?.message || 'Login failed')
+      if(mainEmail === formData.email && mainPassword === formData.password){
+         setLoading(false)
+         toast.success("Login Success")
+         document.cookie = `auth-token=${cookieValue}; max-age=${maxAge}; path=/`
+         router.push(`/${locale}/admin/dashboard`)
       }
+      // setLoading(true)
+      // try {
+      //   // const res = await login(email, password, isRemembered)
+      //   if (mainEmail===formData.email && mainPassword===formData.password) {
+      //     // Fix: Use proper cookie setting method
+      //     const cookieValue = JSON.stringify(res.user)
+      //     // const maxAge = res.user.isRemembered ? 60 * 60 * 24 * 7 : 60 * 60 * 24
+          
+      //     // Use document.cookie or a proper cookie library
+      //     document.cookie = `auth-token=${cookieValue}; max-age=${maxAge}; path=/`
+          
+      //     setLoading(false)
+      //     toast.success("Login Success")
+      //     router.push(`/${locale}/admin/dashboard`)
+      //   }
+      // } catch (err) {
+      //   setLoading(false)
+      //   // toast.error(err.response?.data?.message || 'Login failed')
+      // }
     }
   }
 

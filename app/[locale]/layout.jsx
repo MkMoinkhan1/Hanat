@@ -14,6 +14,7 @@ export const metadata = {
 }
 import "./globals.css"
 import { NextIntlClientProvider } from 'next-intl'
+import { Toaster } from "sonner";
 
 
 export default async function RootLayout({ children, params }) {
@@ -26,6 +27,7 @@ export default async function RootLayout({ children, params }) {
       <body className={` ${urbanist.className} antialiased`}>
         <NextIntlClientProvider locale={locale} >
           {children}
+                  <Toaster richColors position="top-right" />
         </NextIntlClientProvider>
       </body>
       
