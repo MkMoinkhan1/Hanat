@@ -488,6 +488,61 @@
     "pending": "Pending",
     "completed": "Completed",
     "cancelled": "Cancelled"
+  },
+  "Login":{
+  "login": "Log in",
+  "welcome": "Welcome back! Please enter your details",
+  "email": "Email",
+  "password": "Password",
+  "emailPlaceholder": "Enter your email address",
+  "passwordPlaceholder": "Enter your password",
+  "rememberMe": "Remember me",
+  "forgotPassword": "Forgot Password?",
+  "emailRequired": "Email is required",
+  "invalidEmail": "Please enter a valid email address",
+  "passwordRequired": "Password is required",
+  "passwordTooShort": "Password must be at least 6 characters",
+  "tagline": "Your Hub for Smarter Service Operations"
+},
+"ForgotPassword":{
+  "title": "Forgot password?",
+  "description": "No worries, we'll send you reset instructions.",
+  "email": "Email",
+  "placeholder": "Enter your email address",
+  "reset": "Reset password",
+  "backToLogin": "Back to log in",
+  "emailRequired": "Email is required",
+  "invalidEmail": "Please enter a valid email address"
+},
+"CheckEmail":{
+  "title": "Check your email",
+  "description": "We sent a password reset link to your email address",
+  "openApp": "Open email app",
+  "notReceived": "Didn't receive the email?",
+  "resendIn": "Resend in",
+  "clickToResend": "Click to resend",
+  "backToLogin": "Back to log in"
+},
+ "ResetPassword": {
+    "title": "Set new password",
+    "subtitle": "Your new password must be different than previously used passwords.",
+    "password": "Password",
+    "confirmPassword": "Confirm password",
+    "placeholder": {
+      "password": "Enter your new password",
+      "confirmPassword": "Confirm your password"
+    },
+    "button": "Reset Password",
+    "backToLogin": "Back to log in",
+    "validation": {
+      "passwordRequired": "Password is required",
+      "passwordLength": "Password must be at least 8 characters",
+      "passwordLowercase": "Password must contain at least one lowercase letter",
+      "passwordUppercase": "Password must contain at least one uppercase letter",
+      "passwordNumber": "Password must contain at least one number",
+      "confirmPasswordRequired": "Please confirm your password",
+      "passwordsDoNotMatch": "Passwords do not match"
+    }
   }
- 
+
 }

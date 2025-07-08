@@ -6,10 +6,24 @@ export const login = async (email, password, isRemembered) => {
     password,
     isRemembered
   })
-
-  if (response.data?.token) {
-    cookieStore.set('access_token', response.data.token)
+    return response.data
+}
+export const logout = async () => {
+  try {
+    const response = await api.post('/auth/log-out');
+    return response.data;
+  } catch (error) {
+    console.error('Logout failed:', error);
+    return null;
   }
+}
 
-  return response.data
+export const checkEmail = async (email) => {
+  const response = await api.post('/auth/send-reset-link', { email });
+  return response.data;
+}
+
+export const resetPassword = async ( password , token ) => {
+  const response = await api.post(`/auth/reset-password?token=${token}`, { password });
+  return response.data;
 }

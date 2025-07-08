@@ -25,6 +25,8 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
+import { logout } from "@/http/auth";
+import { toast } from "sonner";
 
 const Layout = ({ children, token }) => {
   const t = useTranslations("SideBar");
@@ -65,10 +67,18 @@ const isActiveLink = (href) => {
   );
 };
 
-  const removeCookies = () => {
-    document.cookie = 'auth-token=; Max-Age=0; path=/;';
+const removeCookies = async () => {
+  try {
+    const res = await logout(); // optional
+    document.cookie = 'auth-token=; Max-Age=0; path=/';
+    toast.success("Logged out successfully");
     window.location.href = `/${locale}/auth/login`;
-  };
+
+  } catch (error) {
+    console.error("Logout error:", error);
+  }
+};
+
 
   return (
     <div className="flex h-screen">
