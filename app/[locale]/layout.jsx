@@ -1,7 +1,5 @@
 import { Urbanist } from "next/font/google";
 import {setRequestLocale} from 'next-intl/server';
-import { Toaster } from "@/components/ui/sonner"
-
 
 const urbanist = Urbanist({
   subsets: ["latin"],
@@ -16,6 +14,7 @@ export const metadata = {
 }
 import "./globals.css"
 import { NextIntlClientProvider } from 'next-intl'
+import { Toaster } from "sonner";
 
 
 export default async function RootLayout({ children, params }) {
@@ -28,7 +27,7 @@ export default async function RootLayout({ children, params }) {
       <body className={` ${urbanist.className} antialiased`}>
         <NextIntlClientProvider locale={locale} >
           {children}
-          <Toaster/>
+                  <Toaster richColors position="top-right" />
         </NextIntlClientProvider>
       </body>
       
