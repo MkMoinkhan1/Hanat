@@ -1,7 +1,7 @@
 "use client"
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import { useSearchParams } from "next/navigation"
+import { useParams, useSearchParams } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft, Mail } from "lucide-react"
 import { checkEmail } from "@/http/auth"
@@ -9,6 +9,7 @@ import { useTranslations } from "next-intl"
 
 export default function CheckEmailPage() {
     const t = useTranslations("CheckEmail")
+    const { locale} = useParams()
   const searchParams = useSearchParams()
   const [email, setEmail] = useState(searchParams.get("email") || "")
   const [resendCooldown, setResendCooldown] = useState(0)
@@ -68,7 +69,7 @@ export default function CheckEmailPage() {
           )}
         </div>
 
-        <Link href="/login" className="inline-flex items-center text-sm text-gray-600 hover:text-gray-900">
+        <Link href={`/${locale}/auth/login`} className="inline-flex items-center text-sm text-gray-600 hover:text-gray-900">
           <ArrowLeft className="w-4 h-4 mr-2" />
           {t('backToLogin')}
         </Link>
