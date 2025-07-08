@@ -108,7 +108,7 @@ export default function PersonalDetailsContent({param}) {
               <label className="block 2xl:text-sm text-xs font-medium text-gray-700 mb-1">{t('form.type_of_service')}</label>
               <Select>
                 <SelectTrigger className="border-gray-300">
-                  <SelectValue placeholder={t('form.service_areaPlaceholder')} />
+                  <SelectValue placeholder={t('form.type_of_servicePlaceholder')} />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="electrician" >Electrician</SelectItem>

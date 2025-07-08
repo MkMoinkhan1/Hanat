@@ -100,10 +100,10 @@ export default function RescheduleDialog({ open, onOpenChange, params }) {
           {/* Form Fields */}
           <div className="space-y-4">
             <div>
-              <label className="block font-medium text-gray-700 mb-2">
+              <label className="block 2xl:text-sm text-xs text-gray-700 mb-2">
                 {t("dateLabel")}
               </label>
-              <div className="relative" onClick={() => showPicker("date-input")}>
+              <div className="relative" >
                 <Input
                   id="date-input"
                   type="date"
@@ -116,10 +116,10 @@ export default function RescheduleDialog({ open, onOpenChange, params }) {
             </div>
 
             <div>
-              <label className="block font-medium text-gray-700 mb-2">
+              <label className="block 2xl:text-sm text-xs text-gray-700 mb-2">
                 {t("timeLabel")}
               </label>
-              <div className="relative" onClick={() => showPicker("time-input")}>
+              <div className="relative">
                 <Input
                   type="time"
                   id="time-input"
@@ -132,7 +132,7 @@ export default function RescheduleDialog({ open, onOpenChange, params }) {
             </div>
 
             <div>
-              <label className="block font-medium text-gray-700 mb-2">
+              <label className="block 2xl:text-sm text-xs text-gray-700 mb-2">
                 {t("changeResource")}
               </label>
               <div className="relative">
@@ -168,7 +168,7 @@ export default function RescheduleDialog({ open, onOpenChange, params }) {
               </>
             ) : (
               <>
-                <Button className="flex-1 bg-gray-900 text-white 2xl:text-sm text-xs">
+                <Button className="flex-1 bg-gray-900 text-white 2xl:text-sm text-xs" onClick={() => onOpenChange(false)}>
                   {t("rescheduleButton")}
                 </Button>
                 <Button
