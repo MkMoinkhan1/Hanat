@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { useParams, useRouter, useSearchParams } from "next/navigation";
+import { useParams, usePathname, useRouter, useSearchParams } from "next/navigation";
 import { ChevronLeft, Search, Edit, Trash, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -39,6 +39,7 @@ const stats = [
 const addSubCategoriesClient = () => {
     const router = useRouter();
     const {locale} = useParams();
+    const path = usePathname()
       const searchParams = useSearchParams();
       const defaultTab = searchParams.get("tab") || "edit-category";
     
@@ -68,7 +69,7 @@ const addSubCategoriesClient = () => {
         setLoading(true);
         const newParams = new URLSearchParams(Array.from(searchParams.entries()));
         newParams.set("tab", value);
-        router.push(`/${locale}/admin/?${newParams.toString()}`);
+        router.push(`${path}?${newParams.toString()}`);
     
         setTimeout(() => {
           setActiveTab(value);

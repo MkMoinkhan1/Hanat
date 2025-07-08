@@ -117,7 +117,7 @@ export default function FeedbackDetailPage({  }) {
             {/* </Link> */}
           </Button>
           <div>
-            <h1 className="text-lg font-semibold">{t("title")}</h1>
+            <h1 className="2xl:text-lg text-sm  font-semibold">{t("title")}</h1>
             <p className="2xl:text-sm text-xs text-muted-foreground">
               {t("subtitle")}
             </p>
@@ -132,14 +132,14 @@ export default function FeedbackDetailPage({  }) {
                     <h3 className="2xl:text-sm text-xs font-medium text-muted-foreground mb-1">
                       {t("formId")}
                     </h3>
-                    <p className="text-lg font-semibold">{feedback.formId}</p>
+                    <p className="2xl:text-lg text-sm font-semibold">{feedback.formId}</p>
                   </div>
 
                   <div className="mb-6">
                     <h3 className="2xl:text-sm text-xs font-medium text-muted-foreground mb-1">
                       {t("issue")}
                     </h3>
-                    <p className="font-medium">{feedback.issue}</p>
+                    <p className="font-medium 2xl:text-lg text-sm">{feedback.issue}</p>
                   </div>
 
                   <div className="mb-6">
@@ -188,7 +188,7 @@ export default function FeedbackDetailPage({  }) {
                         />
                         <AvatarFallback>{feedback.customer.initials}</AvatarFallback>
                       </Avatar>
-                      <span className="font-medium">{feedback.customer.name}</span>
+                      <span className="font-medium 2xl:text-lg text-sm">{feedback.customer.name}</span>
                     </div>
                   </div>
 
@@ -196,7 +196,7 @@ export default function FeedbackDetailPage({  }) {
                     <h3 className="2xl:text-sm text-xs font-medium text-muted-foreground mb-1">
                       {t("bookingDetails")}
                     </h3>
-                    <p className="font-medium">{feedback.bookingId}</p>
+                    <p className="font-medium 2xl:text-lg text-sm">{feedback.bookingId}</p>
                   </div>
                 </div>
               </div>

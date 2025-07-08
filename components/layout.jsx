@@ -69,7 +69,7 @@ const isActiveLink = (href) => {
 
 const removeCookies = async () => {
   try {
-    const res = await logout(); // optional
+    // const res = await logout(); // optional
     document.cookie = 'auth-token=; Max-Age=0; path=/';
     toast.success("Logged out successfully");
     window.location.href = `/${locale}/auth/login`;
